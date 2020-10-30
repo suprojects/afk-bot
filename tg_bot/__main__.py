@@ -274,7 +274,7 @@ def process_update(self, update):
     for group in self.groups:
         try:
             for handler in (x for x in self.handlers[group] if x.check_update(update)):
-                handler.handle_update(update, self)
+                handler.handle_update(update, self, check_result=True)
                 break
 
         # Stop processing with any other handler.
