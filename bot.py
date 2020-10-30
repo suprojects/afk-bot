@@ -5,14 +5,13 @@ OWNER_ID = int(Config.OWNER_ID)
 OWNER_USERNAME = Config.OWNER_USERNAME
 DB_URI = Config.SQLALCHEMY_DATABASE_URI
 
+updater = tg.Updater(TOKEN, use_context=True)
+dispatcher = updater.dispatcher
+
 def main():
 	import telegram.ext as tg
 	from afk import AFK_HANDLER, AFK_GROUP, NO_AFK_HANDLER, AFK_REPLY_HANDLER, AFK_REPLY_GROUP
 	from users import USER_HANDLER, USERS_GROUP, BROADCAST_HANDLER, CHATLIST_HANDLER
-
-	updater = tg.Updater(TOKEN, use_context=True)
-
-	dispatcher = updater.dispatcher
 
 	dispatcher.add_handler(AFK_HANDLER, AFK_GROUP)
 	dispatcher.add_handler(NO_AFK_HANDLER, AFK_GROUP)
