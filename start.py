@@ -50,5 +50,5 @@ def help(update, context):
 	else:
 		msg.reply_text(HELP_STRING2, reply_markup=HELP_REPLY_MARKUP)
 
-START_HANDLER = CommandHandler("/start", start)
-HELP_HANDLER = CommandHandler("/help", help)
+START_HANDLER = CommandHandler("start", start)
+HELP_HANDLER = CommandHandler("help", help)
