@@ -73,4 +73,4 @@ def reply_afk(update, context):
 
 AFK_HANDLER = CommandHandler("afk", afk)
 NO_AFK_HANDLER = MessageHandler(Filters.all & Filters.group, no_longer_afk)
-AFK_REPLY_HANDLER = MessageHandler(Filters.entity(MessageEntity.MENTION) | Filters.entity(MessageEntity.TEXT_MENTION), reply_afk)
+AFK_REPLY_HANDLER = MessageHandler(Filters.all, reply_afk)
