@@ -1,16 +1,16 @@
 from typing import Optional
 
-from telegram import Message, Update, Bot, User
+from telegram import Message, Update, User
 from telegram import MessageEntity
 from telegram.ext import Filters, CommandHandler, MessageHandler
-
+from bot import dispatcher
 import afk_sql as sql
 from users import get_user_id
 
 AFK_GROUP = 7
 AFK_REPLY_GROUP = 8
 
-
+bot = dispatcher.bot
 
 def afk(update, context):
 	args = update.effective_message.text.split(None, 1)
