@@ -4,7 +4,6 @@ TOKEN = Config.API_KEY
 OWNER_ID = int(Config.OWNER_ID)
 OWNER_USERNAME = Config.OWNER_USERNAME
 DB_URI = Config.SQLALCHEMY_DATABASE_URI
-ALLOW_EXCL = Config.ALLOW_EXCL
 
 def main():
 	import telegram.ext as tg
