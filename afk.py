@@ -59,6 +59,7 @@ def reply_afk(update, context):
 				return
 	elif bool(message.reply_to_message):
 		print("uaa")
+		fst_name = message.reply_to_message.from_user.first_name
 		user_id = message.reply_to_message.from_user.id
 	
 	if user_id:
