@@ -2,7 +2,7 @@ from typing import Optional
 
 from telegram import Message, Update, Bot, User
 from telegram import MessageEntity
-from telegram.ext import Filters, CommandHandler, MessageHandler, run_async
+from telegram.ext import Filters, CommandHandler, MessageHandler
 
 import afk_sql as sql
 from users import get_user_id
@@ -11,7 +11,7 @@ AFK_GROUP = 7
 AFK_REPLY_GROUP = 8
 
 
-@run_async
+
 def afk(update, context):
 	args = update.effective_message.text.split(None, 1)
 	if len(args) >= 2:
@@ -23,7 +23,7 @@ def afk(update, context):
 	update.effective_message.reply_text("{} is now AFK!".format(update.effective_user.first_name))
 
 
-@run_async
+
 def no_longer_afk(update, context):
 	user = update.effective_user  # type: Optional[User]
 
@@ -35,7 +35,7 @@ def no_longer_afk(update, context):
 		update.effective_message.reply_text("{} is no longer AFK!".format(update.effective_user.first_name))
 
 
-@run_async
+
 def reply_afk(update, context):
 	message = update.effective_message  # type: Optional[Message]
 	entities = message.parse_entities([MessageEntity.TEXT_MENTION, MessageEntity.MENTION])
