@@ -9,7 +9,7 @@ from telegram.ext import MessageHandler, Filters, CommandHandler
 from telegram.ext.dispatcher import run_async
 
 import users_sql as sql
-from bot import dispatcher, OWNER_ID, LOGGER
+from bot import OWNER_ID
 
 USERS_GROUP = 4
 
