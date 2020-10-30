@@ -4,7 +4,6 @@ TOKEN = Config.API_KEY
 OWNER_ID = int(Config.OWNER_ID)
 OWNER_USERNAME = Config.OWNER_USERNAME
 DB_URI = Config.SQLALCHEMY_DATABASE_URI
-WORKERS = Config.WORKERS
 ALLOW_EXCL = Config.ALLOW_EXCL
 
 def main():
@@ -12,7 +11,7 @@ def main():
 	from afk import AFK_HANDLER, AFK_GROUP, NO_AFK_HANDLER, AFK_REPLY_HANDLER, AFK_REPLY_GROUP
 	from users import USER_HANDLER, USERS_GROUP, BROADCAST_HANDLER, CHATLIST_HANDLER
 
-	updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
+	updater = tg.Updater(TOKEN, use_context=True)
 
 	dispatcher = updater.dispatcher
 
