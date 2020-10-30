@@ -9,7 +9,7 @@ You can add me to your group as a normal member to start using me.
 """
 START_STRING2 = "Hey there! I’m alive."
 START_STRING3 = "+ Add Me To Your Group +"
-START_REPLY_MARKUP = InlineKeyboardMarkup([[InlineKeyboardButton("+ Add Me To Your Group +", url='http://t.me/{}?startgroup=botstart'.format(bot.username))]]))
+START_REPLY_MARKUP = InlineKeyboardMarkup([[InlineKeyboardButton(START_STRING3, url='http://t.me/{}?startgroup=botstart'.format(bot.username))]])
 
 HELP_STRING = """
 If this in a group which I am in before going AFK:
@@ -25,7 +25,7 @@ HELP_STRING2 = """
 Click on the button below to get help in PM!
 """
 HELP_STRING3 = "Help"
-HELP_REPLY_MARKUP = InlineKeyboardMarkup([[InlineKeyboardButton(HELP_STRING3, url='http://t.me/{}?start=help'.format(bot.username))]]))
+HELP_REPLY_MARKUP = InlineKeyboardMarkup([[InlineKeyboardButton(HELP_STRING3, url='http://t.me/{}?start=help'.format(bot.username))]])
 
 def start(update, context):
 	chat = update.effective_message.chat
