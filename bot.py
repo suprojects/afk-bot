@@ -1,4 +1,4 @@
-from tg_bot.config import Config
+from config import Config
 
 TOKEN = Config.API_KEY
 OWNER_ID = int(Config.OWNER_ID)
