@@ -4,7 +4,6 @@ from telegram import Message, Update, Bot, User
 from telegram import MessageEntity
 from telegram.ext import Filters, CommandHandler, MessageHandler, run_async
 
-from bot import dispatcher
 import afk_sql as sql
 from users import get_user_id
 
