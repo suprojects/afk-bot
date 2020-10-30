@@ -6,7 +6,7 @@ OWNER_ID = int(Config.OWNER_ID)
 OWNER_USERNAME = Config.OWNER_USERNAME
 DB_URI = Config.SQLALCHEMY_DATABASE_URI
 
-updater = tg.Updater(TOKEN, use_context=True)
+updater = tg.Updater(TOKEN, use_context=True, workers=7)
 dispatcher = updater.dispatcher
 
 def main():
