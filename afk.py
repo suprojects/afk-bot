@@ -38,27 +38,21 @@ def reply_afk(update, context):
 	message = update.effective_message  # type: Optional[Message]
 	entities = message.parse_entities([MessageEntity.TEXT_MENTION, MessageEntity.MENTION])
 	user_id = False
-	print("aa")
+	
 	if message.entities and entities:
-		print("oo")
 		for ent in entities:
-			print("ye")
 			if ent.type == MessageEntity.TEXT_MENTION:
-				print("hoh")
 				user_id = ent.user.id
 				fst_name = ent.user.first_name
 			elif ent.type == MessageEntity.MENTION:
-				print("ioi")
 				user_id = get_user_id(message.text[ent.offset:ent.offset + ent.length])
 				if not user_id:
 					return
 				chat = bot.get_chat(user_id)
 				fst_name = chat.first_name
 			else:
-				print("pop")
 				return
 	elif bool(message.reply_to_message):
-		print("uaa")
 		fst_name = message.reply_to_message.from_user.first_name
 		user_id = message.reply_to_message.from_user.id
 	
