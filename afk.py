@@ -7,8 +7,8 @@ from bot import dispatcher
 import afk_sql as sql
 from users import get_user_id
 
-AFK_GROUP = 7
-AFK_REPLY_GROUP = 8
+AFK_GROUP = 1
+AFK_REPLY_GROUP = 2
 
 bot = dispatcher.bot
 
@@ -34,11 +34,10 @@ def no_longer_afk(update, context):
 	if res:
 		update.effective_message.reply_text("{} is no longer AFK!".format(update.effective_user.first_name))
 
-
-
 def reply_afk(update, context):
 	message = update.effective_message  # type: Optional[Message]
 	entities = message.parse_entities([MessageEntity.TEXT_MENTION, MessageEntity.MENTION])
+	user_id = False
 	if message.entities and entities:
 		for ent in entities:
 			if ent.type == MessageEntity.TEXT_MENTION:
@@ -52,8 +51,11 @@ def reply_afk(update, context):
 				fst_name = chat.first_name
 			else:
 				return
-			
-			if sql.is_afk(user_id):
+	elif bool(message.reply_to_message):
+		user_id = message.reply_to_message.from_user.id
+	
+	if user_id:
+		if sql.is_afk(user_id):
 				valid, reason = sql.check_afk_status(user_id)
 				if valid:
 					if not reason:
@@ -62,13 +64,6 @@ def reply_afk(update, context):
 						res = "{} is AFK! says its because of:\n{}".format(fst_name, reason)
 					message.reply_text(res)
 
-
-def __gdpr__(user_id):
-	sql.rm_afk(user_id)
-
-
 AFK_HANDLER = CommandHandler("afk", afk)
 NO_AFK_HANDLER = MessageHandler(Filters.all & Filters.group, no_longer_afk)
 AFK_REPLY_HANDLER = MessageHandler(Filters.entity(MessageEntity.MENTION) | Filters.entity(MessageEntity.TEXT_MENTION), reply_afk)
-
-
