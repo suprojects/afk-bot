@@ -10,7 +10,7 @@ from telegram.ext import MessageHandler, Filters, CommandHandler
 import users_sql as sql
 from bot import OWNER_ID
 
-USERS_GROUP = 4
+USERS_GROUP = 3
 
 
 def get_user_id(username):
