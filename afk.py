@@ -63,13 +63,13 @@ def reply_afk(update, context):
 	
 	if user_id:
 		if sql.is_afk(user_id):
-				valid, reason = sql.check_afk_status(user_id)
-				if valid:
-					if not reason:
-						res = "{} is AFK!".format(fst_name)
-					else:
-						res = "{} is AFK! says its because of:\n{}".format(fst_name, reason)
-					message.reply_text(res)
+			valid, reason = sql.check_afk_status(user_id)
+			if valid:
+				if not reason:
+					res = "{} is AFK!".format(fst_name)
+				else:
+					res = "{} is AFK! says its because of:\n{}".format(fst_name, reason)
+				message.reply_text(res)
 
 AFK_HANDLER = CommandHandler("afk", afk)
 NO_AFK_HANDLER = MessageHandler(Filters.all & Filters.group, no_longer_afk)
