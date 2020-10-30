@@ -6,7 +6,6 @@ from telegram import TelegramError, Chat, Message
 from telegram import Update, Bot
 from telegram.error import BadRequest
 from telegram.ext import MessageHandler, Filters, CommandHandler
-from telegram.ext.dispatcher import run_async
 
 import users_sql as sql
 from bot import OWNER_ID
@@ -46,7 +45,7 @@ def get_user_id(username):
     return None
 
 
-@run_async
+
 def broadcast(update, context):
     bot = context.bot
     to_send = update.effective_message.text.split(None, 1)
@@ -65,7 +64,7 @@ def broadcast(update, context):
                                             "due to being kicked.".format(failed))
 
 
-@run_async
+
 def log_user(update, context):
     chat = update.effective_chat  # type: Optional[Chat]
     msg = update.effective_message  # type: Optional[Message]
@@ -86,7 +85,7 @@ def log_user(update, context):
                         msg.forward_from.username)
 
 
-@run_async
+
 def chats(update, context):
     all_chats = sql.get_all_chats() or []
     chatfile = 'List of chats.\n'
