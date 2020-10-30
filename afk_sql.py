@@ -44,7 +44,7 @@ def set_afk(user_id, reason=""):
 		
 		AFK_USERS[user_id] = reason
 	SESSION.add(curr)
-   SESSION.commit()
+	SESSION.commit()
 
 
 def rm_afk(user_id):
