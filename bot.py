@@ -1,4 +1,5 @@
 from config import Config
+import telegram.ext as tg
 
 TOKEN = Config.API_KEY
 OWNER_ID = int(Config.OWNER_ID)
@@ -9,7 +10,7 @@ updater = tg.Updater(TOKEN, use_context=True)
 dispatcher = updater.dispatcher
 
 def main():
-	import telegram.ext as tg
+	
 	from afk import AFK_HANDLER, AFK_GROUP, NO_AFK_HANDLER, AFK_REPLY_HANDLER, AFK_REPLY_GROUP
 	from users import USER_HANDLER, USERS_GROUP, BROADCAST_HANDLER, CHATLIST_HANDLER
 
