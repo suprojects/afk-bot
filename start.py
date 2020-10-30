@@ -1,7 +1,7 @@
-import bot.dispatcher.bot as bot
+from bot import dispatcher
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import CommandHandler
-
+bot = dispatcher.bot
 START_STRING = """
 Hello! I’m a simple AFK bot to tell others in a group that you’re (A)way (F)rom (K)eyboard whenever they mention you or reply you. Send /help to know how to use me.
 
