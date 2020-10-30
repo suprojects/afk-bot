@@ -69,7 +69,7 @@ def reply_afk(update, context):
 				if not reason:
 					res = "{} is AFK!".format(fst_name)
 				else:
-					res = "{} is AFK! says its because of:\n{}".format(fst_name, reason)
+					res = "{} is AFK!\n\nReason:\n{}".format(fst_name, reason)
 				message.reply_text(res)
 
 AFK_HANDLER = CommandHandler("afk", afk)
