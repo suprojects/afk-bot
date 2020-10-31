@@ -33,6 +33,6 @@ And then someone mentions or replies you, they’ll be replied like this:
 	Reason:
 	[reason]
 """
-HELP_STRING2 = {}"en": "Click on the button below to get help in PM!", "uz": "Shaxsiy yordam olish uchun quyidagi tugmani bosing!", "ru": "Нажмите кнопку ниже, чтобы получить помощь наедине!", "ku": "ئەو دوگمەیەی خوارەوە بکە بۆ ئەوەی لە تب یارمەتیت بۆ بنێرم!"}
+HELP_STRING2 = {"en": "Click on the button below to get help in PM!", "uz": "Shaxsiy yordam olish uchun quyidagi tugmani bosing!", "ru": "Нажмите кнопку ниже, чтобы получить помощь наедине!", "ku": "ئەو دوگمەیەی خوارەوە بکە بۆ ئەوەی لە تب یارمەتیت بۆ بنێرم!"}
 HELP_STRING3 = {"en": "Help", "ku": "یارمەتی", "ru": "Помогите", "uz": "Yordam"}
 LANG_STRING = {"en": "Language", "ku": "زمان", "ru": "Язык", "uz": "Til"}
