@@ -25,6 +25,11 @@ HELP_STRING2 = """
 Click on the button below to get help in PM!
 """
 HELP_STRING3 = "Help"
+LANG_STRING = "Language"
+LANGS = ("کوردیی ناوەندی ☀️", "English 🇺🇸", "Русский 🇷🇺", "O‘zbek 🇺🇿")
+LANGS_KEYBOARD = [[InlineKeyboardButton(LANGS[0], callback_data="ku")],[InlineKeyboardButton(LANGS[1], callback_data="en")],[InlineKeyboardButton(LANGS[2], callback_data="ru")],[InlineKeyboardButton(LANGS[3], callback_data="uz")]]
+LANGS_REPLY_MARKUP = InlineKeyboardMarkup(LANGS_KEYBOARD)
+
 HELP_REPLY_MARKUP = InlineKeyboardMarkup([[InlineKeyboardButton(HELP_STRING3, url='http://t.me/{}?start=help'.format(bot.username))]])
 
 def start(update, context):
@@ -36,9 +41,9 @@ def start(update, context):
 		if "help" in msg.text:
 			msg.reply_text(HELP_STRING.format(user.first_name), parse_mode="HTML")
 		else:
-			msg.reply_text(START_STRING, reply_markup=START_REPLY_MARKUP)
+			msg.reply_text(START_STRING, reply_markup=START_REPLY_MARKUP).reply_text(LANG_STRING, reply_markup=LANGS_REPLY_MARKUP, quote=True)
 	else:
-		msg.reply_text(START_STRING2)
+		msg.reply_text(START_STRING2).reply_text(LANG_STRING, reply_markup=LANGS_REPLY_MARKUP, quote=True)
 
 def help(update, context):
 	chat = update.effective_message.chat
