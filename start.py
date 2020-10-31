@@ -16,7 +16,7 @@ If this in a group which I am in before going AFK:
 	<pre>/afk [reason]</pre>
 
 And then someone mentions or replies you, they’ll be replied like this:
-	<a href="tg://user?id={}">{}</a> is AFK!
+	{} is AFK!
 	
 	Reason:
 	[reason]
@@ -46,7 +46,7 @@ def help(update, context):
 	msg = update.effective_message
 	
 	if chat.type == "private":
-		msg.reply_text(HELP_STRING)
+		msg.reply_text(HELP_STRING.format(user.first_name), parse_mode="HTML")
 	else:
 		msg.reply_text(HELP_STRING2, reply_markup=HELP_REPLY_MARKUP)
 
