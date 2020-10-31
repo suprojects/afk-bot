@@ -16,9 +16,9 @@ Salom! Men guruhdagi boshqalarga siz onlayn emasligingizni aytish uchun oddiy bo
 Mendan foydalanishni boshlash uchun meni oddiy guruh a‘zosi sifatida o‘z guruhingizga qo‘shishingiz mumkin.
 """}
 START_STRING2 = {"en": "Hey there! I’m alive.",
-"uz": "Salom!  Men tirikman",
+"uz": "Salom! Men tirikman.",
 "ku": "سڵاو! من زیندووم.",
-"ru": "Здравствуйте! Я живой"}
+"ru": "Здравствуйте! Я живой."}
 START_STRING3 = {"en": "+ Add Me To Your Group +", "ru":
 	"+ Добавьте Меня В Свою Группу +",
 	"ku": "+ زیادی گروپەکەتم بکە +",
