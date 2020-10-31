@@ -23,7 +23,7 @@ def start(update, context):
 	if chat.type == "private":
 		if "help" in msg.text:
 			init(cid)
-			msg.reply_text(HELP_STRING[CHAT_LANGS[cid]].format(user.first_name), parse_mode="HTML")
+			msg.reply_text(HELP_STRING[msg.text.split("_")[1]].format(user.first_name), parse_mode="HTML")
 		else:
 			if not is_selected(cid):
 				msg.reply_text("Choose language.", reply_markup=LANGS_REPLY_MARKUP2)
@@ -43,7 +43,7 @@ def help(update, context):
 	if chat.type == "private":
 		msg.reply_text(HELP_STRING[CHAT_LANGS[cid]].format(user.first_name), parse_mode="HTML")
 	else:
-		HELP_REPLY_MARKUP = InlineKeyboardMarkup([[InlineKeyboardButton(HELP_STRING3[CHAT_LANGS[cid]], url='http://t.me/{}?start=help'.format(bot.username))]])
+		HELP_REPLY_MARKUP = InlineKeyboardMarkup([[InlineKeyboardButton(HELP_STRING3[CHAT_LANGS[cid]], url='http://t.me/{}?start=help_{}'.format(bot.username, CHAT_LANGS[cid]))]])
 		msg.reply_text(HELP_STRING2[CHAT_LANGS[cid]], reply_markup=HELP_REPLY_MARKUP)
 
 def lang(update, context):
