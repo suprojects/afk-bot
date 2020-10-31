@@ -22,9 +22,9 @@ def start(update, context):
 		if "help" in msg.text:
 			msg.reply_text(HELP_STRING.format(user.first_name), parse_mode="HTML")
 		else:
-			msg.reply_text(START_STRING[CHAT_LANGS[cid]], reply_markup=START_REPLY_MARKUP).reply_text(LANG_STRING[cid], reply_markup=LANGS_REPLY_MARKUP, quote=True)
+			msg.reply_text(START_STRING[CHAT_LANGS[cid]], reply_markup=START_REPLY_MARKUP)
 	else:
-		msg.reply_text(START_STRING2[CHAT_LANGS[cid]]).reply_text(LANG_STRING[CHAT_LANGS[cid]], reply_markup=LANGS_REPLY_MARKUP, quote=True)
+		msg.reply_text(START_STRING2[CHAT_LANGS[cid]])
 
 def help(update, context):
 	chat = update.effective_message.chat
@@ -38,6 +38,14 @@ def help(update, context):
 		HELP_REPLY_MARKUP = InlineKeyboardMarkup([[InlineKeyboardButton(HELP_STRING3[CHAT_LANGS[cid]], url='http://t.me/{}?start=help'.format(bot.username))]])
 		msg.reply_text(HELP_STRING2[CHAT_LANGS[cid]], reply_markup=HELP_REPLY_MARKUP)
 
+def lang(update, context):
+	chat = update.effective_message.chat
+	user = update.effective_user
+	msg = update.effective_message
+	cid = str(chat.id)
+	init(cid)
+	update.message.reply_text(LANG_STRING[CHAT_LANGS[cid]], reply_markup=LANGS_REPLY_MARKUP, quote=True)
+
 def button(update, context):
 	query = update.callback_query
 	query.answer()
@@ -50,4 +58,5 @@ def button(update, context):
 
 START_HANDLER = CommandHandler("start", start)
 HELP_HANDLER = CommandHandler("help", help)
+SL_HANDLER = CommandHandler("lang", lang)
 BTN_HANDLER = CallbackQueryHandler(button)
