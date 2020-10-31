@@ -6,6 +6,8 @@ from telegram.ext import Filters, CommandHandler, MessageHandler
 from bot import dispatcher
 import afk_sql as sql
 from users import get_user_id
+from lang import *
+from strings import *
 
 AFK_GROUP = 1
 AFK_REPLY_GROUP = 2
@@ -14,18 +16,23 @@ NO_AFK_GROUP = 1
 bot = dispatcher.bot
 
 def afk(update, context):
+	chat = update.effective_message.chat
+	cid = str(chat.id)
+	init(cid)
 	args = update.effective_message.text.split(None, 1)
 	if len(args) >= 2:
 		reason = args[1]
 	else:
 		reason = ""
-
 	sql.set_afk(update.effective_user.id, reason)
-	update.effective_message.reply_text("{} is now AFK!".format(update.effective_user.first_name))
+	update.effective_message.reply_text(NOW_AFK[CHAT_LANGS[cid]].format(update.effective_user.first_name))
 
 
 
 def no_longer_afk(update, context):
+	chat = update.effective_message.chat
+	cid = str(chat.id)
+	init(cid)
 	user = update.effective_user  # type: Optional[User]
 
 	if not user:  # ignore channels
@@ -33,9 +40,12 @@ def no_longer_afk(update, context):
 	
 	res = sql.rm_afk(user.id)
 	if res:
-		update.effective_message.reply_text("{} is no longer AFK!".format(update.effective_user.first_name))
+		update.effective_message.reply_text(NOL_AFK[CHAT_LANGS[cid]].format(update.effective_user.first_name))
 
 def reply_afk(update, context):
+	chat = update.effective_message.chat
+	cid = str(chat.id)
+	init(cid)
 	message = update.effective_message  # type: Optional[Message]
 	entities = message.parse_entities([MessageEntity.TEXT_MENTION, MessageEntity.MENTION])
 	user_id = False
@@ -61,9 +71,9 @@ def reply_afk(update, context):
 			valid, reason = sql.check_afk_status(user_id)
 			if valid:
 				if not reason:
-					res = "{} is AFK!".format(fst_name)
+					res = AFK[CHAT_LANGS[cid]].format(fst_name)
 				else:
-					res = "{} is AFK!\n\nReason:\n{}".format(fst_name, reason)
+					res = AFK2[CHAT_LANGS[cid]].format(fst_name, reason)
 				message.reply_text(res)
 
 AFK_HANDLER = CommandHandler("afk", afk)
