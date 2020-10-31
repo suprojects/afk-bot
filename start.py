@@ -17,7 +17,7 @@ def start(update, context):
 	user = update.effective_user
 	msg = update.effective_message
 	cid = str(chat.id)
-	
+	init(cid)
 	if chat.type == "private":
 		if "help" in msg.text:
 			msg.reply_text(HELP_STRING.format(user.first_name), parse_mode="HTML")
@@ -31,7 +31,7 @@ def help(update, context):
 	user = update.effective_user
 	msg = update.effective_message
 	cid = str(chat.id)
-	
+	init(cid)
 	if chat.type == "private":
 		msg.reply_text(HELP_STRING.format(user.first_name), parse_mode="HTML")
 	else:
