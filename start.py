@@ -23,7 +23,7 @@ def start(update, context):
 	if chat.type == "private":
 		if "help" in msg.text:
 			init(cid)
-			msg.reply_text(HELP_STRING.format(user.first_name), parse_mode="HTML")
+			msg.reply_text(HELP_STRING[CHAT_LANGS[cid]].format(user.first_name), parse_mode="HTML")
 		else:
 			if not is_selected(cid):
 				msg.reply_text("Choose language.", reply_markup=LANGS_REPLY_MARKUP2)
