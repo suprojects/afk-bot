@@ -23,6 +23,10 @@ def is_selected(chat_id):
 def get_selected(chat_id):
 	return CHAT_LANGS[chat_id]
 
+def init(chat_id):
+	if not is_selected(chat_id):
+		CHAT_LANGS[chat_id] = "en"
+
 def set_lang(chat_id, lang="en"):
 	try:
 		curr = SESSION.query(Lang).get(chat_id)
