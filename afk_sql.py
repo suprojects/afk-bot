@@ -35,16 +35,19 @@ def check_afk_status(user_id):
 
 
 def set_afk(user_id, reason=""):
-	curr = SESSION.query(AFK).get(user_id)
-	if not curr:
-		curr = AFK(user_id, reason, True)
-	else:
-		curr.is_afk = True
-		curr.reason = reason
-		
+	try:
+		curr = SESSION.query(AFK).get(user_id)
+		if not curr:
+			curr = AFK(user_id, reason, True)
+		else:
+			curr.is_afk = True
+			curr.reason = reason
 		AFK_USERS[user_id] = reason
-	SESSION.add(curr)
-	SESSION.commit()
+		SESSION.add(curr)
+		SESSION.commit()
+	except:
+		SESSION.rollback()
+		raise
 
 
 def rm_afk(user_id):
