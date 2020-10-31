@@ -6,7 +6,6 @@ from strings import *
 
 bot = dispatcher.bot
 
-START_REPLY_MARKUP = InlineKeyboardMarkup([[InlineKeyboardButton(START_STRING3, url='http://t.me/{}?startgroup=botstart'.format(bot.username))]])
 
 LANGS = ("کوردیی ناوەندی ☀️", "English 🇺🇸", "Русский 🇷🇺", "O‘zbek 🇺🇿")
 LANGS_KEYBOARD = [[InlineKeyboardButton(LANGS[0], callback_data="ku")],[InlineKeyboardButton(LANGS[1], callback_data="en")],[InlineKeyboardButton(LANGS[2], callback_data="ru")],[InlineKeyboardButton(LANGS[3], callback_data="uz")]]
@@ -18,7 +17,8 @@ def start(update, context):
 	msg = update.effective_message
 	cid = str(chat.id)
 	init(cid)
-	if chat.type == "private":
+        START_REPLY_MARKUP = InlineKeyboardMarkup([[InlineKeyboardButton(START_STRING3[CHAR_LANGS[cid]], url='http://t.me/{}?startgroup=botstart'.format(bot.username))]])
+        if chat.type == "private":
 		if "help" in msg.text:
 			msg.reply_text(HELP_STRING.format(user.first_name), parse_mode="HTML")
 		else:
