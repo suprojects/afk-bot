@@ -9,7 +9,7 @@ from users import get_user_id
 
 AFK_GROUP = 1
 AFK_REPLY_GROUP = 2
-NO_AFK_GROUP = 5
+NO_AFK_GROUP = 1
 
 bot = dispatcher.bot
 
