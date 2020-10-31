@@ -29,7 +29,7 @@ def no_longer_afk(update, context):
 
 	if not user:  # ignore channels
 		return
-
+	print(sql.AFK_USERS)
 	res = sql.rm_afk(user.id)
 	if res:
 		update.effective_message.reply_text("{} is no longer AFK!".format(update.effective_user.first_name))
