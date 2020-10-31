@@ -61,7 +61,7 @@ def button(update, context):
 	set_lang(str(query.message.chat.id), query.data.replace("2", ""))
 	
 	if "2" in query.data:
-		START_REPLY_MARKUP = InlineKeyboardMarkup([[InlineKeyboardButton(START_STRING3[CHAT_LANGS[query.data.replace("2", "")]], url='http://t.me/{}?startgroup=botstart'.format(bot.username))]])
+		START_REPLY_MARKUP = InlineKeyboardMarkup([[InlineKeyboardButton(START_STRING3[query.data.replace("2", "")], url='http://t.me/{}?startgroup=botstart'.format(bot.username))]])
 		query.edit_message_text(START_STRING[query.data.replace("2", "")], reply_markup=START_REPLY_MARKUP)
 	
 	else:
