@@ -23,7 +23,7 @@ START_STRING3 = {"en": "+ Add Me To Your Group +", "ru":
 	"+ Добавьте Меня В Свою Группу +",
 	"ku": "+ زیادی گروپەکەتم بکە +",
 	"uz": "+ Meni Guruhingizga Qo‘shib Qo‘ying +"}
-HELP_STRING = """
+HELP_STRING = {"en": """
 If you send this in a group which I am in before going AFK:
 	<pre>/afk [reason]</pre>
 
@@ -32,7 +32,34 @@ And then someone mentions or replies you, they’ll be replied like this:
 	
 	Reason:
 	[reason]
-"""
+""", "ru": """
+Если вы отправите это в группу, в которой я состою:
+	/afk [причина]
+
+А потом кто-то упомянет или ответит вам, ему ответят так:
+	{} сейчас в автономном режиме!
+	
+	Причина:
+	[причина]
+""", "uz": """
+Agar siz buni men bo‘lgan guruhga yuborsangiz:
+	/afk [sabab]
+	
+Va keyin kimdir sizga qo‘ng‘iroq qiladi, ularga shunday javob berishadi:
+	{} hozirda oflayn rejimda!
+	
+	Sabab:
+	[sabab]
+""", "ku": """
+ئەگەر لە گروپێک کە منی لێم ئەمە بنێریت:
+/afk [هۆکار]
+
+دواتر ئەگەر یەکێک وەڵامت بداتەوە یان تاگت بکات، ئاوها وەڵام دەدرێنەوە:
+بەکارهێنەر {} لەسەرهێڵ نییە!
+
+هۆکار:
+[هۆکار]
+"""}
 HELP_STRING2 = {"en": "Click on the button below to get help in PM!", "uz": "Shaxsiy yordam olish uchun quyidagi tugmani bosing!", "ru": "Нажмите кнопку ниже, чтобы получить помощь наедине!", "ku": "ئەو دوگمەیەی خوارەوە بکە بۆ ئەوەی لە تب یارمەتیت بۆ بنێرم!"}
 HELP_STRING3 = {"en": "Help", "ku": "یارمەتی", "ru": "Помогите", "uz": "Yordam"}
 LANG_STRING = {"en": "Language", "ku": "زمان", "ru": "Язык", "uz": "Til"}
