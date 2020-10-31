@@ -12,7 +12,7 @@ START_STRING3 = "+ Add Me To Your Group +"
 START_REPLY_MARKUP = InlineKeyboardMarkup([[InlineKeyboardButton(START_STRING3, url='http://t.me/{}?startgroup=botstart'.format(bot.username))]])
 
 HELP_STRING = """
-If this in a group which I am in before going AFK:
+If you send this in a group which I am in before going AFK:
 	<pre>/afk [reason]</pre>
 
 And then someone mentions or replies you, they’ll be replied like this:
@@ -34,7 +34,7 @@ def start(update, context):
 	
 	if chat.type == "private":
 		if "help" in msg.text:
-			msg.reply_text(HELP_STRING)
+			msg.reply_text(HELP_STRING.format(user.first_name), parse_mode="HTML")
 		else:
 			msg.reply_text(START_STRING, reply_markup=START_REPLY_MARKUP)
 	else:
