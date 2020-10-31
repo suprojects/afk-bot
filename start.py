@@ -1,6 +1,6 @@
 from bot import dispatcher
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
-from telegram.ext import CommandHandler
+from telegram.ext import CommandHandler, CallbackQueryHandler
 bot = dispatcher.bot
 START_STRING = """
 Hello! I’m a simple AFK bot to tell others in a group that you’re (A)way (F)rom (K)eyboard whenever they mention you or reply you. Send /help to know how to use me.
@@ -55,5 +55,15 @@ def help(update, context):
 	else:
 		msg.reply_text(HELP_STRING2, reply_markup=HELP_REPLY_MARKUP)
 
+def button(update, context):
+	query = update.callback_query
+	query.answer()
+	
+	query.message.reply_to_message.delete()
+	
+	STRINGS = {"ku": "زمانی ئەم چاتە کرا بە کوردی.", "en": "The language of this chat was set to English.", "ru": "Я буду говорить по Русски.", "uz": "Men bundan buyon O‘zbek tilida gaplashaman"}
+	query.edit_message_text(STRINGS[query.data])
+
 START_HANDLER = CommandHandler("start", start)
 HELP_HANDLER = CommandHandler("help", help)
+BTN_HANDLER = CallbackQueryHandler(button)
