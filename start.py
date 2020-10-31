@@ -41,7 +41,7 @@ def help(update, context):
 	cid = str(chat.id)
 	init(cid)
 	if chat.type == "private":
-		msg.reply_text(HELP_STRING[CHAT_LANGS[cids]].format(user.first_name), parse_mode="HTML")
+		msg.reply_text(HELP_STRING[CHAT_LANGS[cid]].format(user.first_name), parse_mode="HTML")
 	else:
 		HELP_REPLY_MARKUP = InlineKeyboardMarkup([[InlineKeyboardButton(HELP_STRING3[CHAT_LANGS[cid]], url='http://t.me/{}?start=help'.format(bot.username))]])
 		msg.reply_text(HELP_STRING2[CHAT_LANGS[cid]], reply_markup=HELP_REPLY_MARKUP)
