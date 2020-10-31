@@ -39,7 +39,7 @@ def reply_afk(update, context):
 	message = update.effective_message  # type: Optional[Message]
 	entities = message.parse_entities([MessageEntity.TEXT_MENTION, MessageEntity.MENTION])
 	user_id = False
-	
+	print(sql.AFK_USERS)
 	if message.entities and entities:
 		for ent in entities:
 			if ent.type == MessageEntity.TEXT_MENTION:
