@@ -49,7 +49,7 @@ def lang(update, context):
 def button(update, context):
 	query = update.callback_query
 	query.answer()
-	query.message.reply_to_message.delete()
+	
 	
 	set_lang(str(query.message.chat.id), query.data)
 	
