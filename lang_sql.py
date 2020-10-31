@@ -1,4 +1,4 @@
-from sqlalchemy import Column, UnicodeText, Integer
+from sqlalchemy import String
 
 from sql import BASE, SESSION
 
@@ -6,8 +6,8 @@ from sql import BASE, SESSION
 class Lang(BASE):
 	__tablename__ = "chat_langs"
 
-	chat_id = Column(Integer, primary_key=True)
-	lang = Column(UnicodeText)
+	chat_id = Column(String, primary_key=True)
+	lang = Column(String)
 	
 	def __init__(self, chat_id, lang="en"):
 		self.chat_id = chat_id
