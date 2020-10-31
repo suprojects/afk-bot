@@ -66,7 +66,7 @@ def button(update, context):
 	
 	else:
 	
-		STRINGS = {"ku": "زمانی ئەم چاتە کرا بە کوردی.", "en": "The language of this chat was set to English.", "ru": "Я буду говорить по Русски.", "uz": "Men bundan buyon O‘zbek tilida gaplashaman."}
+		STRINGS = {"ku": "زمانی ئەم چاتە کرا بە کوردی.", "en": "The language of this chat was set to English.", "ru": "Я буду говорить по-Русский.", "uz": "Men bundan buyon O‘zbek tilida gaplashaman."}
 		query.edit_message_text(STRINGS[query.data])
 
 START_HANDLER = CommandHandler("start", start)
