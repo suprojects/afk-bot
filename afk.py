@@ -6,7 +6,7 @@ from telegram.ext import Filters, CommandHandler, MessageHandler
 from bot import dispatcher
 import afk_sql as sql
 from users import get_user_id
-from lang import *
+from lang_sql import *
 from strings import *
 
 AFK_GROUP = 1
