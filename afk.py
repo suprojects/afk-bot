@@ -30,7 +30,7 @@ def no_longer_afk(update, context):
 
 	if not user:  # ignore channels
 		return
-	print(sql.AFK_USERS)
+	
 	res = sql.rm_afk(user.id)
 	if res:
 		update.effective_message.reply_text("{} is no longer AFK!".format(update.effective_user.first_name))
@@ -39,7 +39,6 @@ def reply_afk(update, context):
 	message = update.effective_message  # type: Optional[Message]
 	entities = message.parse_entities([MessageEntity.TEXT_MENTION, MessageEntity.MENTION])
 	user_id = False
-	print(sql.AFK_USERS)
 	if message.entities and entities:
 		for ent in entities:
 			if ent.type == MessageEntity.TEXT_MENTION:
