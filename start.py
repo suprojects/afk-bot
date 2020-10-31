@@ -19,7 +19,7 @@ def start(update, context):
 	user = update.effective_user
 	msg = update.effective_message
 	cid = str(chat.id)
-	START_REPLY_MARKUP = InlineKeyboardMarkup([[InlineKeyboardButton(START_STRING3[CHAT_LANGS[cid]], url='http://t.me/{}?startgroup=botstart'.format(bot.username))]])
+	
 	if chat.type == "private":
 		if "help" in msg.text:
 			init(cid)
@@ -28,6 +28,7 @@ def start(update, context):
 			if not is_selected(cid):
 				msg.reply_text("Choose language.", reply_markup=LANGS_REPLY_MARKUP2)
 			else:
+				START_REPLY_MARKUP = InlineKeyboardMarkup([[InlineKeyboardButton(START_STRING3[CHAT_LANGS[cid]], url='http://t.me/{}?startgroup=botstart'.format(bot.username))]])
 				msg.reply_text(START_STRING[CHAT_LANGS[cid]], reply_markup=START_REPLY_MARKUP)
 	else:
 		init(cid)
