@@ -17,8 +17,8 @@ def start(update, context):
 	msg = update.effective_message
 	cid = str(chat.id)
 	init(cid)
-        START_REPLY_MARKUP = InlineKeyboardMarkup([[InlineKeyboardButton(START_STRING3[CHAR_LANGS[cid]], url='http://t.me/{}?startgroup=botstart'.format(bot.username))]])
-        if chat.type == "private":
+	START_REPLY_MARKUP = InlineKeyboardMarkup([[InlineKeyboardButton(START_STRING3[CHAT_LANGS[cid]], url='http://t.me/{}?startgroup=botstart'.format(bot.username))]])
+	if chat.type == "private":
 		if "help" in msg.text:
 			msg.reply_text(HELP_STRING.format(user.first_name), parse_mode="HTML")
 		else:
