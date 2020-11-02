@@ -1,6 +1,8 @@
-from sqlalchemy import Column, UnicodeText, Boolean, Integer
+from sqlalchemy import Column, UnicodeText, Boolean, Integer, DateTime
 
 from sql import BASE, SESSION
+
+import datetime
 
 
 class AFK(BASE):
@@ -9,9 +11,9 @@ class AFK(BASE):
 	user_id = Column(Integer, primary_key=True)
 	is_afk = Column(Boolean)
 	reason = Column(UnicodeText)
-	since = Column(UnicodeText)
+	since = created_date = Column(DateTime)
 	
-	def __init__(self, user_id, reason="", is_afk=True, since):
+	def __init__(self, user_id, reason="", is_afk=True, since=datetime.datetime.now):
 		self.user_id = user_id
 		self.reason = reason
 		self.is_afk = is_afk
@@ -33,18 +35,18 @@ def is_afk(user_id):
 def check_afk_status(user_id):
 	if user_id in AFK_USERS:
 		return True, AFK_USERS[user_id][0], AFK_USERS[user_id][1]
-	return False, "", ""
+	return False, "", None
 
 
-def set_afk(user_id, reason="", since):
+def set_afk(user_id, reason=""):
 	try:
 		curr = SESSION.query(AFK).get(user_id)
 		if not curr:
-			curr = AFK(user_id, reason, True, since)
+			curr = AFK(user_id, reason, True)
 		else:
 			curr.is_afk = True
 			curr.reason = reason
-		AFK_USERS[user_id] = [reason, since]
+		AFK_USERS[user_id] = [reason, curr.since]
 		SESSION.add(curr)
 		SESSION.commit()
 	except:
