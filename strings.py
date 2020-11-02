@@ -66,7 +66,7 @@ LANG_STRING = {"en": "Language", "ku": "زمان", "ru": "Язык", "uz": "Til"
 
 NOW_AFK = {"en": "{} is now AFK!", "ku": "بەکارهێنەر {} لەسەرهێڵ نەما!", "ru": "{} сейчас в автономном режиме!", "uz": "{} hozirda oflayn rejimda!"}
 
-AFK = {"en": "{} is AFK!", "ku": "بەکاەهێنەر {} لەسەرهێڵ نییە!", "ru": "{} сейчас в автономном режиме!", "uz": "{} hozirda oflayn rejimda!"}
+AFK = {"en": "{} is AFK!\nSince: {}", "ku": "بەکاەهێنەر {} لەسەرهێڵ نەماوە!\nلەوکاتەوە: {}"}
 
 AFK2 = {"en": AFK["en"] + "\n\nReason:\n{}", "ku": AFK["ku"] + "\n\nهۆکار:\n{}", "ru": AFK["ru"] + "\n\nПричина:\n{}", "uz": AFK["uz"] + "\n\nSabab:\n{}"}
 
