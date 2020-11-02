@@ -26,8 +26,6 @@ def afk(update, context):
 	else:
 		reason = ""
 	
-	now = datetime.now()
-	since = f"{now.year}:{now.month}:{now.day}:{now.hour}:{now.minute}:{now.second}"
 	sql.set_afk(update.effective_user.id, reason)
 	update.effective_message.reply_text(NOW_AFK[CHAT_LANGS[cid]].format(update.effective_user.first_name))
 
@@ -72,12 +70,12 @@ def reply_afk(update, context):
 	
 	if user_id:
 		if sql.is_afk(user_id):
-			valid, reason = sql.check_afk_status(user_id)
+			valid, reason, since = sql.check_afk_status(user_id)
 			if valid:
 				if not reason:
 					res = AFK[CHAT_LANGS[cid]].format(fst_name)
 				else:
-					res = AFK2[CHAT_LANGS[cid]].format(fst_name, reason)
+					res = AFK2[CHAT_LANGS[cid]].format(fst_name, reason, str(since))
 				message.reply_text(res)
 
 AFK_HANDLER = CommandHandler("afk", afk)
