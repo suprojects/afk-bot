@@ -9,11 +9,13 @@ class AFK(BASE):
 	user_id = Column(Integer, primary_key=True)
 	is_afk = Column(Boolean)
 	reason = Column(UnicodeText)
+	since = Column(UnicodeText)
 	
-	def __init__(self, user_id, reason="", is_afk=True):
+	def __init__(self, user_id, reason="", is_afk=True, since):
 		self.user_id = user_id
 		self.reason = reason
 		self.is_afk = is_afk
+		self.since = since
 
 	def __repr__(self):
 		return "afk_status for {}".format(self.user_id)
@@ -34,15 +36,15 @@ def check_afk_status(user_id):
 	return False, ""
 
 
-def set_afk(user_id, reason=""):
+def set_afk(user_id, reason="", since):
 	try:
 		curr = SESSION.query(AFK).get(user_id)
 		if not curr:
-			curr = AFK(user_id, reason, True)
+			curr = AFK(user_id, reason, True, since)
 		else:
 			curr.is_afk = True
 			curr.reason = reason
-		AFK_USERS[user_id] = reason
+		AFK_USERS[user_id] = [reason, since]
 		SESSION.add(curr)
 		SESSION.commit()
 	except:
@@ -65,7 +67,7 @@ def __load_afk_users():
 	global AFK_USERS
 	try:
 		all_afk = SESSION.query(AFK).all()
-		AFK_USERS = {user.user_id: user.reason for user in all_afk if user.is_afk}
+		AFK_USERS = {user.user_id: [user.reason, user.since] for user in all_afk if user.is_afk}
 	finally:
 		SESSION.close()
 
