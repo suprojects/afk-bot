@@ -7,11 +7,11 @@ from strings import *
 bot = dispatcher.bot
 
 
-LANGS = ("کوردیی ناوەندی ☀️", "English 🇺🇸", "Русский 🇷🇺", "O‘zbek 🇺🇿")
-LANGS_KEYBOARD = [[InlineKeyboardButton(LANGS[0], callback_data="ku")],[InlineKeyboardButton(LANGS[1], callback_data="en")],[InlineKeyboardButton(LANGS[2], callback_data="ru")],[InlineKeyboardButton(LANGS[3], callback_data="uz")]]
+LANGS = ("کوردیی ناوەندی ☀️", "English 🇺🇸")
+LANGS_KEYBOARD = [[InlineKeyboardButton(LANGS[0], callback_data="ku")],[InlineKeyboardButton(LANGS[1], callback_data="en")]]
 LANGS_REPLY_MARKUP = InlineKeyboardMarkup(LANGS_KEYBOARD)
 
-LANGS_KEYBOARD2 = [[InlineKeyboardButton(LANGS[0], callback_data="ku2")],[InlineKeyboardButton(LANGS[1], callback_data="en2")],[InlineKeyboardButton(LANGS[2], callback_data="ru2")],[InlineKeyboardButton(LANGS[3], callback_data="uz2")]]
+LANGS_KEYBOARD2 = [[InlineKeyboardButton(LANGS[0], callback_data="ku2")],[InlineKeyboardButton(LANGS[1], callback_data="en2")]]
 LANGS_REPLY_MARKUP2 = InlineKeyboardMarkup(LANGS_KEYBOARD2)
 
 def start(update, context):
