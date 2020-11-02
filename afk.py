@@ -73,7 +73,7 @@ def reply_afk(update, context):
 			valid, reason, since = sql.check_afk_status(user_id)
 			if valid:
 				if not reason:
-					res = AFK[CHAT_LANGS[cid]].format(fst_name)
+					res = AFK[CHAT_LANGS[cid]].format(fst_name, str(since))
 				else:
 					res = AFK2[CHAT_LANGS[cid]].format(fst_name, reason, str(since))
 				message.reply_text(res)
