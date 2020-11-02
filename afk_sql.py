@@ -2,7 +2,7 @@ from sqlalchemy import Column, UnicodeText, Boolean, Integer, DateTime
 
 from sql import BASE, SESSION
 
-import datetime
+from datetime import datetime
 
 
 class AFK(BASE):
@@ -13,7 +13,7 @@ class AFK(BASE):
 	reason = Column(UnicodeText)
 	since = created_date = Column(DateTime)
 	
-	def __init__(self, user_id, reason="", is_afk=True, since=datetime.datetime.now):
+	def __init__(self, user_id, reason="", is_afk=True, since=datetime.now()):
 		self.user_id = user_id
 		self.reason = reason
 		self.is_afk = is_afk
