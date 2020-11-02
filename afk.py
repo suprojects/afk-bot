@@ -72,7 +72,7 @@ def reply_afk(update, context):
 		if sql.is_afk(user_id):
 			valid, reason, since = sql.check_afk_status(user_id)
 			if valid:
-				since = datetime.now() - since
+				since = datetime.utcnow() - since
 				since = int(since.total_seconds())
 				h = since // 3600
 				since %= 3600
