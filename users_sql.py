@@ -86,14 +86,6 @@ def get_name_by_userid(user_id):
     finally:
         SESSION.close()
 
-
-def get_chat_members(chat_id):
-    try:
-        return SESSION.query(ChatMembers).filter(ChatMembers.chat == str(chat_id)).all()
-    finally:
-        SESSION.close()
-
-
 def get_all_chats():
     try:
         return SESSION.query(Chats).all()
