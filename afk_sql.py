@@ -13,7 +13,7 @@ class AFK(BASE):
 	reason = Column(UnicodeText)
 	since = Column(DateTime)
 	
-	def __init__(self, user_id, reason="", is_afk=True, since=datetime.now()):
+	def __init__(self, user_id, reason="", is_afk=True, since=datetime.utcnow()):
 		self.user_id = user_id
 		self.reason = reason
 		self.is_afk = is_afk
@@ -46,6 +46,7 @@ def set_afk(user_id, reason=""):
 		else:
 			curr.is_afk = True
 			curr.reason = reason
+			curr.since = datetime.utcnow()
 		AFK_USERS[user_id] = [reason, curr.since]
 		SESSION.add(curr)
 		SESSION.commit()
