@@ -78,7 +78,7 @@ def reply_afk(update, context):
 				since %= 3600
 				m = since // 60
 				since %= 60
-				since = f"{h} hours, {m} minutes and {since} seconds"
+				since = f"{h} hour(s), {m} minute(s) and {since} second(s)"
 				
 				if not reason:
 					res = AFK[CHAT_LANGS[cid]].format(fst_name, since)
