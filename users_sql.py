@@ -64,11 +64,6 @@ def update_user(user_id, username, chat_id=None, chat_name=None):
         else:
             chat.chat_name = chat_name
 
-        member = SESSION.query(ChatMembers).filter(ChatMembers.chat == chat.chat_id,
-                                                   ChatMembers.user == user.user_id).first()
-        if not member:
-            chat_member = ChatMembers(chat.chat_id, user.user_id)
-            SESSION.add(chat_member)
 
         SESSION.commit()
 
