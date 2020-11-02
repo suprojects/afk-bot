@@ -8,6 +8,7 @@ import afk_sql as sql
 from users import get_user_id
 from lang_sql import *
 from strings import *
+from datetime import datetime
 
 AFK_GROUP = 1
 AFK_REPLY_GROUP = 2
@@ -24,6 +25,9 @@ def afk(update, context):
 		reason = args[1]
 	else:
 		reason = ""
+	
+	now = datetime.now()
+	since = f"{now.year}:{now.month}:{now.day}:{now.hour}:{now.minute}:{now.second}"
 	sql.set_afk(update.effective_user.id, reason)
 	update.effective_message.reply_text(NOW_AFK[CHAT_LANGS[cid]].format(update.effective_user.first_name))
 
