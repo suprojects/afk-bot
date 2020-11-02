@@ -13,7 +13,7 @@ class AFK(BASE):
 	reason = Column(UnicodeText)
 	since = Column(DateTime)
 	
-	def __init__(self, user_id, reason="", is_afk=True):
+	def __init__(self, user_id, reason="", is_afk=True, since):
 		self.user_id = user_id
 		self.reason = reason
 		self.is_afk = is_afk
