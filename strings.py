@@ -68,6 +68,6 @@ NOW_AFK = {"en": "{} is now AFK!", "ku": "بەکارهێنەر {} لەسەرهێ
 
 AFK = {"en": "{} is AFK!\nSince: {}", "ku": "بەکاەهێنەر {} لەسەرهێڵ نەماوە!\nلەوکاتەوە: {}"}
 
-AFK2 = {"en": AFK["en"] + "\n\nReason:\n{}", "ku": AFK["ku"] + "\n\nهۆکار:\n{}", "ru": AFK["ru"] + "\n\nПричина:\n{}", "uz": AFK["uz"] + "\n\nSabab:\n{}"}
+AFK2 = {"en": AFK["en"] + "\n\nReason:\n{}", "ku": AFK["ku"] + "\n\nهۆکار:\n{}"}
 
 NOL_AFK = {"en": "{} is no longer AFK!", "ku": "بەکاەهێنەر {} گەڕایەوە سەرهێڵ!", "ru": "{} снова в сети!", "uz": "{} yana onlayn!"}
