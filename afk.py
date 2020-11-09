@@ -17,6 +17,8 @@ NO_AFK_GROUP = 1
 
 bot = dispatcher.bot
 
+TEMP_CHANNEL_ID = -1001472428252
+
 def delm(m):
 	return m.delete()
 
@@ -88,8 +90,11 @@ def reply_afk(update, context):
 					res = AFK[CHAT_LANGS[cid]].format(fst_name, since)
 				else:
 					res = AFK2[CHAT_LANGS[cid]].format(fst_name, since, reason)
-				m=message.reply_text(res)
-				threading.Timer(30, delm, [m]).start()
+				
+				if chat.id in context.chat_data:
+					try:
+						m=message.reply_photo(context.chat_data[chat.id] caption=res)
+				threading.Timer(300, delm, [m]).start()
 
 AFK_HANDLER = CommandHandler("afk", afk)
 NO_AFK_HANDLER = MessageHandler(Filters.all & Filters.group, no_longer_afk)
