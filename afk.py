@@ -89,7 +89,7 @@ def reply_afk(update, context):
 				else:
 					res = AFK2[CHAT_LANGS[cid]].format(fst_name, since, reason)
 				m=message.reply_text(res)
-				threading.Timer(60, delm, [m])
+				threading.Timer(30, delm, [m]).start()
 
 AFK_HANDLER = CommandHandler("afk", afk)
 NO_AFK_HANDLER = MessageHandler(Filters.all & Filters.group, no_longer_afk)
