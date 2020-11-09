@@ -9,7 +9,8 @@ SUDO_USERS = Config.SUDO_USERS
 #OWNER_USERNAME = Config.OWNER_USERNAME
 DB_URI = Config.SQLALCHEMY_DATABASE_URI
 
-updater = tg.Updater(TOKEN, use_context=True)
+p = tg.PicklePersistence(filename="data")
+updater = tg.Updater(TOKEN, persistence=p, use_context=True)
 dispatcher = updater.dispatcher
 
 def main():
