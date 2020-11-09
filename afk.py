@@ -127,6 +127,6 @@ def afkrm(update, context):
 		
 
 AFK_HANDLER = CommandHandler("afk", afk)
-AFK_MEIDA_HANDLER = CommandHandler("afk_reply_media", afkrm)
+AFK_MEDIA_HANDLER = CommandHandler("afk_reply_media", afkrm)
 NO_AFK_HANDLER = MessageHandler(Filters.all & Filters.group, no_longer_afk)
 AFK_REPLY_HANDLER = MessageHandler(Filters.all, reply_afk)
