@@ -113,7 +113,7 @@ def afkrm(update, context):
 	
 	if bool(reply):
 		if bool(reply.photo):
-			context.chat_data[chat.id] = reply.photo.file_id
+			context.chat_data[chat.id] = reply.photo[-1].file_id
 		elif bool(reply.video):
 			context.chat_data[chat.id] = reply.video.file_id
 		elif bool(reply.document):
