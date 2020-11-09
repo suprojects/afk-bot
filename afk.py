@@ -93,9 +93,40 @@ def reply_afk(update, context):
 				
 				if chat.id in context.chat_data:
 					try:
-						m=message.reply_photo(context.chat_data[chat.id] caption=res)
+						m=message.reply_photo(context.chat_data[chat.id], caption=res)
+					except:
+						try:
+							m=message.reply_video(context.chat_data[chat.id], caption=res)
+						except:
+							try:
+								m=message.reply_document(context.chat_data[chat.id], caption=res)
+							except:
+								m=message.reply_text(res)
 				threading.Timer(300, delm, [m]).start()
 
+def afkrm(update, context):
+	chat = update.effective_message.chat
+	cid = str(chat.id)
+	init(cid)
+	message = update.effective_message
+	reply = message.reply_to_message
+	
+	if bool(reply):
+		if bool(reply.photo):
+			context.chat_data[chat.id] = reply.photo.file_id
+		elif bool(reply.video):
+			context.chat_data[chat.id] = reply.video.file_id
+		elif bool(reply.document):
+			if document.get_file().file_path.endswith(".gif"):
+				context.chat_data[chat.id] = reply.document.file_id
+	
+	if chat.id in context.chat_data:
+		message.reply_text("OK. This will be used.")
+	else:
+		message.reply_text("Please reply a media.")
+		
+
 AFK_HANDLER = CommandHandler("afk", afk)
+AFK_MEIDA_HANDLER = CommandHandler("afk_reply_media", afkrm)
 NO_AFK_HANDLER = MessageHandler(Filters.all & Filters.group, no_longer_afk)
 AFK_REPLY_HANDLER = MessageHandler(Filters.all, reply_afk)
