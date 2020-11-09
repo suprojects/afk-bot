@@ -117,7 +117,7 @@ def afkrm(update, context):
 		elif bool(reply.video):
 			context.chat_data[chat.id] = reply.video.file_id
 		elif bool(reply.document):
-			if reply.document.meme_type == "video/mp4":
+			if reply.document.mime_type == "video/mp4":
 				context.chat_data[chat.id] = reply.document.file_id
 	
 	if chat.id in context.chat_data:
