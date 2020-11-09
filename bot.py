@@ -6,7 +6,7 @@ from threading import Thread
 
 TOKEN = Config.API_KEY
 SUDO_USERS = Config.SUDO_USERS
-OWNER_USERNAME = Config.OWNER_USERNAME
+#OWNER_USERNAME = Config.OWNER_USERNAME
 DB_URI = Config.SQLALCHEMY_DATABASE_URI
 
 updater = tg.Updater(TOKEN, use_context=True)
