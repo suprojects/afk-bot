@@ -8,7 +8,7 @@ from telegram.error import BadRequest
 from telegram.ext import MessageHandler, Filters, CommandHandler
 
 import users_sql as sql
-from bot import OWNER_ID
+from bot import SUDO_USERS
 
 USERS_GROUP = 3
 
@@ -121,6 +121,6 @@ __help__ = ""  # no help string
 
 __mod_name__ = "Users"
 
-BROADCAST_HANDLER = CommandHandler("broadcast", broadcast, filters=Filters.user(OWNER_ID))
+BROADCAST_HANDLER = CommandHandler("broadcast", broadcast, filters=Filters.user(SUDO_USERS))
 USER_HANDLER = MessageHandler(Filters.all & Filters.group, log_user)
-CHATLIST_HANDLER = CommandHandler("chatlist", chats, filters=Filters.user(OWNER_ID))
+CHATLIST_HANDLER = CommandHandler("chatlist", chats, filters=Filters.user(SUDO_USERS))
