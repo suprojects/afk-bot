@@ -31,7 +31,7 @@ def main():
 		update.message.reply_text("Bot is restarting...")
 		Thread(target = stop_and_restart).start()
 
-	dp.add_handler(CommandHandler("r", restart, filters = Filters.user(SUDO_USERS)))
+	dispatcher.add_handler(CommandHandler("r", restart, filters = Filters.user(SUDO_USERS)))
 	dispatcher.add_handler(START_HANDLER)
 	dispatcher.add_handler(HELP_HANDLER)
 	dispatcher.add_handler(SL_HANDLER)
