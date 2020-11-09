@@ -117,7 +117,7 @@ def afkrm(update, context):
 		elif bool(reply.video):
 			context.chat_data[chat.id] = reply.video.file_id
 		elif bool(reply.document):
-			if reply_document.get_file().file_path.endswith(".gif"):
+			if reply.document.get_file().file_path.endswith(".gif"):
 				context.chat_data[chat.id] = reply.document.file_id
 	
 	if chat.id in context.chat_data:
