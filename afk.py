@@ -111,6 +111,10 @@ def afkrm(update, context):
 	message = update.effective_message
 	reply = message.reply_to_message
 	
+	if chat.get_member(message.from_user.id).status not in ("administrator", "creator"):
+		message.reply_text("You're not admin.")
+		return
+	
 	if bool(reply):
 		if bool(reply.photo):
 			context.chat_data[chat.id] = reply.photo[-1].file_id
