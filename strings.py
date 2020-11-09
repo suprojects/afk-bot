@@ -33,6 +33,10 @@ And then someone mentions or replies you, they’ll be replied like this:
 	
 	Reason:
 	[reason]
+
+———
+
+You can reply a media (video, photo or gif) with /afk_reply_media to make that media included in the AFK reply.
 """, "ru": """
 Если вы отправите это в группу, в которой я состою:
 	/afk [причина]
