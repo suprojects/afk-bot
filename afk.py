@@ -9,12 +9,16 @@ from users import get_user_id
 from lang_sql import *
 from strings import *
 from datetime import datetime
+import threading
 
 AFK_GROUP = 1
 AFK_REPLY_GROUP = 2
 NO_AFK_GROUP = 1
 
 bot = dispatcher.bot
+
+def delm(m):
+	return m.delete()
 
 def afk(update, context):
 	chat = update.effective_message.chat
@@ -84,7 +88,8 @@ def reply_afk(update, context):
 					res = AFK[CHAT_LANGS[cid]].format(fst_name, since)
 				else:
 					res = AFK2[CHAT_LANGS[cid]].format(fst_name, since, reason)
-				message.reply_text(res)
+				m=message.reply_text(res)
+				threading.Timer(60, delm, [m])
 
 AFK_HANDLER = CommandHandler("afk", afk)
 NO_AFK_HANDLER = MessageHandler(Filters.all & Filters.group, no_longer_afk)
