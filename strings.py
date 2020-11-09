@@ -1,5 +1,5 @@
 START_STRING = {"en": """
-Hello! I’m a simple AFK bot to tell others in a group that you’re (A)way (F)rom (K)eyboard whenever they mention you or reply you. Send /help to know how to use me.
+Hello! I’m a simple AFK bot to tell others in a group that you’re (A)way (F)rom (K)eyboard, since when and the reason if you have specified one whenever they mention or reply you. Send /help to know how to use me.
 
 You can add me to your group as a normal member to start using me.
 """, "ku": """
@@ -29,6 +29,7 @@ If you send this in a group which I am in before going AFK:
 
 And then someone mentions or replies you, they’ll be replied like this:
 	{} is AFK!
+	Since: [time]
 	
 	Reason:
 	[reason]
