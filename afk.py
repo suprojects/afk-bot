@@ -112,7 +112,9 @@ def afkrm(update, context):
 	message = update.effective_message
 	reply = message.reply_to_message
 	
-	if chat.get_member(message.from_user.id).status not in ("administrator", "creator") or message.from_user.id not in SUDO_USERS:
+	not_admin = bool(chat.get_member(message.from_user.id).status not in ("administrator", "creator"))
+	not_sudo = bool(message.from_user.id not in SUDO_USERS)
+	if not_admin and not_sudo:
 		message.reply_text("You're not admin.")
 		return
 	
