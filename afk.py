@@ -9,6 +9,7 @@ from users import get_user_id
 from lang_sql import *
 from strings import *
 from datetime import datetime
+from config import SUDO_USERS
 import threading
 
 AFK_GROUP = 1
@@ -111,7 +112,7 @@ def afkrm(update, context):
 	message = update.effective_message
 	reply = message.reply_to_message
 	
-	if chat.get_member(message.from_user.id).status not in ("administrator", "creator"):
+	if chat.get_member(message.from_user.id).status not in ("administrator", "creator") or message.from_user.id not in SUDO_USERS:
 		message.reply_text("You're not admin.")
 		return
 	
