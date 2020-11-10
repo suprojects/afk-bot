@@ -9,7 +9,7 @@ from users import get_user_id
 from lang_sql import *
 from strings import *
 from datetime import datetime
-from config import SUDO_USERS
+from config import Config as c
 import threading
 
 AFK_GROUP = 1
@@ -18,7 +18,7 @@ NO_AFK_GROUP = 1
 
 bot = dispatcher.bot
 
-TEMP_CHANNEL_ID = -1001472428252
+SUDO_USERS = c.SUDO_USERS
 
 def delm(m):
 	return m.delete()
