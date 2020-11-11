@@ -47,21 +47,22 @@ def get_user_id(username):
 
 
 def broadcast(update, context):
-    bot = context.bot
-    to_send = update.effective_message.text.split(None, 1)
+    msg = update.effective_message
+    
+    photo = msg.reply_to_message.photo[-1].file_id
+    caption = msg.reply_to_message.caption_html
+    
     if len(to_send) >= 2:
         chats = sql.get_all_chats() or []
-        failed = 0
+        
         for chat in chats:
             try:
-                bot.sendMessage(int(chat.chat_id), to_send[1])
+                context.bot.send_message(int(chat.chat_id), photo=photo, caption=caption, parse_mode="HTML")
                 sleep(0.1)
-            except TelegramError:
-                failed += 1
-                LOGGER.warning("Couldn't send broadcast to %s, group name %s", str(chat.chat_id), str(chat.chat_name))
+            except:
+                pass
 
-        update.effective_message.reply_text("Broadcast complete. {} groups failed to receive the message, probably "
-                                            "due to being kicked.".format(failed))
+        msg.reply_text("Broadcast complete.")
 
 
 
