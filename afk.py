@@ -40,7 +40,7 @@ def afk(update, context):
 
 def afk2(update, context):
 	usr, msg = update.effective_user, update.effective_message
-	if not msg.startswith("/afk "):
+	if not msg.caption.startswith("/afk "):
 		return
 	file_id = msg.video.file_id if bool(msg.video) else msg.photo.file_id
 	context.bot_data[usr.id] = file_id
