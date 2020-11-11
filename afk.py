@@ -20,18 +20,14 @@ def afk(update, context):
 	rep = msg.reply_to_message
 	
 	if bool(rep):
-		print("rep")
 		if bool(rep.photo):
-			print("pht")
-			context.chat_data[usr.id] = rep.photo[-1].file_id
+			context.bot_data[usr.id] = rep.photo[-1].file_id
 		elif bool(rep.video):
-			print("vd")
-			context.chat_data[usr.id] = rep.video.file_id
+			context.bot_data[usr.id] = rep.video.file_id
 		elif bool(rep.document):
 			print("gfq")
 			if rep.document.mime_type == "video/mp4":
-				print("gfw")
-				context.chat_data[usr.id] = rep.document.file_id
+				context.bot_data[usr.id] = rep.document.file_id
 	
 	args = msg.text.split(None, 1)
 	
@@ -70,8 +66,7 @@ def reply_afk(update, context):
 				user_id = get_user_id(msg.text[ent.offset:ent.offset + ent.length])
 				if not user_id:
 					return
-				chat = context.bot.get_chat(user_id)
-				fst_name = chat.first_name
+				fst_name = context.bot.get_chat(user_id).first_name
 			else:
 				return
 	elif bool(msg.reply_to_message):
@@ -101,19 +96,19 @@ def reply_afk(update, context):
 				m = False
 				
 				try:
-					m = msg.reply_photo(context.chat_data[user_id], caption=res)
+					m = msg.reply_photo(context.bot_data[user_id], caption=res)
 				except:
 					m = False
 				
 				try:
 					if not m:
-						m = msg.reply_video(context.chat_data[user_id], caption=res)
+						m = msg.reply_video(context.bot_data[user_id], caption=res)
 				except:
 					m = False
 				
 				try:
 					if not m:
-						m = msg.reply_document(context.chat_data[user_id], caption=res)
+						m = msg.reply_document(context.bot_data[user_id], caption=res)
 				except:
 					m = False
 				
