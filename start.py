@@ -33,9 +33,7 @@ def help(update, context):
 	msg = update.effective_message
 	
 	if chat.type == "private":
-		msg.reply_text("""
-help
-			""".format(user.first_name), parse_mode="HTML")
+		msg.reply_text(HELP.format(user.first_name), parse_mode="HTML")
 	else:
 		HELP_REPLY_MARKUP = InlineKeyboardMarkup([[InlineKeyboardButton("Help", url="http://t.me/{}?start=help".format(context.bot.username))]])
 		msg.reply_text("Click the button to get help in PM!", reply_markup=HELP_REPLY_MARKUP)
