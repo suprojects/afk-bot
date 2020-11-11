@@ -21,9 +21,22 @@ SUDO_USERS = c.SUDO_USERS
 def delm(m):
 	return m.delete()
 
+def reply_media(update, context):
+	usr, msg, rep = update.effective_user, update.effective_message, msg.reply_to_message
+	
+	if bool(rep):
+		if bool(rep.photo):
+			context.user_data[usr.id] = rep.photo[-1].file_id
+		elif bool(rep.video):
+			context.user_data[usr.id] = rep.video.file_id
+		elif bool(rep.document):
+			if rep.document.mime_type == "video/mp4":
+				context.user_data[usr.id] = rep.document.file_id
+
+
 def afk(update, context):
 	usr, msg = update.effective_user, update.effective_message
-	init(str(cht.id))
+	reply_media(update, context)
 	
 	args = msg.text.split(None, 1)
 	
@@ -41,7 +54,6 @@ def no_longer_afk(update, context):
 	cht = update.effective_chat
 	usr = update.effective_user
 	msg = update.effective_message
-	init(str(cht.id))
 	
 	if not usr:
 		return
@@ -54,7 +66,6 @@ def reply_afk(update, context):
 	cht = update.effective_chat
 	usr = update.effective_user
 	msg = update.effective_message
-	init(str(cht.id))
 	
 	entities = msg.parse_entities([MessageEntity.TEXT_MENTION, MessageEntity.MENTION])
 	user_id = None
@@ -109,24 +120,6 @@ def reply_afk(update, context):
 								m = msg.reply_text(res)
 				
 				threading.Timer(300, delm, [m]).start()
-
-def reply_media(update, context):
-	usr, msg, rep = update.effective_user, update.effective_message, msg.reply_to_message
-	init(str(cht.id))
-	
-	if bool(rep):
-		if bool(rep.photo):
-			context.user_data[usr.id] = rep.photo[-1].file_id
-		elif bool(rep.video):
-			context.user_data[usr.id] = rep.video.file_id
-		elif bool(rep.document):
-			if rep.document.mime_type == "video/mp4":
-				context.user_data[usr.id] = rep.document.file_id
-	
-	if usr.id in context.user_data:
-		msg.reply_text("This media will be used in your AFK replies.")
-	else:
-		msg.reply_text("Please reply a media.")
 
 def reply_media_off(update, context):
 	usr, msg = update.effective_user, update.effective_message
