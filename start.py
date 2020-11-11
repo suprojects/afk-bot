@@ -20,7 +20,7 @@ def start(update, context):
 		else:
 			msg.reply_text("""Hello! I’m a simple AFK bot to tell others in a group that you’re (A)way (F)rom (K)eyboard, since when and the reason with some customization if you have specified one whenever they mention or reply you. Send /help to know how to use me.
 
-You can add me to your group as a normal member to start using me.""", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Help", url="http://t.me/{}?startgroup=botstart".format(context.bot.username))]]))
+You can add me to your group as a normal member to start using me.""", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("+ Add Me To Your Group +", url="http://t.me/{}?startgroup=botstart".format(context.bot.username))]]))
 	else:
 		msg.reply_text("Hey there! I'm alive.")
 
