@@ -20,12 +20,17 @@ def afk(update, context):
 	rep = msg.reply_to_message
 	
 	if bool(rep):
+		print("rep")
 		if bool(rep.photo):
+			print("pht")
 			context.user_data[usr.id] = rep.photo[-1].file_id
 		elif bool(rep.video):
+			print("vd")
 			context.user_data[usr.id] = rep.video.file_id
 		elif bool(rep.document):
+			print("gfq")
 			if rep.document.mime_type == "video/mp4":
+				print("gfw")
 				context.user_data[usr.id] = rep.document.file_id
 	
 	args = msg.text.split(None, 1)
