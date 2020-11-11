@@ -65,7 +65,7 @@ def reply_afk(update, context):
 				user_id = get_user_id(msg.text[ent.offset:ent.offset + ent.length])
 				if not user_id:
 					return
-				chat = bot.get_chat(user_id)
+				chat = context.bot.get_chat(user_id)
 				fst_name = chat.first_name
 			else:
 				return
