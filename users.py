@@ -48,10 +48,10 @@ def get_user_id(username):
 def add_photo(update, context):
     msg = update.effective_message
     photo = msg.reply_to_message.photo[-1].file_id
-    caption = msg.reply_to_message.caption
+    caption = msg.reply_to_message.caption_html
     
     
-    FTS.append(InputMediaPhoto(media=photo,caption=caption))
+    FTS.append(InputMediaPhoto(media=photo,caption=caption,parse_mode="HTML"))
     
 
 def broadcast(update, context):
