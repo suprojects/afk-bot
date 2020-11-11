@@ -1,6 +1,5 @@
 import threading
 from datetime import datetime
-from typing import Optional
 
 from telegram import Message, Update, User
 from telegram import MessageEntity
