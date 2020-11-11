@@ -1,4 +1,3 @@
-from bot import dispatcher
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import CommandHandler, CallbackQueryHandler
 
