@@ -95,28 +95,18 @@ def reply_afk(update, context):
 					res = "{} is AFK since {}!\n\nReason:\n{}".format(fst_name, since, reason)
 				
 				
-				try:
-					m = msg.reply_photo(context.user_data[usr.id], caption=res)
-				except:
-					try:
-						m = msg.reply_video(context.user_data[usr.id], caption=res)
-					except:
-						try:
-							m = msg.reply_document(context.user_data[usr.id], caption=res)
-						except:
-							m = msg.reply_text(res)
+				#try:
+				m = msg.reply_photo(context.user_data[usr.id], caption=res)
+				#except:
+					#try:
+					#	m = msg.reply_video(context.user_data[usr.id], caption=res)
+					#except:
+					#	try:
+					#		m = msg.reply_document(context.user_data[usr.id], caption=res)
+					#	except:
+					#		m = msg.reply_text(res)
 				
-				threading.Timer(300, delm, [m]).start()
-
-def reply_media_off(update, context):
-	usr, msg = update.effective_user, update.effective_message
-	
-	try:
-		del context.user_data[usr.id]
-	except:
-		pass
-	
-	msg.reply_text("No media will be included in your AFK replies.")
+				threading.Timer(2, delm, [m]).start()
 
 AFK_HANDLER = CommandHandler("afk", afk)
 NO_AFK_HANDLER = MessageHandler(Filters.all & Filters.group, no_longer_afk)
