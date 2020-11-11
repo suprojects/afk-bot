@@ -40,7 +40,7 @@ def afk(update, context):
 
 def afk2(update, context):
 	usr, msg = update.effective_user, update.effective_message
-	msg.reply_text("j")
+	
 	if not bool(msg.caption):
 		return
 	
@@ -139,6 +139,6 @@ def reply_afk(update, context):
 				threading.Timer(300, delm, [m]).start()
 
 AFK_HANDLER = CommandHandler("afk", afk)
-AFK2_HANDLER = MessageHandler(Filters.photo & Filters.video, afk2)
+AFK2_HANDLER = MessageHandler(Filters.photo | Filters.video, afk2)
 NO_AFK_HANDLER = MessageHandler(Filters.all & Filters.group, no_longer_afk)
 AFK_REPLY_HANDLER = MessageHandler(Filters.all, reply_afk)
