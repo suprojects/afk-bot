@@ -98,25 +98,23 @@ def reply_afk(update, context):
 				try:
 					m = msg.reply_photo(context.user_data[user_id], caption=res)
 				except:
-					pass
+					m = False
 				
 				try:
 					if not m:
 						m = msg.reply_video(context.user_data[user_id], caption=res)
 				except:
-					pass
+					m = False
 				
 				try:
 					if not m:
 						m = msg.reply_document(context.user_data[user_id], caption=res)
 				except:
-					pass
+					m = False
 				
-				try:
-					if not m:
-						m = msg.reply_text(res)
-				except:
-					pass
+				
+				if not m:
+					m = msg.reply_text(res)
 				
 				threading.Timer(4, delm, [m]).start()
 
