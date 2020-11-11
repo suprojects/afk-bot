@@ -16,7 +16,7 @@ def delm(m):
 	return m.delete()
 
 def reply_media(update, context):
-	usr, msg, rep = update.effective_user, update.effective_message, msg.reply_to_message
+	usr, msg, rep = update.effective_user, update.effective_message, update.effective_message.reply_to_message
 	
 	if bool(rep):
 		if bool(rep.photo):
