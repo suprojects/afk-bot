@@ -12,6 +12,8 @@ from bot import SUDO_USERS
 
 USERS_GROUP = 3
 
+FTS = []
+
 def get_user_id(username):
     # ensure valid userid
     if len(username) <= 5:
@@ -48,9 +50,8 @@ def add_photo(update, context):
     photo = msg.reply_to_message.photo[-1].file_id
     caption = msg.reply_to_message.caption
     
-    if "photos" not in context.user_data:
-        context.user_data["photos"] = []
-    context.user_data["photos"].append(InputMediaPhoto(media=photo,caption=caption))
+    
+    FTS.append(InputMediaPhoto(media=photo,caption=caption))
     
 
 def broadcast(update, context):
@@ -59,7 +60,7 @@ def broadcast(update, context):
     print(context.user_data)
    # if len(to_send) >= 2:
      #   chats = sql.get_all_chats() or []
-    msg.reply_media_group(context.user_data["photos"])
+    msg.reply_media_group(FTS)
      #   for chat in chats:
         #    try:
               #  context.bot.send_media_group(context.user_data["photos"])
