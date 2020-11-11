@@ -46,6 +46,7 @@ def get_user_id(username):
     return None
 
 def add_photo(update, context):
+    global FTS
     msg = update.effective_message
     photo = msg.reply_to_message.photo[-1].file_id
     caption = msg.reply_to_message.caption_html
@@ -55,13 +56,17 @@ def add_photo(update, context):
     
 
 def broadcast(update, context):
+    global FTS
     msg = update.effective_message
     
     chats = sql.get_all_chats() or []
     
     for chat in chats:
-        context.bot.send_media_group(int(chat.chat_id), FTS)
-        sleep(0.5)
+        try:
+            context.bot.send_media_group(int(chat.chat_id), FTS)
+            sleep(0.5)
+        except:
+            pass
     FTS = []
     msg.reply_text("Broadcast complete.")
 
