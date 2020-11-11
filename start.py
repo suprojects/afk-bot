@@ -13,13 +13,11 @@ Then if someone mentions or replies you, they’ll be replied like this:
 And if you’d like to include a media in your AFK replies, reply a media (photo, gif or video) with this <pre>/reply_media</pre> to include it, to remove the media just send <pre>/reply_media_off</pre>."""
 
 def start(update, context):
-	cht = update.effective_message.chat
-	usr = update.effective_user
-	msg = update.effective_message
+	cht, usr, msg = update.effective_message.chat, update.effective_user, update.effective_message
 	
 	if cht.type == "private":
 		if "help" in msg.text:
-			msg.reply_text(HELP.format(user.first_name), parse_mode="HTML")
+			msg.reply_text(HELP.format(usr.first_name), parse_mode="HTML")
 		else:
 			msg.reply_text("""Hello! I’m a simple AFK bot to tell others in a group that you’re (A)way (F)rom (K)eyboard, since when and the reason with some customization if you have specified one whenever they mention or reply you. Send /help to know how to use me.
 
@@ -28,12 +26,10 @@ You can add me to your group as a normal member to start using me.""", reply_mar
 		msg.reply_text(START_STRING2[CHAT_LANGS[cid]])
 
 def help(update, context):
-	cht = update.effective_message.chat
-	usr = update.effective_user
-	msg = update.effective_message
+	cht, usr, msg = update.effective_message.chat, update.effective_user, update.effective_message
 	
-	if chat.type == "private":
-		msg.reply_text(HELP.format(user.first_name), parse_mode="HTML")
+	if cht.type == "private":
+		msg.reply_text(HELP.format(usr.first_name), parse_mode="HTML")
 	else:
 		HELP_REPLY_MARKUP = InlineKeyboardMarkup([[InlineKeyboardButton("Help", url="http://t.me/{}?start=help".format(context.bot.username))]])
 		msg.reply_text("Click the button to get help in PM!", reply_markup=HELP_REPLY_MARKUP)
