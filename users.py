@@ -56,7 +56,7 @@ def add_photo(update, context):
 def broadcast(update, context):
     msg = update.effective_message
     
-    
+    print(context.user_data)
    # if len(to_send) >= 2:
      #   chats = sql.get_all_chats() or []
     msg.reply_media_group(context.user_data["photos"])
