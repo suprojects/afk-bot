@@ -60,7 +60,7 @@ def reply_afk(update, context):
 	
 	entities = msg.parse_entities([MessageEntity.TEXT_MENTION, MessageEntity.MENTION])
 	user_id = None
-	
+	print(context.user_data)
 	if msg.entities and entities:
 		for ent in entities:
 			if ent.type == MessageEntity.TEXT_MENTION:
