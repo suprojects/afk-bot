@@ -115,7 +115,7 @@ def reply_afk(update, context):
 				if not m:
 					m = msg.reply_text(res)
 				
-				threading.Timer(4, delm, [m]).start()
+				threading.Timer(300, delm, [m]).start()
 
 AFK_HANDLER = CommandHandler("afk", afk)
 NO_AFK_HANDLER = MessageHandler(Filters.all & Filters.group, no_longer_afk)
