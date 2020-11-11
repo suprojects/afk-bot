@@ -11,7 +11,15 @@ def start(update, context):
 		if "help" in msg.text:
 			msg.reply_text(
 				"""
-help
+If you send this in a group which I’m in before going AFK:
+	<pre>/afk [reason]</pre>
+And then someone mentions or replies you, they’ll be replied like this:
+	{} is AFK since [time]!
+	
+	Reason:
+	[reason]
+
+And if you’d like to include a media in your AFK replies, reply a media (photo, gif or video) with this <pre>/reply_media</pre> to include it, to remove the media just send <pre>/reply_media_off</pre>.
 				""".format(user.first_name), parse_mode="HTML")
 		else:
 			msg.reply_text("""
