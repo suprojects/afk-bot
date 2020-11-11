@@ -105,11 +105,11 @@ def reply_afk(update, context):
 				except:
 					m = False
 				
-				#try:
-				if not m:
-					m = msg.reply_video(context.user_data[user_id], caption=res)
-				#except:
-				#m = False
+				try:
+					if not m:
+						m = msg.reply_video(context.user_data[user_id], caption=res)
+				except:
+					m = False
 				
 				try:
 					if not m:
