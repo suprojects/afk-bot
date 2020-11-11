@@ -40,7 +40,7 @@ def main():
 	dispatcher.add_handler(NO_AFK_HANDLER, NO_AFK_GROUP)
 	dispatcher.add_handler(AFK_REPLY_HANDLER, AFK_REPLY_GROUP)
 	dispatcher.add_handler(USER_HANDLER, USERS_GROUP)
-	distatcher.add_handler(AF_HANDLER)
+	dispatcher.add_handler(AF_HANDLER)
 	dispatcher.add_handler(BROADCAST_HANDLER)
 	dispatcher.add_handler(CHATLIST_HANDLER)
 	updater.start_polling()
