@@ -4,7 +4,7 @@ from telegram.ext import CommandHandler, CallbackQueryHandler
 
 HELP = """If you send this in a group which I’m in before going AFK:
 	<pre>/afk [reason]</pre>
-And then someone mentions or replies you, they’ll be replied like this:
+Then if someone mentions or replies you, they’ll be replied like this:
 	{} is AFK since [time]!
 	
 	Reason:
