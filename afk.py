@@ -19,6 +19,11 @@ def afk(update, context):
 	usr, msg = update.effective_user, update.effective_message
 	rep = msg.reply_to_message
 	
+	try:
+		del context.bot_data[usr.id]
+	except:
+		pass
+	
 	if bool(rep):
 		if bool(rep.photo):
 			context.bot_data[usr.id] = rep.photo[-1].file_id
