@@ -44,10 +44,10 @@ def afk2(update, context):
 	if not bool(msg.caption):
 		return
 	
-	if not msg.caption.startswith("/afk "):
+	if not msg.caption.startswith("/afk"):
 		return
 	
-	file_id = msg.video.file_id if bool(msg.video) else msg.photo.file_id
+	file_id = msg.video.file_id if bool(msg.video) else msg.photo[-1].file_id
 	context.bot_data[usr.id] = file_id
 	
 	args = msg.caption.split(None, 1)
