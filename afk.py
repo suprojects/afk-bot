@@ -19,6 +19,11 @@ def afk(update, context):
 	usr, msg = update.effective_user, update.effective_message
 	rep = msg.reply_to_message
 	
+	try:
+		del context.user_data[usr.id]
+	except:
+		pass
+	
 	if bool(rep):
 		if bool(rep.photo):
 			context.user_data[usr.id] = rep.photo[-1].file_id
@@ -27,7 +32,6 @@ def afk(update, context):
 		elif bool(rep.document):
 			if rep.document.mime_type == "video/mp4":
 				context.user_data[usr.id] = rep.document.file_id
-	print(context.user_data)
 	
 	args = msg.text.split(None, 1)
 	
