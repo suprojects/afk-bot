@@ -35,8 +35,8 @@ def reply_media(update, context):
 
 
 def afk(update, context):
-	usr, msg = update.effective_user, update.effective_message
 	reply_media(update, context)
+	usr, msg = update.effective_user, update.effective_message
 	
 	args = msg.text.split(None, 1)
 	
@@ -51,9 +51,7 @@ def afk(update, context):
 
 
 def no_longer_afk(update, context):
-	cht = update.effective_chat
-	usr = update.effective_user
-	msg = update.effective_message
+	usr, msg = update.effective_user, update.effective_message
 	
 	if not usr:
 		return
@@ -63,9 +61,7 @@ def no_longer_afk(update, context):
 		msg.reply_text("{} is no longer AFK!".format(usr.first_name))
 
 def reply_afk(update, context):
-	cht = update.effective_chat
-	usr = update.effective_user
-	msg = update.effective_message
+	cht, usr, msg = update.effective_chat, update.effective_user, update.effective_message
 	
 	entities = msg.parse_entities([MessageEntity.TEXT_MENTION, MessageEntity.MENTION])
 	user_id = None
