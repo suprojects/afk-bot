@@ -105,18 +105,12 @@ def reply_afk(update, context):
 								m=message.reply_text(res)
 				threading.Timer(300, delm, [m]).start()
 
-def afkrm(update, context):
-	chat = update.effective_message.chat
-	cid = str(chat.id)
-	init(cid)
-	message = update.effective_message
-	reply = message.reply_to_message
-	
-	not_admin = bool(chat.get_member(message.from_user.id).status not in ("administrator", "creator"))
-	not_sudo = bool(message.from_user.id not in SUDO_USERS)
-	if not_admin and not_sudo:
-		message.reply_text("You're not admin.")
-		return
+def reply_media(update, context):
+	cht = update.effective_chat
+	usr = update.effective_user
+	msg = update.effective_message
+	rep = msg.reply_to_message
+	init(str(cht.id))
 	
 	if bool(reply):
 		if bool(reply.photo):
@@ -128,10 +122,19 @@ def afkrm(update, context):
 				context.chat_data[chat.id] = reply.document.file_id
 	
 	if chat.id in context.chat_data:
-		message.reply_text("OK. This will be used.")
+		message.reply_text("This media will be used in your AFK replies.")
 	else:
 		message.reply_text("Please reply a media.")
-		
+
+def reply_media_off(update, context):
+	usr = update.effective_user
+	msg = update.effective_message
+	
+	try:
+		del context.user_data[usr.id]
+		msg.reply_text("No media will be included in your AFK replies.")
+	except:
+		msg.reply_text("No media will be included in your AFK replies.")
 
 AFK_HANDLER = CommandHandler("afk", afk)
 AFK_MEDIA_HANDLER = CommandHandler("afk_reply_media", afkrm)
