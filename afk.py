@@ -52,13 +52,15 @@ def no_longer_afk(update, context):
 		update.effective_message.reply_text(NOL_AFK[CHAT_LANGS[cid]].format(update.effective_user.first_name))
 
 def reply_afk(update, context):
-	chat = update.effective_message.chat
-	cid = str(chat.id)
-	init(cid)
-	message = update.effective_message  # type: Optional[Message]
-	entities = message.parse_entities([MessageEntity.TEXT_MENTION, MessageEntity.MENTION])
-	user_id = False
-	if message.entities and entities:
+	chat = update.effective_chat
+	usr = update.effective_user
+	msg = update.effective_message
+	init(str(cht.id))
+	
+	entities = msg.parse_entities([MessageEntity.TEXT_MENTION, MessageEntity.MENTION])
+	user_id = None
+	
+	if msg.entities and entities:
 		for ent in entities:
 			if ent.type == MessageEntity.TEXT_MENTION:
 				user_id = ent.user.id
@@ -72,10 +74,10 @@ def reply_afk(update, context):
 			else:
 				return
 	elif bool(message.reply_to_message):
-		fst_name = message.reply_to_message.from_user.first_name
-		user_id = message.reply_to_message.from_user.id
+		fst_name = msg.reply_to_message.from_user.first_name
+		user_id = msg.reply_to_message.from_user.id
 	
-	if user_id:
+	if bool(user_id):
 		if sql.is_afk(user_id):
 			valid, reason, since = sql.check_afk_status(user_id)
 			if valid:
@@ -94,15 +96,15 @@ def reply_afk(update, context):
 				
 				if chat.id in context.chat_data:
 					try:
-						m=message.reply_photo(context.chat_data[chat.id], caption=res)
+						m = msg.reply_photo(context.user_data[usr.id], caption=res)
 					except:
 						try:
-							m=message.reply_video(context.chat_data[chat.id], caption=res)
+							m = msg.reply_video(context.user_data[usr.id], caption=res)
 						except:
 							try:
-								m=message.reply_document(context.chat_data[chat.id], caption=res)
+								m = msg.reply_document(context.user_data[usr.id], caption=res)
 							except:
-								m=message.reply_text(res)
+								m = msg.reply_text(res)
 				threading.Timer(300, delm, [m]).start()
 
 def reply_media(update, context):
