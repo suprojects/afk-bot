@@ -94,19 +94,32 @@ def reply_afk(update, context):
 				else:
 					res = "{} is AFK since {}!\n\nReason:\n{}".format(fst_name, since, reason)
 				
+				m = False
 				
-				#try:
-				m = msg.reply_photo(context.user_data[usr.id], caption=res)
-				#except:
-					#try:
-					#	m = msg.reply_video(context.user_data[usr.id], caption=res)
-					#except:
-					#	try:
-					#		m = msg.reply_document(context.user_data[usr.id], caption=res)
-					#	except:
-					#		m = msg.reply_text(res)
+				try:
+					m = msg.reply_photo(context.user_data[usr.id], caption=res)
+				except:
+					pass
 				
-				threading.Timer(2, delm, [m]).start()
+				try:
+					if not m:
+						m = msg.reply_video(context.user_data[usr.id], caption=res)
+				except:
+					pass
+				
+				try:
+					if not m:
+						m = msg.reply_document(context.user_data[usr.id], caption=res)
+				except:
+					pass
+				
+				try:
+					if not m:
+						m = msg.reply_text(res)
+				except:
+					pass
+				
+				threading.Timer(4, delm, [m]).start()
 
 AFK_HANDLER = CommandHandler("afk", afk)
 NO_AFK_HANDLER = MessageHandler(Filters.all & Filters.group, no_longer_afk)
