@@ -60,11 +60,8 @@ def broadcast(update, context):
     chats = sql.get_all_chats() or []
     
     for chat in chats:
-        try:
-            context.bot.send_media_group(int(chat.chat_id), FTS)
-            sleep(0.5)
-        except:
-            pass
+        context.bot.send_media_group(int(chat.chat_id), FTS)
+        sleep(0.5)
     FTS = []
     msg.reply_text("Broadcast complete.")
 
