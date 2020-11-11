@@ -97,17 +97,17 @@ def reply_afk(update, context):
 				else:
 					res = "{} is AFK since {}!\n\nReason:\n{}".format(fst_name, since, reason)
 				
-				if usr.id in context.user_data:
+				
+				try:
+					m = msg.reply_photo(context.user_data[usr.id], caption=res)
+				except:
 					try:
-						m = msg.reply_photo(context.user_data[usr.id], caption=res)
+						m = msg.reply_video(context.user_data[usr.id], caption=res)
 					except:
 						try:
-							m = msg.reply_video(context.user_data[usr.id], caption=res)
+							m = msg.reply_document(context.user_data[usr.id], caption=res)
 						except:
-							try:
-								m = msg.reply_document(context.user_data[usr.id], caption=res)
-							except:
-								m = msg.reply_text(res)
+							m = msg.reply_text(res)
 				
 				threading.Timer(300, delm, [m]).start()
 
