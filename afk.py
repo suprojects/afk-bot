@@ -38,7 +38,22 @@ def afk(update, context):
 	sql.set_afk(usr.id, reason)
 	msg.reply_text("{} is now AFK!".format(usr.first_name))
 
-
+def afk2(update, context):
+	usr, msg = update.effective_user, update.effective_message
+	if not msg.startswith("/afk "):
+		return
+	file_id = msg.video.file_id if bool(msg.video) else msg.photo.file_id
+	context.bot_data[usr.id] = file_id
+	
+	args = msg.caption.split(None, 1)
+	
+	if len(args) >= 2:
+		reason = args[1]
+	else:
+		reason = ""
+	
+	sql.set_afk(usr.id, reason)
+	msg.reply_text("{} is now AFK!".format(usr.first_name))
 
 def no_longer_afk(update, context):
 	usr, msg = update.effective_user, update.effective_message
@@ -47,6 +62,7 @@ def no_longer_afk(update, context):
 		return
 	
 	res = sql.rm_afk(usr.id)
+	
 	if res:
 		msg.reply_text("{} is no longer AFK!".format(usr.first_name))
 
@@ -118,5 +134,6 @@ def reply_afk(update, context):
 				threading.Timer(300, delm, [m]).start()
 
 AFK_HANDLER = CommandHandler("afk", afk)
+AFK2_HANDLER = MessageHandler(Filters.photo & Filters.video, afk2)
 NO_AFK_HANDLER = MessageHandler(Filters.all & Filters.group, no_longer_afk)
 AFK_REPLY_HANDLER = MessageHandler(Filters.all, reply_afk)
