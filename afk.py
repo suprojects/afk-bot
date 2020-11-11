@@ -77,6 +77,8 @@ def reply_afk(update, context):
 		user_id = msg.reply_to_message.from_user.id
 	
 	if bool(user_id):
+		if user_id == usr.id:
+			return
 		if sql.is_afk(user_id):
 			valid, reason, since = sql.check_afk_status(user_id)
 			
