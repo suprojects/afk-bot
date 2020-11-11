@@ -2,7 +2,7 @@ from io import BytesIO
 from time import sleep
 from typing import Optional
 
-from telegram import TelegramError, Chat, Message
+from telegram import InputMediaPhoto, Chat, Message
 from telegram import Update, Bot
 from telegram.error import BadRequest
 from telegram.ext import MessageHandler, Filters, CommandHandler
@@ -11,7 +11,6 @@ import users_sql as sql
 from bot import SUDO_USERS
 
 USERS_GROUP = 3
-
 
 def get_user_id(username):
     # ensure valid userid
@@ -44,23 +43,29 @@ def get_user_id(username):
 
     return None
 
-
+def add_photo(update, context):
+    msg = update.effective_message
+    photo = msg.reply_to_message.photo[-1].file_id
+    caption = msg.reply_to_message.caption
+    
+    if "photos" not in context.user_data:
+        context.user_data["photos"] = []
+    context.user_data["photos"].append(InputMediaPhoto(media=photo,caption=caption))
+    
 
 def broadcast(update, context):
     msg = update.effective_message
     
-    photo = msg.reply_to_message.photo[-1].file_id
-    caption = msg.reply_to_message.caption_html
     
     if len(to_send) >= 2:
         chats = sql.get_all_chats() or []
-        
-        for chat in chats:
-            try:
-                context.bot.send_message(int(chat.chat_id), photo=photo, caption=caption, parse_mode="HTML")
-                sleep(0.1)
-            except:
-                pass
+        msg.reply_media_group(context.user_data["photos"])
+     #   for chat in chats:
+        #    try:
+              #  context.bot.send_media_group(context.user_data["photos"])
+            #    sleep(0.1)
+         #   except:
+              #  pass
 
         msg.reply_text("Broadcast complete.")
 
