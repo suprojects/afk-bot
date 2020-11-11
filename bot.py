@@ -15,7 +15,7 @@ dispatcher = updater.dispatcher
 
 def main():
 	
-	from afk import AFK_HANDLER, AFK_GROUP, NO_AFK_GROUP, NO_AFK_HANDLER, AFK_REPLY_HANDLER, AFK_REPLY_GROUP
+	from afk import AFK_HANDLER, AFK2_HANDLER, AFK_GROUP, NO_AFK_GROUP, NO_AFK_HANDLER, AFK_REPLY_HANDLER, AFK_REPLY_GROUP
 	from users import USER_HANDLER, USERS_GROUP, BROADCAST_HANDLER, CHATLIST_HANDLER
 	from start import START_HANDLER, HELP_HANDLER
 	
@@ -36,6 +36,7 @@ def main():
 	dispatcher.add_handler(START_HANDLER)
 	dispatcher.add_handler(HELP_HANDLER)
 	dispatcher.add_handler(AFK_HANDLER, AFK_GROUP)
+	dispatcher.add_handlee(AFK2_HANDLER, AFK_GROUP)
 	dispatcher.add_handler(NO_AFK_HANDLER, NO_AFK_GROUP)
 	dispatcher.add_handler(AFK_REPLY_HANDLER, AFK_REPLY_GROUP)
 	dispatcher.add_handler(USER_HANDLER, USERS_GROUP)
