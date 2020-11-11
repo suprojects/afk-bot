@@ -2,16 +2,7 @@ from bot import dispatcher
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import CommandHandler, CallbackQueryHandler
 
-def start(update, context):
-	cht = update.effective_message.chat
-	usr = update.effective_user
-	msg = update.effective_message
-	
-	if cht.type == "private":
-		if "help" in msg.text:
-			msg.reply_text(
-				"""
-If you send this in a group which I’m in before going AFK:
+HELP = """If you send this in a group which I’m in before going AFK:
 	<pre>/afk [reason]</pre>
 And then someone mentions or replies you, they’ll be replied like this:
 	{} is AFK since [time]!
@@ -19,12 +10,20 @@ And then someone mentions or replies you, they’ll be replied like this:
 	Reason:
 	[reason]
 
-And if you’d like to include a media in your AFK replies, reply a media (photo, gif or video) with this <pre>/reply_media</pre> to include it, to remove the media just send <pre>/reply_media_off</pre>.
-				""".format(user.first_name), parse_mode="HTML")
+And if you’d like to include a media in your AFK replies, reply a media (photo, gif or video) with this <pre>/reply_media</pre> to include it, to remove the media just send <pre>/reply_media_off</pre>."""
+
+def start(update, context):
+	cht = update.effective_message.chat
+	usr = update.effective_user
+	msg = update.effective_message
+	
+	if cht.type == "private":
+		if "help" in msg.text:
+			msg.reply_text(HELP.format(user.first_name), parse_mode="HTML")
 		else:
-			msg.reply_text("""
-start
-			""", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Help", url="http://t.me/{}?startgroup=botstart".format(context.bot.username))
+			msg.reply_text("""Hello! I’m a simple AFK bot to tell others in a group that you’re (A)way (F)rom (K)eyboard, since when and the reason with some customization if you have specified one whenever they mention or reply you. Send /help to know how to use me.
+
+You can add me to your group as a normal member to start using me.""", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Help", url="http://t.me/{}?startgroup=botstart".format(context.bot.username))
 	else:
 		msg.reply_text(START_STRING2[CHAT_LANGS[cid]])
 
