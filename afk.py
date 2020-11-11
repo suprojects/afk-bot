@@ -19,11 +19,6 @@ def afk(update, context):
 	usr, msg = update.effective_user, update.effective_message
 	rep = msg.reply_to_message
 	
-	try:
-		del context.user_data[usr.id]
-	except:
-		pass
-	
 	if bool(rep):
 		if bool(rep.photo):
 			context.user_data[usr.id] = rep.photo[-1].file_id
@@ -101,19 +96,19 @@ def reply_afk(update, context):
 				m = False
 				
 				try:
-					m = msg.reply_photo(context.user_data[usr.id], caption=res)
+					m = msg.reply_photo(context.user_data[user_id], caption=res)
 				except:
 					pass
 				
 				try:
 					if not m:
-						m = msg.reply_video(context.user_data[usr.id], caption=res)
+						m = msg.reply_video(context.user_data[user_id], caption=res)
 				except:
 					pass
 				
 				try:
 					if not m:
-						m = msg.reply_document(context.user_data[usr.id], caption=res)
+						m = msg.reply_document(context.user_data[user_id], caption=res)
 				except:
 					pass
 				
