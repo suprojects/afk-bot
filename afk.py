@@ -40,7 +40,7 @@ def afk(update, context):
 
 def afk2(update, context):
 	usr, msg = update.effective_user, update.effective_message
-	
+	msg.reply_text("j")
 	if not bool(msg.caption):
 		return
 	
