@@ -97,7 +97,7 @@ def reply_afk(update, context):
 				else:
 					res = "{} is AFK since {}!\n\nReason:\n{}".format(fst_name, since, reason)
 				
-				if chat.id in context.chat_data:
+				if usr.id in context.user_data:
 					try:
 						m = msg.reply_photo(context.user_data[usr.id], caption=res)
 					except:
