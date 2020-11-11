@@ -112,16 +112,16 @@ def reply_media(update, context):
 	rep = msg.reply_to_message
 	init(str(cht.id))
 	
-	if bool(reply):
-		if bool(reply.photo):
-			context.chat_data[chat.id] = reply.photo[-1].file_id
-		elif bool(reply.video):
-			context.chat_data[chat.id] = reply.video.file_id
-		elif bool(reply.document):
-			if reply.document.mime_type == "video/mp4":
-				context.chat_data[chat.id] = reply.document.file_id
+	if bool(rep):
+		if bool(rep.photo):
+			context.user_data[usr.id] = rep.photo[-1].file_id
+		elif bool(rep.video):
+			context.user_data[usr.id] = rep.video.file_id
+		elif bool(rep.document):
+			if rep.document.mime_type == "video/mp4":
+				context.user_data[usr.id] = rep.document.file_id
 	
-	if chat.id in context.chat_data:
+	if usr.id in context.user_data:
 		message.reply_text("This media will be used in your AFK replies.")
 	else:
 		message.reply_text("Please reply a media.")
@@ -132,11 +132,12 @@ def reply_media_off(update, context):
 	
 	try:
 		del context.user_data[usr.id]
-		msg.reply_text("No media will be included in your AFK replies.")
 	except:
-		msg.reply_text("No media will be included in your AFK replies.")
+		pass
+	msg.reply_text("No media will be included in your AFK replies.")
 
 AFK_HANDLER = CommandHandler("afk", afk)
-AFK_MEDIA_HANDLER = CommandHandler("afk_reply_media", afkrm)
+AFK_MEDIA_HANDLER = CommandHandler("reply_media", reply_media)
+AFK_MEDIA_OFF_HANDLER = CommandHandler("reply_media_off", reply_media_off)
 NO_AFK_HANDLER = MessageHandler(Filters.all & Filters.group, no_longer_afk)
 AFK_REPLY_HANDLER = MessageHandler(Filters.all, reply_afk)
