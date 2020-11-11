@@ -16,7 +16,7 @@ dispatcher = updater.dispatcher
 def main():
 	
 	from afk import AFK_HANDLER, AFK2_HANDLER, AFK_GROUP, NO_AFK_GROUP, NO_AFK_HANDLER, AFK_REPLY_HANDLER, AFK_REPLY_GROUP
-	from users import USER_HANDLER, USERS_GROUP, BROADCAST_HANDLER, CHATLIST_HANDLER
+	from users import USER_HANDLER, USERS_GROUP, AF_HANDLER, BROADCAST_HANDLER, CHATLIST_HANDLER
 	from start import START_HANDLER, HELP_HANDLER
 	
 	if "-r" in sys.argv:
@@ -40,6 +40,7 @@ def main():
 	dispatcher.add_handler(NO_AFK_HANDLER, NO_AFK_GROUP)
 	dispatcher.add_handler(AFK_REPLY_HANDLER, AFK_REPLY_GROUP)
 	dispatcher.add_handler(USER_HANDLER, USERS_GROUP)
+	distatcher.add_handler(AF_HANDLER)
 	dispatcher.add_handler(BROADCAST_HANDLER)
 	dispatcher.add_handler(CHATLIST_HANDLER)
 	updater.start_polling()
