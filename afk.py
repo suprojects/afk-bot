@@ -24,32 +24,35 @@ def delm(m):
 	return m.delete()
 
 def afk(update, context):
-	chat = update.effective_message.chat
-	cid = str(chat.id)
-	init(cid)
-	args = update.effective_message.text.split(None, 1)
+	cht = update.effective_message.chat
+	usr = update.effective_user
+	msg = update.effective_message
+	init(str(cht.id))
+	
+	args = msg.text.split(None, 1)
+	
 	if len(args) >= 2:
 		reason = args[1]
 	else:
 		reason = ""
 	
-	sql.set_afk(update.effective_user.id, reason)
-	update.effective_message.reply_text(NOW_AFK[CHAT_LANGS[cid]].format(update.effective_user.first_name))
+	sql.set_afk(usr.id, reason)
+	msg.reply_text("{} is now AFK!".format(usr.first_name))
 
 
 
 def no_longer_afk(update, context):
-	chat = update.effective_message.chat
-	cid = str(chat.id)
-	init(cid)
-	user = update.effective_user  # type: Optional[User]
-
-	if not user:  # ignore channels
+	cht = update.effective_chat
+	usr = update.effective_user
+	msg = update.effective_message
+	init(str(cht.id))
+	
+	if not usr:
 		return
 	
-	res = sql.rm_afk(user.id)
+	res = sql.rm_afk(usr.id)
 	if res:
-		update.effective_message.reply_text(NOL_AFK[CHAT_LANGS[cid]].format(update.effective_user.first_name))
+		msg.reply_text("{} is no longer AFK!".format(usr.first_name))
 
 def reply_afk(update, context):
 	chat = update.effective_chat
