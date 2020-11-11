@@ -24,9 +24,7 @@ def delm(m):
 	return m.delete()
 
 def afk(update, context):
-	cht = update.effective_message.chat
-	usr = update.effective_user
-	msg = update.effective_message
+	usr, msg = update.effective_user, update.effective_message
 	init(str(cht.id))
 	
 	args = msg.text.split(None, 1)
@@ -55,7 +53,7 @@ def no_longer_afk(update, context):
 		msg.reply_text("{} is no longer AFK!".format(usr.first_name))
 
 def reply_afk(update, context):
-	chat = update.effective_chat
+	cht = update.effective_chat
 	usr = update.effective_user
 	msg = update.effective_message
 	init(str(cht.id))
@@ -69,20 +67,21 @@ def reply_afk(update, context):
 				user_id = ent.user.id
 				fst_name = ent.user.first_name
 			elif ent.type == MessageEntity.MENTION:
-				user_id = get_user_id(message.text[ent.offset:ent.offset + ent.length])
+				user_id = get_user_id(msg.text[ent.offset:ent.offset + ent.length])
 				if not user_id:
 					return
 				chat = bot.get_chat(user_id)
 				fst_name = chat.first_name
 			else:
 				return
-	elif bool(message.reply_to_message):
+	elif bool(msg.reply_to_message):
 		fst_name = msg.reply_to_message.from_user.first_name
 		user_id = msg.reply_to_message.from_user.id
 	
 	if bool(user_id):
 		if sql.is_afk(user_id):
 			valid, reason, since = sql.check_afk_status(user_id)
+			
 			if valid:
 				since = datetime.utcnow() - since
 				since = int(since.total_seconds())
@@ -108,13 +107,11 @@ def reply_afk(update, context):
 								m = msg.reply_document(context.user_data[usr.id], caption=res)
 							except:
 								m = msg.reply_text(res)
+				
 				threading.Timer(300, delm, [m]).start()
 
 def reply_media(update, context):
-	cht = update.effective_chat
-	usr = update.effective_user
-	msg = update.effective_message
-	rep = msg.reply_to_message
+	usr, msg, rep = update.effective_user, update.effective_message, msg.reply_to_message
 	init(str(cht.id))
 	
 	if bool(rep):
@@ -127,18 +124,18 @@ def reply_media(update, context):
 				context.user_data[usr.id] = rep.document.file_id
 	
 	if usr.id in context.user_data:
-		message.reply_text("This media will be used in your AFK replies.")
+		msg.reply_text("This media will be used in your AFK replies.")
 	else:
-		message.reply_text("Please reply a media.")
+		msg.reply_text("Please reply a media.")
 
 def reply_media_off(update, context):
-	usr = update.effective_user
-	msg = update.effective_message
+	usr, msg = update.effective_user, update.effective_message
 	
 	try:
 		del context.user_data[usr.id]
 	except:
 		pass
+	
 	msg.reply_text("No media will be included in your AFK replies.")
 
 AFK_HANDLER = CommandHandler("afk", afk)
