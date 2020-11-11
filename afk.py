@@ -23,15 +23,15 @@ def afk(update, context):
 		print("rep")
 		if bool(rep.photo):
 			print("pht")
-			context.user_data[usr.id] = rep.photo[-1].file_id
+			context.chat_data[usr.id] = rep.photo[-1].file_id
 		elif bool(rep.video):
 			print("vd")
-			context.user_data[usr.id] = rep.video.file_id
+			context.chat_data[usr.id] = rep.video.file_id
 		elif bool(rep.document):
 			print("gfq")
 			if rep.document.mime_type == "video/mp4":
 				print("gfw")
-				context.user_data[usr.id] = rep.document.file_id
+				context.chat_data[usr.id] = rep.document.file_id
 	
 	args = msg.text.split(None, 1)
 	
@@ -101,19 +101,19 @@ def reply_afk(update, context):
 				m = False
 				
 				try:
-					m = msg.reply_photo(context.user_data[user_id], caption=res)
+					m = msg.reply_photo(context.chat_data[user_id], caption=res)
 				except:
 					m = False
 				
 				try:
 					if not m:
-						m = msg.reply_video(context.user_data[user_id], caption=res)
+						m = msg.reply_video(context.chat_data[user_id], caption=res)
 				except:
 					m = False
 				
 				try:
 					if not m:
-						m = msg.reply_document(context.user_data[user_id], caption=res)
+						m = msg.reply_document(context.chat_data[user_id], caption=res)
 				except:
 					m = False
 				
