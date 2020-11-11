@@ -15,8 +15,9 @@ NO_AFK_GROUP = 1
 def delm(m):
 	return m.delete()
 
-def reply_media(update, context):
-	usr, msg, rep = update.effective_user, update.effective_message, update.effective_message.reply_to_message
+def afk(update, context):
+	usr, msg = update.effective_user, update.effective_message
+	rep = msg.reply_to_message
 	
 	if bool(rep):
 		if bool(rep.photo):
@@ -26,11 +27,6 @@ def reply_media(update, context):
 		elif bool(rep.document):
 			if rep.document.mime_type == "video/mp4":
 				context.user_data[usr.id] = rep.document.file_id
-
-
-def afk(update, context):
-	reply_media(update, context)
-	usr, msg = update.effective_user, update.effective_message
 	
 	args = msg.text.split(None, 1)
 	
@@ -122,7 +118,5 @@ def reply_media_off(update, context):
 	msg.reply_text("No media will be included in your AFK replies.")
 
 AFK_HANDLER = CommandHandler("afk", afk)
-AFK_MEDIA_HANDLER = CommandHandler("reply_media", reply_media)
-AFK_MEDIA_OFF_HANDLER = CommandHandler("reply_media_off", reply_media_off)
 NO_AFK_HANDLER = MessageHandler(Filters.all & Filters.group, no_longer_afk)
 AFK_REPLY_HANDLER = MessageHandler(Filters.all, reply_afk)
