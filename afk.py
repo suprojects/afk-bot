@@ -6,8 +6,6 @@ from telegram.ext import Filters, CommandHandler, MessageHandler
 from bot import dispatcher
 import afk_sql as sql
 from users import get_user_id
-from lang_sql import *
-from strings import *
 from datetime import datetime
 from config import Config as c
 import threading
@@ -92,9 +90,9 @@ def reply_afk(update, context):
 				since = f"{h} hour(s), {m} minute(s) and {since} second(s)"
 				
 				if not reason:
-					res = AFK[CHAT_LANGS[cid]].format(fst_name, since)
+					res = "{} is AFK since {}!".format(fst_name, since)
 				else:
-					res = AFK2[CHAT_LANGS[cid]].format(fst_name, since, reason)
+					res = "{} is AFK since {}!\n\nReason:\n{}".format(fst_name, since, reason)
 				
 				if chat.id in context.chat_data:
 					try:
