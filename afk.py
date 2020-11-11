@@ -25,7 +25,6 @@ def afk(update, context):
 		elif bool(rep.video):
 			context.bot_data[usr.id] = rep.video.file_id
 		elif bool(rep.document):
-			print("gfq")
 			if rep.document.mime_type == "video/mp4":
 				context.bot_data[usr.id] = rep.document.file_id
 	
