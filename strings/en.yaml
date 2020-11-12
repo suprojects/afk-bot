@@ -18,7 +18,7 @@ nol_afk: "{} is no longer AFK!"
 
 afk: "{} is AFK."
 
-since: "\nSince: {}"
+since: "\nSince: {} hour(s), {} minute(s) and {} second(s)."
 
 reason: "\n\nReason:\n{}"
 
