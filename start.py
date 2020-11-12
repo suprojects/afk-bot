@@ -8,7 +8,7 @@ I am a simple bot to help people know that you are Away From Keyboard so that th
 If anyone replies/mentions you while you are away, I will reply to them that:
 
     {} is AFK.
-    Since <pre>[time]</pre>!
+    Since <pre>[time]</pre>
 	
     Reason: <pre>[reason]</pre>
 
