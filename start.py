@@ -4,12 +4,13 @@ from telegram.ext import CommandHandler, CallbackQueryHandler
 HELP = """
 
 I am a simple bot to help people know that you are Away From Keyboard so that they don't need to be hanging for your reply. 
+
 If anyone replies/mentions you while you are away, I will reply to them that:
 
-	{} is AFK since <pre>[time]</pre>!
+    {} is AFK.
+    Since <pre>[time]</pre>!
 	
-	Reason:
-	<pre>[reason]</pre>
+    Reason: <pre>[reason]</pre>
 
 <b>Syntax</b>: <pre>/afk [reason]</pre>
 
