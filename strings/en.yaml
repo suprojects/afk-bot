@@ -2,7 +2,9 @@ language: "English"
 
 clanguage: "Choose a language."
 
-start: "Hello! I’m a simple AFK bot to tell others in a group that you’re (A)way (F)rom (K)eyboard, since when and the reason with some customization if you have specified one whenever they mention or reply you. Send /help to know how to use me.\n\nYou can add me to your group as a normal member to start using me."
+languagec: "OK. I'll speak English here."
+
+start: "Hello! I'm a simple AFK bot to tell others in a group that you're (A)way (F)rom (K)eyboard, since when and the reason with some customization if you have specified one whenever they mention or reply you. Send /help to know how to use me.\n\nYou can add me to your group as a normal member to start using me."
 
 add_me: "+ Add Me To Your Group +"
 
