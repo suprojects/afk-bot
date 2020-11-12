@@ -8,6 +8,8 @@ from telegram.ext import Filters, CommandHandler, MessageHandler
 import afk_sql as sql
 from users import get_user_id
 
+from string import get_string
+
 AFK_GROUP = 1
 AFK_REPLY_GROUP = 2
 NO_AFK_GROUP = 1
@@ -16,6 +18,13 @@ def delm(m):
 	return m.delete()
 
 def afk(update, context):
+	chat_data, lang = context.chat_data, None
+	
+	if "lang" not in chat_data:
+		chat_data["lang"] = "en"
+	
+	lang = chat_data["lang"]
+	
 	usr, msg = update.effective_user, update.effective_message
 	rep = msg.reply_to_message
 	
@@ -41,9 +50,16 @@ def afk(update, context):
 		reason = ""
 	
 	sql.set_afk(usr.id, reason)
-	msg.reply_text("{} is now AFK.".format(usr.first_name))
+	msg.reply_text(get_string(lang, "now_afk").format(usr.first_name))
 
 def afk2(update, context):
+	chat_data, lang = context.chat_data, None
+	
+	if "lang" not in chat_data:
+		chat_data["lang"] = "en"
+	
+	lang = chat_data["lang"]
+	
 	usr, msg = update.effective_user, update.effective_message
 	
 	if not bool(msg.caption):
@@ -63,9 +79,16 @@ def afk2(update, context):
 		reason = ""
 	
 	sql.set_afk(usr.id, reason)
-	msg.reply_text("{} is now AFK.".format(usr.first_name))
+	msg.reply_text(get_string(lang, "now_afk").format(usr.first_name))
 
 def no_longer_afk(update, context):
+	chat_data, lang = context.chat_data, None
+	
+	if "lang" not in chat_data:
+		chat_data["lang"] = "en"
+	
+	lang = chat_data["lang"]
+	
 	usr, msg = update.effective_user, update.effective_message
 	
 	if not usr:
@@ -74,9 +97,16 @@ def no_longer_afk(update, context):
 	res = sql.rm_afk(usr.id)
 	
 	if res:
-		msg.reply_text("{} is no longer AFK.".format(usr.first_name))
+		msg.reply_text(get_string(lang, "nol_afk").format(usr.first_name))
 
 def reply_afk(update, context):
+	chat_data, lang = context.chat_data, None
+	
+	if "lang" not in chat_data:
+		chat_data["lang"] = "en"
+	
+	lang = chat_data["lang"]
+	
 	cht, usr, msg = update.effective_chat, update.effective_user, update.effective_message
 	
 	entities = msg.parse_entities([MessageEntity.TEXT_MENTION, MessageEntity.MENTION])
@@ -111,12 +141,12 @@ def reply_afk(update, context):
 				since %= 3600
 				m = since // 60
 				since %= 60
-				since = f"{h} hour(s), {m} minute(s) and {since} second(s)"
+				since = get_string(lang, "since").format(h, s, m, since)
 				
 				if not reason:
-					res = "{} is AFK.\nSince {}.".format(fst_name, since)
+					res = "{}\n{}.".format(get_string(lang, "afk").format(fst_name), since)
 				else:
-					res = "{} is AFK. \nSince {}.\n\nReason: {}".format(fst_name, since, reason)
+					res = "{} is AFK. \n{}\n\n{}".format(get_string(lang, "afk").format(fst_name), since, get_string(lang, "reason").format(reason))
 				
 				m = False
 				
