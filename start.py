@@ -1,15 +1,20 @@
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import CommandHandler, CallbackQueryHandler
 
-HELP = """If you send this in a group which I’m in before going AFK:
-	<pre>/afk [reason]</pre>
-Then if someone mentions or replies you, they’ll be replied like this:
-	{} is AFK since [time]!
+HELP = """
+
+I am a simple bot to help people know that you are Away From Keyboard so that they don't need to be hanging for your reply. 
+If anyone replies/mentions you while you are away, I will reply to them that:
+
+	{} is AFK since <pre>[time]</pre>!
 	
 	Reason:
-	[reason]
+	<pre>[reason]</pre>
 
-And if you’d like to include a media in your AFK replies, reply a media (photo, gif or video) with this <pre>/reply_media</pre> to include it, to remove the media just send <pre>/reply_media_off</pre>."""
+<b>Syntax</b>: <pre>/afk [reason]</pre>
+
+You can also include a media (photo/video/gif) to your AFK replies. Just reply <pre>/afk [reason]</pre> to any media to include it in your AFK message. How cooler can it be 😎!
+"""
 
 def start(update, context):
 	cht, usr, msg = update.effective_message.chat, update.effective_user, update.effective_message
