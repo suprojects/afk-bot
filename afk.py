@@ -41,7 +41,7 @@ def afk(update, context):
 		reason = ""
 	
 	sql.set_afk(usr.id, reason)
-	msg.reply_text("{} is now AFK!".format(usr.first_name))
+	msg.reply_text("{} is now AFK.".format(usr.first_name))
 
 def afk2(update, context):
 	usr, msg = update.effective_user, update.effective_message
@@ -63,7 +63,7 @@ def afk2(update, context):
 		reason = ""
 	
 	sql.set_afk(usr.id, reason)
-	msg.reply_text("{} is now AFK!".format(usr.first_name))
+	msg.reply_text("{} is now AFK.".format(usr.first_name))
 
 def no_longer_afk(update, context):
 	usr, msg = update.effective_user, update.effective_message
@@ -74,7 +74,7 @@ def no_longer_afk(update, context):
 	res = sql.rm_afk(usr.id)
 	
 	if res:
-		msg.reply_text("{} is no longer AFK!".format(usr.first_name))
+		msg.reply_text("{} is no longer AFK.".format(usr.first_name))
 
 def reply_afk(update, context):
 	cht, usr, msg = update.effective_chat, update.effective_user, update.effective_message
