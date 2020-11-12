@@ -1,0 +1,273 @@
+# put the people who worked on the translation here if you/they want to.
+authors:
+  - "@poolitzer"
+# put the name of your language here, in their native translation
+language: "English"
+# send when the bot gets added to a group
+greeting: "Hello there. I am The Chameleon bot, a telegram bot which brings the game The Chameleon in your group! In order to change my settings, you can run /settings (admin restricted in bigger groups). Or just hit /start to start a game with me :)"
+# when a game is started with /start in a group.
+# {0} mention of the player who started the game, {1} list of mentions for joined player, {2-8} settings, either the deck name or activate or deactivate (see below)
+start_game: "{0} started a game. You are playing with the following settings:\n\n<b>Deck:</b> {2}\n<b>Fewer:</b> {3}\n<b>More: </b>{4}\n<b>Pin: </b>{5}\n<b>Tournament: </b>{6}\n<b>Restricting: </b>{7}\n<b>Exclamation: </b>{8}\n\nLet's join!\n\n#Players:\n{1}"
+# the button beneath the message above
+start_button: "Join/Leave"
+# if the setting above is activated
+activated: "Activated"
+# if the setting above is deactivated
+deactivated: "Deactivated"
+# the pop-up a player gets when pressing on the button above
+player_joins_query: "You joined the game!"
+player_leaves_query: "You left the game!"
+# the pop-up a player gets when he presses the button above but no join process is running (might happen when the bot has an unexpected shutdown)
+join_no_game_running: "I am sorry, somehow this button is here when it is not supposed to be. Please run /start to start a game."
+# the text appearing in the group once a player leaves/joins and the timer "runs out"
+# {0} mention of player(s)
+player_joins_text: "{0} joined the game. "
+player_leaves_text: "{0} left the game. "
+# the text in addition to the one above
+# {0} if more then three players, start from below; otherwise fail
+player_action_text: "If no one joins or leaves in 30 seconds, the timer runs out and the game {0}"
+# see above
+start: "starts :)"
+fail: "fails :("
+# the message when someone presses /start while a game is running
+game_running: "A game is already running, please wait until it's finished."
+# the message when a game failed (30 second timer runs out and not three people joined)
+game_failed: "Not enough players, I am sorry."
+# the message when a game starts
+# {0} the topic/dictionary key, {1} the list of the words
+game_succeed: "Game has started!\n<b>Topic:</b>\n{0}\n<b>Words:</b>\n{1}"
+# the button beneath the message above
+play_button: "Show the secret word"
+# the pop-up the chameleon gets when pressing the button above
+player_is_chameleon: "You are the Chameleon. Good luck!"
+# the pop-up the ordinary player gets when pressing the button above
+# {0} the secret word
+secret_word: "The secret word is {0}"
+# the pop-up the player gets when pressing the button above and this game is not running (might happen when the bot has an unexpected shutdown)
+wrong_game: "I am sorry, your current game seems to be a different one then this. Please find the latest message from me with this button(s) and press it there :)"
+# the message appearing after the message above, asking for the first word
+# {0} mention of the player
+first_player_say_word: "{0}, you are the first one to give me a word. Please do this."
+# the message asking every player to send a message, one after another
+# {0} mention of the player, {1} word list, consisting of the player name: players word(s), {2} the message below or nothing
+more_players_say_word: "Thanks. Now, its your turn, {0}.{2}\n\nCurrent word list:\n{1}"
+# this will get attached to the previous two messages in case the game is not in restricted mote
+exclamation_deactivated: "In order to continue your conversation, add ! to the beginning of your message, I won't count it as your entry then"
+exclamation_activated: "In order to continue your conversation, do not add ! to the beginning of your message, I won't count it as your entry then"
+# the message before the voting, showing the final word list
+# {0} final word list
+final_word_list: "Final word list, we have to go to vote whose role (Chameleon or not) is to unmask then:\n\n{0}"
+# the message asking to vote, buttons with the names beneath
+# {0} vote list, consisting of mentions of the players: number of votes
+vote_list: "Remember, you can only vote once and you can't correct your vote.\nPeople who haven't voted yet:\n\n{0}"
+# the pop-up for a successful vote
+voted: "Your vote is registered :)"
+# the pop-up for someone trying to vote again
+already_voted: "You voted already!"
+# the pop-up for someone pressing his own name (no suicide here) while voting
+vote_yourself: "You can't vote for yourself!"
+# when a draw happens after everyone votes, the first player who had to say a word can decide who gets unmasked. Buttons with player names are attached
+# {0} mention of the starter, the player who has to said the first word
+draw: "{0}, a draw happened. Since you had a disadvantage as you had to say the first word, you can decide who gets unmasked"
+# if someone who is not the starter (see above) presses one of the buttons
+not_starter: "You did not say the first word, did you really think that would work? :("
+# if the chameleon wasn't found
+# {0} mention of the player unmasks, {1} mention of the chameleon, {2} secret word
+chameleon_not_found: "{0} was unmasked and they are <b>not</b> the Chameleon, {1} is! The Chameleon wins the game! The secret word was <b>{2}</b>."
+# if the chameleon was found
+# {0} mention of the chameleon
+chameleon_found: "{0} was unmasked and they are the Chameleon! You can try to guess the secret word now."
+# if the chameleon was found and only three players are there (and this is activated in the setting)
+# {0} mention of the chameleon
+chameleon_found_fewer: "{0} was unmasked and they are the Chameleon! Since there are ony three players right now, you get two guesses (group admins can turn that off in the settings)."
+# if the chameleon was found and 7 or 8 players are there
+# {0} mention of the chameleon
+chameleon_found_more: "{0} was unmasked and they are the Chameleon! Since there are more then six players, the word list is not visible, so watch your spelling! (group admins can turn that off in the settings)"
+# this replaces the word/topic from the list
+hidden: "hidden"
+# if the chameleon guesses wrong and has a second guess
+# {0} mention of the chameleon
+chameleon_guess_wrong_fewer: "Sorry {0}, this was wrong guess. Try again ;)"
+# if the chameleon guesses wrong
+# {0} mention of the chameleon, {1} secret word
+chameleon_guess_wrong: "Sorry {0}, this was the wrong guess, <b>{1}</b> would have been it. The Chameleon loses, the players win!"
+# if the chameleon guesses correctly
+# {0} mention of the chameleon
+chameleon_guess_right: "Good job {0}, this was the right guess! The Chameleon wins, the players lose!"
+# if the chameleon guesses wrongly, but the spellchecker corrects it to the right word (comes in handy by games where the keyboard isn't given
+# {0} mention of the chameleon
+chameleon_guess_corrected: "Good job {0}, this was the right... well, to be honest, it wasn't actually the right guess. But my internal spellchecker made it to the right one. You are welcome, you still won. Yaayyy :)"
+# when a tournament ends, but no winner yet, so another round is started
+tournament_end: "The game ended, but there is no winner of the tournament yet, so a new one has started. Current tournament points:\n{0}\n<b>Topic:</b>\n{1}\n<b>Words:</b>\n{2}"
+# when a tournament ends and there is only one winner
+# {0} winner mention, {1} winner points, {2} other player mentions + points
+tournament_end_one: "The tournament ended \\o/\n\nThe winner is {0} with <b>{1}</b> points.\n\nOther contestants:\n{2}"
+# when a tournament ends with several winners
+# {0} winner mentions + points, {1} other player mentions + points
+tournament_end_several: "The tournament ended \\o/\n\nThe winner are:\n{0}\n\nOther contestants:\n{1}"
+# when an admin aborts a running/starting game
+abort_game: "Game successfully stopped"
+# when someone tries to to abort a game when none is running/starting
+no_game_running: "I am sorry, you can't abort a not running game"
+# when a non admin tries to abort a running/starting game
+no_admin_abort: "You need to be an admin to abort a running game"
+# when a shutdown gets initiated, this message is send to the active players as a warning
+init_shutdown: "I'm sorry for the inconvenience, but I am going to shutdown in 5 minutes. This means that you will loose your \"progress\" if you don't finish the current game. Please head over to @TheChameleon for more information."
+# when a shutdown gets initiated and players are still playing (smh)
+run_shutdown: "The 5 minutes are over, I am sorry that you all lost your progress :("
+# when a shutdown is initiated and players want to start a new game
+group_start_shutdown: "I'm sorry for the inconvenience, but I need to shutdown. Please head over to @TheChameleon for more information."
+# when a non admin tries to change group settings
+no_admin_settings: "You need to be an admin to change group settings. If you are an admin and get this message, run /admins_reload."
+# when a cache reload is issued
+admins_reload: "The admin list has been reloaded!"
+# when an admin has not PMed the bot yet
+no_pm_settings: "You need to start me in private in order to change the group settings. Just press the button below"
+# the button mentioned above
+no_pm_settings_button: "Start"
+# when an admin has PMed the bot, but blocked it (wtf??)
+admin_blocked_bot: "I can't send you a private message, since you blocked me. Please unblock me and try again."
+# the setting message admins of groups greet greeted with in PM
+# {0} is the name of the group, a link if the group has an username
+group_setting_text: "Hey, you want to change the settings of how I work in the group {0}, great. To learn more about the settings, hit /settings_help. You can hit the refresh button to refresh these settings. Use it in case you think another admin changed them."
+# the buttons for group settings. Only translate the strings!
+group_setting_buttons:
+  refresh: "Refresh"
+  language: "Language"
+  deck: "Deck"
+  fewer: "Fewer"
+  more: "More"
+  tournament: "Tournament"
+  pin: "Pin"
+  exclamation: "Exclamation"
+  restrict: "Restrict"
+# shown to the user when he presses refresh in the settings
+group_setting_refresh: "The settings have been refreshed!"
+# change language of a group
+# {0} is the current language
+group_setting_languages: "The current language of your group is <b>{0}</b>. Select the one you want it to change to.\n\nIn case you want to translate a language or report a typo, hit /translation"
+# change deck of a group
+# {0} is the current language
+group_setting_deck_language: "Select the deck you want. Start with the language it should be written in, <b>{0}</b> is the current one of your group."
+# {0} is the current deck
+group_setting_decks: "The current deck of your group is <b>{0}</b>. Select the one you want it to change to.\n\nIn case you want to create a deck or report a typo, hit /deck"
+# activate fewer setting of group
+group_setting_fewer_activate: "The fewer setting is activated!"
+# deactivate fewer setting of group
+group_setting_fewer_deactivate: "The fewer setting is deactivated!"
+# activate more setting of group
+group_setting_more_activate: "The more setting is activated!"
+# deactivate more setting of group
+group_setting_more_deactivate: "The more setting is deactivated!"
+# activate tournament mode of group
+group_setting_tournament_activate: "The tournament mode is activated!"
+# deactivate tournament mode of group
+group_setting_tournament_deactivate: "The tournament mode is deactivated!"
+# activate pin setting of group
+group_setting_pin_activate: "The pin setting is activated!"
+# deactivate pin setting of group
+group_setting_pin_deactivate: "The pin setting is deactivated!"
+# being an admin which can pin is required
+group_setting_pin_required: "I need to be an admin which can pin messages in order to activate this setting"
+# activate restrict mode of group
+group_setting_restrict_activate: "The restrict mode is activated!"
+# deactivate restrict mode of group
+group_setting_restrict_deactivate: "The restrict mode is deactivated!"
+# being an admin which can restrict member is required
+group_setting_restrict_required: "I need to be an admin which can add members, promote admins and restrict members in order to activate this mode"
+# activate exclamation setting of group
+group_setting_exclamation_activate: "Activated, entries with a prepending ! are counted."
+# deactivate exclamation setting of group
+group_setting_exclamation_deactivate: "Deactivated, entries without a prepending ! are counted."
+# if an error happens somewhere, we tell the user about it
+error: "Hey. I regret to inform you that an error happened while I tried to handle your update. My developers will be notified."
+# if a user wants to change their language
+# {0} name of their current language
+private_language: "Hey. Your current language is {0}, select the one you want from the buttons below :)"
+# if a user changed their language
+# {0} name of their selected language
+private_language_selected: "Great, {0} it is from now on!"
+# if a random idiot presses buttons
+user_not_in_game: "Hey, you have to be in the game to do this. Maybe next round?"
+# the rules, presented when someone hasn't played the game yet or runs /game_rules
+rules: "<b>Chameleon - the game</b> <i>(english rules, trimmed to the telegram bot)</i>\n\n
+• After the game starts, one players gets to be the chameleon, the other one are simple players\n
+• A topic and a belonging word list is presented, with a button attached to it\n
+• If you are a player and press this button, one of the words of this list is presented to you (called the secret word) - everybody gets the same ofc. If you are the chameleon, you will be informed about this fact instead\n
+• Now the bot asks one after another about a description of the secret word.\n
+• If you are a player, try to describe the secret word in a way that the chameleon can't guess it; but other players know certainly that you are not the chameleon\n
+• If you are the chameleon, you have to choose a description based on your very limited knowledge. Try to blend in with your choice!\n
+• After everyone said a word, everybody gets to vote on who they think is the chameleon. The role of the one with the most votes gets unmasked\n
+• If it is an ordinary player, the chameleon wins!
+• If it is the chameleon, it will try to guess the secret word. If its guess is indeed correct, it still wins; otherwise the player do!"
+# introduction when there is a new player, prepended to the rules
+rules_prepend: "Oh hello, we have new player(s). The game will start in 30 seconds, let me quickly present the new one(s) the rules:\n\n"
+# used in the strings below
+here: "here"
+# the deck command reply
+# {0} and {1} will be links, instead of the url will the translation of here be used. Tell the group if that's a problem
+deck: "Decks are collection of \"cards\". You can create new decks or change existing ones. They are simple json files. In case you create a new deck, keep in mind that you need to pass two keys: language and name. Language is the language the deck is in, name the name of your deck. Capitalize both. Inside the json file, you define keys, which are the topic of the words, and then create a list with fitting words. Only strings are allowed in the list. 16 words per topic are recommended, but not required. You can look at actual implementations {0} and join us over {1} in case you have questions or want to submit a file."
+# the translation command reply
+# {0} - {2} will be links, instead of the url will the translation of here be used. Tell the group if that's a problem
+translation: "You can translate the whole bot :O The files are .yaml files, they should be edible in every basic text program, but Notepad ++ is a recommendation from me :) If you actually take on this challenge, you can find existing translations {0}. Once you download the base file (en is recommended, since its always the most updated file), rename it with the ISO 639-1 code of your language. The two letter one is recommended, but not enforced. Translate the parts in the quotation marks. In case you want to actually use quotation marks in your strings, escape them like that: <code>\\\"</code> . Let the curly brakes stay and don't change their number. Telegrams formatting is supported with html tags, they worked as described {1}. After you are finished, join us {2} to submit this file or to ask further questions."
+# if the group id is not known. Can happen if someone obfuscates the start command or the groups id changed while the bot is offline
+group_not_found: "Hey, I am sorry, but I can't find your group in my database. Either you are playing tricks here, or its my fault because I was offline. In that case, run /settings from the group chat again :)"
+# start message in private
+greeting_private: "Hey there, I am the Chameleon Bot :) You can play the Chameleon Game with me, just add me to your group. If you want to change the language I speak to you in private, hit /language. And don't forget to smile. At least once in a while."
+# help message in group.
+help_group: "Hey there, you want some help, great. I basically only have three commands in groups you could need:\n/start - start a game\n/settings - [admins only in bigger groups] change the settings of me in the group\n/nextgame - adds (or removes) you from the nextgame list of this group. If you are on it, I will notify you when a game starts\n\nApart from that, I also respond to those commands:\n/abort_game - [admins only in bigger groups] abort a game if there is one running right now\n/admins_reload - since admins are cached for an hour, you might want to run this if the bot doesn't recognize you as an admin, or isn't supposed to do so anymore :O\n/id - show the groups id\n\nIn case you need human help with something, just join us over at @TheChameleonSupport. We will be happy to help."
+# help message in private.
+help_private: "Hey there, you want some help, great. I respond to the following commands in private:\n/language - change the language I speak to you in the private chat\n/settings_help - helps you understand the group settings\n/translation - show you a help message how to do translations\n/deck - show you how to add your own deck\n\nIn case you need human help with something, just join us over at @TheChameleonSupport. We will be happy to help."
+# message which gets send to people in private when a new game is started and they are on the nextgame list
+# {0} group name
+nextgame: "Hello there. A new game just has started in {0} and I bet they would love to have you participating in the fun."
+# message which gets send to people in private which used the /nextgame command and weren't in the list before
+# {0} group name
+nextgame_added: "Hey. You have been added to the nextgame list from the group {0}, I will notify you once a new game will be started. As soon as you participate in a successful game, I will remove you from that list (so I don't spam you unnecessary :). In case you just want yourself to be removed, send the /nextgame command again in the group, I will remove you then"
+# message which gets send to people in private which used the /nextgame command and were in the list before
+# {0} group name
+nextgame_removed: "You have been removed from the nextgame list of the chat {0}"
+# message which gets send to people in the group when they used /nextgame and haven't pmed the bot yet
+nextgame_pm: "Hey. In order to use that command, you need to start me in private. Just hit the button below."
+# message which gets send to people in the group when they used /nextgame and blocked the bot (wtf)
+nextgame_block: "Ey. If you want me to PM you, you shouldn't have blocked me. Unblock me and try again..."
+# message which gets send if someone uses the /settings_help command
+settings_help: "Hey, since there are quite some settings for a group, they are split up. Just use the buttons below to navigate."
+# the following strings are explanations for the settings, triggered by the command above
+language_help: "<b>Language</b>: Change the language of me in your group. If you want to learn more about how you can add your own language, hit /translation"
+deck_help: "<b>Deck</b>: The deck of cards I use in your group. The cards include normally 16 different words, belonging to one topic. I choose randomly a topic and from it the secret word for a round. You can add your own, hit /deck to learn how."
+fewer_help: "<b>Fewer</b>: If only three players are playing (and this is activated), the chameleon, if caught, gets two guesses."
+more_help: "<b>More</b>: If 7 or 8 players are playing (and this is activated), the words vanish once everyone has said their word, making it harder for the chameleon to guess the correct one."
+tournament_help: "<b>Tournament</b>: If this mode is activated, a scoring system is introduced. If the chameleon escapes undetected, it gets two points. If it gets caught and guesses the correct word, it gets one point. If it doesn't, the player get two points each. The first player making it to 5 points wins."
+pin_help: "<b>Pin</b>: Once activated, I will silently pin the word list so players can find it easier once a game is started. I will pin the old pinned message (if existing) silently again when the game ends. In order to activate this setting, you need to make me an admin with pin privileges."
+restrict_help: "<b>Restricting</b>: Once activated, I will restrict everyone from writing except the person whose turn it is during the word saying phase. Everyone can write again after this phase is over. In order for this to work, I will promote those users to admins with add member rights, since admins aren't restricted. The original chat permissions are restored after the phase. In order to activate this setting, you need to make me an admin with add new admins, restrict members and add members privileges. You can read up here if you want to know why: https://t.me/TheChameleonSupport/8\n<i>Attention:</i> Every message counts as word entry in the say-a-word-phase. The exclamation setting is completely ignored."
+exclamation_help: "<b>Exclamation Mark</b>: The exclamation mark is a crucial part of the way your group plays this game. In the standard setting, this is deactivated, meaning that messages without a prepending exclamation mark are counted, while messages beginning with one are ignored. While it feels more natural, this behaviour can lead to false entries, when people continue a conversation they are having. You can change this to activated, which flips that behaviour around. Only messages with a prepending exclamation mark are counted. This feels a bit weird, but effectively eliminates the possibility of false entries.\n<i>Attention:</i> This setting is ignored when the game is in restricted mode, where it is not possible to have a conversation while the game is in the entry phase."
+# the following strings are for stats
+# these will be for private persons, accessible with the inline mode of the bot
+# if someone who has not played the game yet tries to get their stats
+# this will be the title of the result
+private_stats_title: "Get your statistic"
+# this will be the description
+private_stats_description: "Just press me. Doesn't matter what you type"
+# this will be the actual message when they press on the result
+private_stats_text: "<b>Statistics for {0}</b>\n\nGames played: {1} ({11} place of {17} players)\nGames won: {2} ({3}% of all games played)\nGames lost: {4}\nFirst player: {5} ({6}% of the games played)\n\nTournaments played: {12} ({18} place)\nTournaments won: {13} ({14}% of all tournaments)\nTournaments lost: {15}\n\nWas chameleon: {7} ({8}% of the games played)\nWon as chameleon: {9} ({10}% of the time playing as chameleon, {16}% of the general wins)"
+# these are for people playing before the 4. February, where chameleon won was introduced
+# this will be added to the inline message
+private_old_stats: "\n\nP.S.: You played the game before the 4th of February 2020, so your overall stats are a bit different. Please run /stats in PM with me to learn more about this."
+# this will be on the button under the inline result
+private_old_button: "/stats"
+# and this to the /stats command
+private_old_stats_command: "\n\n\nYou have played this game for a long time now. In fact, before the 4th of February 2020 at least. This means, your actual stats are a bit higher then what just were shown. This happened because won as chameleon was introduced on that date, and to keep the rest of the stats together with that new field, a straight cut to your numbers were made. But the old ones are saved and can be presented now:\nBefore the 4th, you:\n\nPlayed {0} games (so overall {1} games)\nWon {2} games (so {3}% before the 4th, overall {4} - {5}%)\nLost {6} games ({7} games overall)\nWere the first player {8} times ({9}% before the 4th, {10} times overall - {11}%)\nAnd you were the chameleon {12} times ({13}% before, {14} times overall - {15}%)\n\nAs you can see, tournaments are not affected (they are counted separately, so you see the whole number), neither are the games started."
+# about groups stats
+group_stats: "This group played {0} games ({2} place of {3} groups) and {1} tournaments ({4} place) \\o/"
+# when someone presses the join button while the game is starting
+join_while_starting: "Hey, the game has already begun, sorry. This button will be removed momentarily."
+# when someone presses an old join button while a different game is running
+join_old_button: "Hey, this is an old button, please use the one from the current game."
+# when someone leaves but the bot faces a flood error
+player_leaves_query_flood: "You left the game!\n\nI am facing a flood timeout and cant edit the message right now, but you did, believe me."
+# when someone joins but the bot faces a flood error
+player_joins_query_flood: "You joined the game!\n\nI am facing a flood timeout and cant edit the message right now, but you did, believe me."
+# when someone joins, already got the callback answered, but the game started before he was added to the list
+# {0} mention of the player
+player_joins_while_starting: "Hey, I am sorry, but you joined a second too late {0}, you missed the game."
