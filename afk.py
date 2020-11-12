@@ -141,7 +141,7 @@ def reply_afk(update, context):
 				since %= 3600
 				m = since // 60
 				since %= 60
-				since = get_string(lang, "since").format(h, s, m, since)
+				since = get_string(lang, "since").format(h, m, since)
 				
 				if not reason:
 					res = "{}\n{}.".format(get_string(lang, "afk").format(fst_name), since)
