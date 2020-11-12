@@ -8,7 +8,7 @@ from telegram.ext import Filters, CommandHandler, MessageHandler
 import afk_sql as sql
 from users import get_user_id
 
-from string import get_string
+from strings import get_string
 
 AFK_GROUP = 1
 AFK_REPLY_GROUP = 2
