@@ -114,9 +114,9 @@ def reply_afk(update, context):
 				since = f"{h} hour(s), {m} minute(s) and {since} second(s)"
 				
 				if not reason:
-					res = "{} is AFK since {}!".format(fst_name, since)
+					res = "{} is AFK.\nSince {}.".format(fst_name, since)
 				else:
-					res = "{} is AFK since {}!\n\nReason:\n{}".format(fst_name, since, reason)
+					res = "{} is AFK. \nSince {}.\n\nReason: {}".format(fst_name, since, reason)
 				
 				m = False
 				
