@@ -1,1 +1,24 @@
 language: "English"
+
+start: "Hello! I’m a simple AFK bot to tell others in a group that you’re (A)way (F)rom (K)eyboard, since when and the reason with some customization if you have specified one whenever they mention or reply you. Send /help to know how to use me.\n\nYou can add me to your group as a normal member to start using me."
+
+add_me: "+ Add Me To Your Group +"
+
+help: "I am a simple bot to help people know that you are Away From Keyboard so that they don't need to be hanging for your reply. \n\nIf anyone replies/mentions you while you are away, I will reply to them that:\n\n    {} is AFK.\n\n    Since <pre>[time]</pre>\n\n    Reason:\n<pre>[reason]</pre>\n\n<b>Syntax</b>: <pre>/afk [reason]</pre>\n\nYou can also include a media (photo/video/gif) to your AFK replies. Just reply <pre>/afk [reason]</pre> to any media to include it in your AFK message. How cooler can it be! 😎"
+
+help_pm: "Click the button to get help in PM!"
+
+help_word: "Help"
+
+alive: "Hey there! I'm alive"
+
+now_afk: "{} is now AFK!"
+
+nol_afk: "{} is no longer AFK!"
+
+afk: "{} is AFK."
+
+since: "\nSince: {}"
+
+reason: "\n\nReason:\n{}"
+
