@@ -6,7 +6,7 @@ languagec: "حسنا. سأتحدث بالعربية هنا."
 
 start: "<b>السلام عليكم!\nأنا بوت لتنبيه الآخرين في المجموعة عندما  تكون أنت غير متصل بالإنترنت ومنذ متى والسبب.</b>\n\nيمكنك إضافتي إلى مجموعتك بدون جعلي مشرف لبدء استخدامي."
 
-add_me: "+ أضفني إلى مجموعتك +"
+add_me: "➕ أضفني إلى مجموعتك ➕"
 
 help: "I am a simple bot to help people know that you are Away From Keyboard so that they don't need to be hanging for your reply. \n\nIf anyone replies/mentions you while you are away, I will reply to them that:\n\n    {} is AFK.\n    Since <code>[time]</code>.\n\n    Reason: <code>[reason]</code>.\n\n<b>Syntax</b>: <code>/afk [reason]</code>\n\nYou can also include a media (photo/video/gif) to your AFK replies. Just reply <code>/afk [reason]</code> to any media to include it in your AFK message. How cooler can it get? 😎"
 
