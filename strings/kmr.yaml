@@ -1,0 +1,29 @@
+language: "Kurmancî"
+
+clanguage: "Ziman hilbijîre."
+
+languagec: "Baş e. Li vir bi Kurmancî diaxvim."
+
+start: "Hello! I'm a simple AFK bot to tell others in a group that you're (A)way (F)rom (K)eyboard, since when and the reason with some customization if you have specified one whenever they mention or reply you. Send /help to know how to use me.\n\nYou can add me to your group as a normal member to start using me."
+
+add_me: "+ Min Tevlî Komê Xwe Bike +"
+
+help: "I am a simple bot to help people know that you are Away From Keyboard so that they don't need to be hanging for your reply. \n\nIf anyone replies/mentions you while you are away, I will reply to them that:\n\n    {} is AFK.\n    Since <code>[time]</code>.\n\n    Reason: <code>[reason]</code>.\n\n<b>Syntax</b>: <code>/afk [reason]</code>\n\nYou can also include a media (photo/video/gif) to your AFK replies. Just reply <code>/afk [reason]</code> to any media to include it in your AFK message. How cooler can it get? 😎"
+
+help_pm: "Click the button to get help in PM!"
+
+help_word: "Alîkarî"
+
+alive: "Silav, ez di jiyan'ê de me."
+
+now_afk: "{} niha derhêl e."
+
+nol_afk: "{} niha serhêl e."
+
+afk: "{} derhêl e."
+
+since: "{} demjimêr, {} xulek û {} çirkê ye derhêl e."
+
+reason: "Ji ber: {}"
+
+not_admin: "Tu ne birêvebir î. :("
