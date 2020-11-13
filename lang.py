@@ -24,6 +24,10 @@ def change_language(update, context):
 	
 	cht, usr, msg = update.effective_chat, update.effective_user, update.effective_message
 	
+	if cht.type != "private":
+		if cht.get_member(usr.id).status not in ("creator", "administrator"):
+			return
+	
 	languages = get_languages()
 	buttons = language_buttons(languages)
 	msg.reply_text(get_string(lang, "clanguage"), reply_markup=InlineKeyboardMarkup(buttons))
