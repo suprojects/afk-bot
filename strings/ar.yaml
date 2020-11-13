@@ -1,0 +1,27 @@
+language: "العربية"
+
+clanguage: "اختر اللغة."
+
+languagec: "حسنا. سأتحدث العربية هنا."
+
+start: "أنا بوت بسيط لأخبر الآخرين في المجموعة أنك لست متصلاً بالإنترنت وسبب عدم اتصالك بالإنترنت.\n\nالاستخدام:\n<pre>/afk</pre> [السبب]"
+
+add_me: "+ أضفني إلى مجموعتك +"
+
+help: "I am a simple bot to help people know that you are Away From Keyboard so that they don't need to be hanging for your reply. \n\nIf anyone replies/mentions you while you are away, I will reply to them that:\n\n    {} is AFK.\n    Since <code>[time]</code>.\n\n    Reason: <code>[reason]</code>.\n\n<b>Syntax</b>: <code>/afk [reason]</code>\n\nYou can also include a media (photo/video/gif) to your AFK replies. Just reply <code>/afk [reason]</code> to any media to include it in your AFK message. How cooler can it get? 😎"
+
+help_pm: "انقر فوق الزر للحصول على المساعدة!"
+
+help_word: "المساعدة"
+
+alive: "الحمد لله، أنا حي."
+
+now_afk: "المستخدم {} غیر متصل الآن."
+
+nol_afk: "المستخدم {} متصل الآن."
+
+afk: "المستخدم {} غير متصل."
+
+since: "منذ {} ساعات، {} دقائق و {} ثوان."
+
+reason: "السبب: {}"
