@@ -31,9 +31,10 @@ def change_language(update, context):
 def selected_language(update, context):
 	query = update.callback_query
 	
-	if query.message.chat.get_member(query.from_user.id).status not in ("creator", "administrator"):
-		query.answer("You're not an admin in this chat. :(", show_alert=True)
-		return
+	if query.message.chat.type != "private":
+		if query.message.chat.get_member(query.from_user.id).status not in ("creator", "administrator"):
+			query.answer("You're not an admin in this chat. :(", show_alert=True)
+			return
 	
 	data = query.data.split("_")
 	selected_lang = data[1]
