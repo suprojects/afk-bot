@@ -25,3 +25,5 @@ afk: "{} is AFK."
 since: "Since {} hour(s), {} minute(s) and {} second(s)."
 
 reason: "Reason: {}"
+
+not_admin: "You're not an admin. :("
