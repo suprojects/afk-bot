@@ -10,7 +10,7 @@ def language_buttons(languages):
 	for language in languages:
 		buttons.append(InlineKeyboardButton(languages[language], callback_data=f"chatlang_{language}"))
 	
-	menu = [buttons[i:i + 3] for i in range(0, len(buttons), 3)]
+	menu = [buttons[i:i + 2] for i in range(0, len(buttons), 2)]
 	
 	return menu
 
