@@ -8,13 +8,13 @@ start: "Hello! I'm a simple AFK bot to tell others in a group that you're (A)way
 
 add_me: "+ Add Me To Your Group +"
 
-help: "I am a simple bot to help people know that you are Away From Keyboard so that they don't need to be hanging for your reply. \n\nIf anyone replies/mentions you while you are away, I will reply to them that:\n\n    {} is AFK.\n    Since <pre>[time]</pre>\n\n    Reason: <pre>[reason]</pre>\n\n<b>Syntax</b>: <pre>/afk [reason]</pre>\n\nYou can also include a media (photo/video/gif) to your AFK replies. Just reply <pre>/afk [reason]</pre> to any media to include it in your AFK message. How cooler can it get? 😎"
+help: "I am a simple bot to help people know that you are Away From Keyboard so that they don't need to be hanging for your reply. \n\nIf anyone replies/mentions you while you are away, I will reply to them that:\n\n    {} is AFK.\n    Since <code>[time]</code>\n\n    Reason: <code>[reason]</code>\n\n<b>Syntax</b>: <code>/afk [reason]</code>\n\nYou can also include a media (photo/video/gif) to your AFK replies. Just reply <code>/afk [reason]</code> to any media to include it in your AFK message. How cooler can it get? 😎"
 
 help_pm: "Click the button to get help in PM!"
 
 help_word: "Help"
 
-alive: "Hey there! I'm alive"
+alive: "Hey there! I'm alive!"
 
 now_afk: "{} is now AFK!"
 
@@ -24,5 +24,5 @@ afk: "{} is AFK."
 
 since: "Since {} hour(s), {} minute(s) and {} second(s)."
 
-reason: "Reason:\n{}"
+reason: "Reason: {}"
 
