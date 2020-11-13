@@ -37,7 +37,7 @@ def selected_language(update, context):
 	
 	data = query.data.split("_")
 	selected_lang = data[1]
-	context.user_data["lang"] = selected_lang
+	context.chat_data["lang"] = selected_lang
 	
 	query.edit_message_text(get_string(selected_lang, "languagec"))
 
