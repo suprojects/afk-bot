@@ -33,11 +33,18 @@ def change_language(update, context):
 	msg.reply_text(get_string(lang, "clanguage"), reply_markup=InlineKeyboardMarkup(buttons))
 
 def selected_language(update, context):
+	chat_data, lang = context.chat_data, None
+	
+	if "lang" not in chat_data:
+		chat_data["lang"] = "en"
+	
+	lang = chat_data["lang"]
+	
 	query = update.callback_query
 	
 	if query.message.chat.type != "private":
 		if query.message.chat.get_member(query.from_user.id).status not in ("creator", "administrator"):
-			query.answer("You're not an admin in this chat. :(", show_alert=True)
+			query.answer(get_string(lang, "not_admin"), show_alert=True)
 			return
 	
 	data = query.data.split("_")
