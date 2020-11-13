@@ -1,8 +1,8 @@
-language: "Kurmancî"
+language: "Kurdî"
 
 clanguage: "Ziman hilbijîre."
 
-languagec: "Baş e. Li vir bi Kurmancî diaxvim."
+languagec: "Baş e. Li vir bi Kurdî diaxvim."
 
 start: "Hello! I'm a simple AFK bot to tell others in a group that you're (A)way (F)rom (K)eyboard, since when and the reason with some customization if you have specified one whenever they mention or reply you. Send /help to know how to use me.\n\nYou can add me to your group as a normal member to start using me."
 
