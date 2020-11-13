@@ -1,4 +1,4 @@
-import threading
+from threading import Timer
 from datetime import datetime
 
 from telegram import Message, Update, User
@@ -14,8 +14,11 @@ AFK_GROUP = 1
 AFK_REPLY_GROUP = 2
 NO_AFK_GROUP = 1
 
-def delm(m):
-	return m.delete()
+def delm(m, r=False):
+	if r:
+		return m.delete()
+	else:
+		return Timer(300, delm, [m, True]).start()
 
 def afk(update, context):
 	chat_data, lang = context.chat_data, None
@@ -50,7 +53,8 @@ def afk(update, context):
 		reason = ""
 	
 	sql.set_afk(usr.id, reason)
-	msg.reply_text(get_string(lang, "now_afk").format(usr.first_name))
+	m=msg.reply_text(get_string(lang, "now_afk").format(usr.first_name))
+	delm(m)
 
 def afk2(update, context):
 	chat_data, lang = context.chat_data, None
@@ -79,7 +83,8 @@ def afk2(update, context):
 		reason = ""
 	
 	sql.set_afk(usr.id, reason)
-	msg.reply_text(get_string(lang, "now_afk").format(usr.first_name))
+	m=msg.reply_text(get_string(lang, "now_afk").format(usr.first_name))
+	delm(m)
 
 def no_longer_afk(update, context):
 	chat_data, lang = context.chat_data, None
@@ -97,7 +102,8 @@ def no_longer_afk(update, context):
 	res = sql.rm_afk(usr.id)
 	
 	if res:
-		msg.reply_text(get_string(lang, "nol_afk").format(usr.first_name))
+		m=msg.reply_text(get_string(lang, "nol_afk").format(usr.first_name))
+		delm(m)
 
 def reply_afk(update, context):
 	chat_data, lang = context.chat_data, None
@@ -171,7 +177,7 @@ def reply_afk(update, context):
 				if not m:
 					m = msg.reply_text(res)
 				
-				threading.Timer(300, delm, [m]).start()
+				delm(m)
 
 AFK_HANDLER = CommandHandler("afk", afk)
 AFK2_HANDLER = MessageHandler(Filters.photo | Filters.video, afk2)
