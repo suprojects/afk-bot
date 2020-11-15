@@ -19,7 +19,7 @@ def main():
     from afk import AFK_HANDLER, AFK2_HANDLER, AFK_GROUP, NO_AFK_GROUP, NO_AFK_HANDLER, AFK_REPLY_HANDLER, AFK_REPLY_GROUP
     from users import USER_HANDLER, USERS_GROUP, AF_HANDLER, BROADCAST_HANDLER, CHATLIST_HANDLER
     from start import START_HANDLER, HELP_HANDLER
-    from lang import CHANGE_LANGUAGE_HANDLER, SELECT_LANGUAGE_HANDLER
+    import lang
 
     if "-r" in sys.argv:
         for SUDO_USER in SUDO_USERS:
@@ -37,8 +37,8 @@ def main():
     dispatcher.add_handler(tg.CommandHandler(
         "r", restart, filters=tg.Filters.user(SUDO_USERS)))
     dispatcher.add_handler(START_HANDLER)
-    dispatcher.add_handler(CHANGE_LANGUAGE_HANDLER)
-    dispatcher.add_handler(SELECT_LANGUAGE_HANDLER)
+    # dispatcher.add_handler(CHANGE_LANGUAGE_HANDLER)
+    # dispatcher.add_handler(SELECT_LANGUAGE_HANDLER)
     dispatcher.add_handler(HELP_HANDLER)
     dispatcher.add_handler(AFK_HANDLER, AFK_GROUP)
     dispatcher.add_handler(AFK2_HANDLER, AFK_GROUP)

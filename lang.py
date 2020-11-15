@@ -1,3 +1,5 @@
+from bot import dispatcher
+
 from telegram.ext import CommandHandler, CallbackQueryHandler
 
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
@@ -61,3 +63,6 @@ def selected_language(update, context):
 
 CHANGE_LANGUAGE_HANDLER = CommandHandler("lang", change_language)
 SELECT_LANGUAGE_HANDLER = CallbackQueryHandler(selected_language)
+
+dispatcher.add_handler(CHANGE_LANGUAGE_HANDLER)
+dispatcher.add_handler(SELECT_LANGUAGE_HANDLER)
