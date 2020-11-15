@@ -1,21 +1,25 @@
-import telegram.ext as tg
+from telegram.ext import PicklePersistence, Updater
 from config import Config
-import sys
-import os
-from threading import Thread
-import importlib
+
 
 TOKEN = Config.API_KEY
 SUDO_USERS = Config.SUDO_USERS
 
 DB_URI = Config.SQLALCHEMY_DATABASE_URI
 
-p = tg.PicklePersistence(filename="data")
-updater = tg.Updater(TOKEN, persistence=p, use_context=True)
+p = PicklePersistence(filename="data")
+updater = Updater(TOKEN, persistence=p, use_context=True)
 dp = updater.dispatcher
 
 
 def main():
+    # if invention isn't this, what invention has to be XD
+    # ;P
+    import sys
+    import os
+    import importlib
+    from threading import Thread
+    from telegram.ext import CommandHandler, Filters
 
     handlers = ('start', 'users', 'afk', 'lang')
 
@@ -28,9 +32,14 @@ def main():
 
     for handler in handlers:
         if len(handler) == 2:
-            dp.add_handler(handler[0], handler[1])
+            dp.add_handler(
+                handler[0],
+                handler[1]
+            )
         else:
-            dp.add_handler(handler[0])
+            dp.add_handler(
+                handler[0]
+            )
 
     if "-r" in sys.argv:
         for SUDO_USER in SUDO_USERS:
@@ -45,8 +54,11 @@ def main():
         update.message.reply_text("Bot is restarting...")
         Thread(target=stop_and_restart).start()
 
-    dp.add_handler(tg.CommandHandler(
-        "r", restart, filters=tg.Filters.user(SUDO_USERS)))
+    dp.add_handler(
+        CommandHandler(
+            "r", restart, filters=Filters.user(SUDO_USERS)
+        )
+    )
 
     updater.start_polling()
     updater.idle()
