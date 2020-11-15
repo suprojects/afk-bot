@@ -2,7 +2,7 @@ import threading
 
 from sqlalchemy import Column, Integer, UnicodeText, String, ForeignKey, UniqueConstraint, func
 
-from bot import dispatcher
+from bot import dp
 from sql import BASE, SESSION
 
 
@@ -34,7 +34,7 @@ INSERTION_LOCK = threading.RLock()
 
 def ensure_bot_in_db():
     with INSERTION_LOCK:
-        bot = Users(dispatcher.bot.id, dispatcher.bot.username)
+        bot = Users(dp.bot.id, dp.bot.username)
         SESSION.merge(bot)
         SESSION.commit()
 

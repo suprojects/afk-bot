@@ -8,7 +8,7 @@ from telegram.error import BadRequest
 from telegram.ext import MessageHandler, Filters, CommandHandler
 
 import users_sql as sql
-from bot import dispatcher, SUDO_USERS
+from bot import dp, SUDO_USERS
 
 USERS_GROUP = 3
 
@@ -33,7 +33,7 @@ def get_user_id(username):
     else:
         for user_obj in users:
             try:
-                userdat = dispatcher.bot.get_chat(user_obj.user_id)
+                userdat = dp.bot.get_chat(user_obj.user_id)
                 if userdat.username == username:
                     return userdat.id
 
