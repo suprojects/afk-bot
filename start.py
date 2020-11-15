@@ -1,16 +1,11 @@
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import CommandHandler, CallbackQueryHandler
 from strings import get_string
+from il import il
 
 
-def start(update, context):
-    chat_data, lang = context.chat_data, None
-
-    if "lang" not in chat_data:
-        chat_data["lang"] = "en"
-
-    lang = chat_data["lang"]
-
+@il
+def start(update, context, lang):
     cht, usr, msg = update.effective_message.chat, update.effective_user, update.effective_message
 
     if cht.type == "private":
@@ -24,7 +19,8 @@ def start(update, context):
         msg.reply_text(get_string(lang, "alive"))
 
 
-def help(update, context):
+@il
+def help(update, context, lang):
     chat_data, lang = context.chat_data, None
 
     if "lang" not in chat_data:

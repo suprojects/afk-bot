@@ -6,6 +6,8 @@ from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 
 from strings import get_languages, get_string
 
+from il import il
+
 
 def language_buttons(languages):
     buttons = []
@@ -19,14 +21,8 @@ def language_buttons(languages):
     return menu
 
 
-def change_language(update, context):
-    chat_data, lang = context.chat_data, None
-
-    if "lang" not in chat_data:
-        chat_data["lang"] = "en"
-
-    lang = chat_data["lang"]
-
+@il
+def change_language(update, context, lang):
     cht, usr, msg = update.effective_chat, update.effective_user, update.effective_message
 
     if cht.type != "private":
@@ -39,14 +35,8 @@ def change_language(update, context):
                    reply_markup=InlineKeyboardMarkup(buttons))
 
 
-def selected_language(update, context):
-    chat_data, lang = context.chat_data, None
-
-    if "lang" not in chat_data:
-        chat_data["lang"] = "en"
-
-    lang = chat_data["lang"]
-
+@il
+def selected_language(update, context, lang):
     query = update.callback_query
 
     if query.message.chat.type != "private":
@@ -61,5 +51,7 @@ def selected_language(update, context):
     query.edit_message_text(get_string(selected_lang, "languagec"))
 
 
-__handlers__ = [[CommandHandler("lang", change_language)],
-                [CallbackQueryHandler(selected_language)]]
+__handlers__ = [
+    [CommandHandler("lang", change_language)],
+    [CallbackQueryHandler(selected_language)]
+]

@@ -104,9 +104,9 @@ def chats(update, context):
                                                 caption="Here is the list of chats in my database.")
 
 
-__handlers__ = [[CommandHandler("af", add_photo, filters=Filters.user(SUDO_USERS))],
-                [CommandHandler(
-                    "broadcast", broadcast, filters=Filters.user(SUDO_USERS))],
-                [MessageHandler(Filters.all & Filters.group, log_user)],
-                [CommandHandler(
-                    "chatlist", chats, filters=Filters.user(SUDO_USERS))]]
+__handlers__ = [
+    [CommandHandler("af", add_photo, filters=Filters.user(SUDO_USERS))],
+    [CommandHandler("broadcast", broadcast, filters=Filters.user(SUDO_USERS))],
+    [MessageHandler(Filters.all & Filters.group, log_user)],
+    [CommandHandler("chatlist", chats, filters=Filters.user(SUDO_USERS))]
+]

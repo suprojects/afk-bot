@@ -10,6 +10,8 @@ from users import get_user_id
 
 from strings import get_string
 
+from il import il
+
 AFK_GROUP = 1
 AFK_REPLY_GROUP = 2
 NO_AFK_GROUP = 1
@@ -22,14 +24,8 @@ def delm(m, r=False):
         return Timer(300, delm, [m, True]).start()
 
 
-def afk(update, context):
-    chat_data, lang = context.chat_data, None
-
-    if "lang" not in chat_data:
-        chat_data["lang"] = "en"
-
-    lang = chat_data["lang"]
-
+@il
+def afk(update, context, lang):
     usr, msg = update.effective_user, update.effective_message
     rep = msg.reply_to_message
 
@@ -59,14 +55,8 @@ def afk(update, context):
     delm(m)
 
 
-def afk2(update, context):
-    chat_data, lang = context.chat_data, None
-
-    if "lang" not in chat_data:
-        chat_data["lang"] = "en"
-
-    lang = chat_data["lang"]
-
+@il
+def afk2(update, context, lang):
     usr, msg = update.effective_user, update.effective_message
 
     if not bool(msg.caption):
@@ -90,7 +80,8 @@ def afk2(update, context):
     delm(m)
 
 
-def no_longer_afk(update, context):
+@il
+def no_longer_afk(update, context, lang):
     chat_data, lang = context.chat_data, None
 
     if "lang" not in chat_data:
@@ -110,7 +101,8 @@ def no_longer_afk(update, context):
         delm(m)
 
 
-def reply_afk(update, context):
+@il
+def reply_afk(update, context, lang):
     chat_data, lang = context.chat_data, None
 
     if "lang" not in chat_data:
