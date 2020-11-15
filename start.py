@@ -44,5 +44,7 @@ def help(update, context):
                        reply_markup=HELP_REPLY_MARKUP)
 
 
-__handlers__ = [[CommandHandler("start", start)].
-                [CommandHandler("help", help)]]
+__handlers__ = [
+    [CommandHandler("start", start)],
+    [CommandHandler("help", help)]
+]
