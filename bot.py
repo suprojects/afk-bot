@@ -11,7 +11,7 @@ DB_URI = Config.SQLALCHEMY_DATABASE_URI
 
 p = tg.PicklePersistence(filename="data")
 updater = tg.Updater(TOKEN, persistence=p, use_context=True)
-dispatcher = updater.dispatcher
+dp = updater.dispatcher
 
 
 def main():
@@ -34,20 +34,20 @@ def main():
         update.message.reply_text("Bot is restarting...")
         Thread(target=stop_and_restart).start()
 
-    dispatcher.add_handler(tg.CommandHandler(
+    dp.add_handler(tg.CommandHandler(
         "r", restart, filters=tg.Filters.user(SUDO_USERS)))
-    dispatcher.add_handler(START_HANDLER)
-    # dispatcher.add_handler(CHANGE_LANGUAGE_HANDLER)
-    # dispatcher.add_handler(SELECT_LANGUAGE_HANDLER)
-    dispatcher.add_handler(HELP_HANDLER)
-    dispatcher.add_handler(AFK_HANDLER, AFK_GROUP)
-    dispatcher.add_handler(AFK2_HANDLER, AFK_GROUP)
-    dispatcher.add_handler(NO_AFK_HANDLER, NO_AFK_GROUP)
-    dispatcher.add_handler(AFK_REPLY_HANDLER, AFK_REPLY_GROUP)
-    dispatcher.add_handler(USER_HANDLER, USERS_GROUP)
-    dispatcher.add_handler(AF_HANDLER)
-    dispatcher.add_handler(BROADCAST_HANDLER)
-    dispatcher.add_handler(CHATLIST_HANDLER)
+    dp.add_handler(START_HANDLER)
+    # dp.add_handler(CHANGE_LANGUAGE_HANDLER)
+    # dp.add_handler(SELECT_LANGUAGE_HANDLER)
+    dp.add_handler(HELP_HANDLER)
+    dp.add_handler(AFK_HANDLER, AFK_GROUP)
+    dp.add_handler(AFK2_HANDLER, AFK_GROUP)
+    dp.add_handler(NO_AFK_HANDLER, NO_AFK_GROUP)
+    dp.add_handler(AFK_REPLY_HANDLER, AFK_REPLY_GROUP)
+    dp.add_handler(USER_HANDLER, USERS_GROUP)
+    dp.add_handler(AF_HANDLER)
+    dp.add_handler(BROADCAST_HANDLER)
+    dp.add_handler(CHATLIST_HANDLER)
     updater.start_polling()
     updater.idle()
 
