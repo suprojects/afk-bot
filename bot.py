@@ -3,10 +3,11 @@ from config import Config
 import sys
 import os
 from threading import Thread
+import importlib
 
 TOKEN = Config.API_KEY
 SUDO_USERS = Config.SUDO_USERS
-#OWNER_USERNAME = Config.OWNER_USERNAME
+
 DB_URI = Config.SQLALCHEMY_DATABASE_URI
 
 p = tg.PicklePersistence(filename="data")
@@ -16,10 +17,20 @@ dp = updater.dispatcher
 
 def main():
 
-    from afk import AFK_HANDLER, AFK2_HANDLER, AFK_GROUP, NO_AFK_GROUP, NO_AFK_HANDLER, AFK_REPLY_HANDLER, AFK_REPLY_GROUP
-    from users import USER_HANDLER, USERS_GROUP, AF_HANDLER, BROADCAST_HANDLER, CHATLIST_HANDLER
-    from start import START_HANDLER, HELP_HANDLER
-    import lang
+    handlers = ('start', 'users', 'afk', 'lang')
+
+    loaded = []
+
+    for handler in handlers:
+        loaded = loaded + importlib.import_module(handler).__handlers__
+
+    handlers = loaded
+
+    for handler in handlers:
+        if len(handler) == 2:
+            dp.add_handler(handler[0], handler[1])
+        else:
+            dp.add_handler(handler[0])
 
     if "-r" in sys.argv:
         for SUDO_USER in SUDO_USERS:
@@ -36,18 +47,7 @@ def main():
 
     dp.add_handler(tg.CommandHandler(
         "r", restart, filters=tg.Filters.user(SUDO_USERS)))
-    dp.add_handler(START_HANDLER)
-    # dp.add_handler(CHANGE_LANGUAGE_HANDLER)
-    # dp.add_handler(SELECT_LANGUAGE_HANDLER)
-    dp.add_handler(HELP_HANDLER)
-    dp.add_handler(AFK_HANDLER, AFK_GROUP)
-    dp.add_handler(AFK2_HANDLER, AFK_GROUP)
-    dp.add_handler(NO_AFK_HANDLER, NO_AFK_GROUP)
-    dp.add_handler(AFK_REPLY_HANDLER, AFK_REPLY_GROUP)
-    dp.add_handler(USER_HANDLER, USERS_GROUP)
-    dp.add_handler(AF_HANDLER)
-    dp.add_handler(BROADCAST_HANDLER)
-    dp.add_handler(CHATLIST_HANDLER)
+
     updater.start_polling()
     updater.idle()
 

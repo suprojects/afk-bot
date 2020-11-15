@@ -61,8 +61,5 @@ def selected_language(update, context):
     query.edit_message_text(get_string(selected_lang, "languagec"))
 
 
-CHANGE_LANGUAGE_HANDLER = CommandHandler("lang", change_language)
-SELECT_LANGUAGE_HANDLER = CallbackQueryHandler(selected_language)
-
-dp.add_handler(CHANGE_LANGUAGE_HANDLER)
-dp.add_handler(SELECT_LANGUAGE_HANDLER)
+__handlers__ = [[CommandHandler("lang", change_language)],
+                [CallbackQueryHandler(selected_language)]]
