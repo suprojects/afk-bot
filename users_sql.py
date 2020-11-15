@@ -16,7 +16,6 @@ class Users(BASE):
         self.username = username
 
 
-
 class Chats(BASE):
     __tablename__ = "chats"
     chat_id = Column(String(14), primary_key=True)
@@ -25,7 +24,6 @@ class Chats(BASE):
     def __init__(self, chat_id, chat_name):
         self.chat_id = str(chat_id)
         self.chat_name = chat_name
-
 
 
 Users.__table__.create(checkfirst=True)
@@ -64,7 +62,6 @@ def update_user(user_id, username, chat_id=None, chat_name=None):
         else:
             chat.chat_name = chat_name
 
-
         SESSION.commit()
 
 
@@ -81,11 +78,13 @@ def get_name_by_userid(user_id):
     finally:
         SESSION.close()
 
+
 def get_all_chats():
     try:
         return SESSION.query(Chats).all()
     finally:
         SESSION.close()
+
 
 def num_chats():
     try:
@@ -100,7 +99,9 @@ def num_users():
     finally:
         SESSION.close()
 
+
 ensure_bot_in_db()
+
 
 def del_user(user_id):
     with INSERTION_LOCK:

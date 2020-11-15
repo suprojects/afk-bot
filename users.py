@@ -14,6 +14,7 @@ USERS_GROUP = 3
 
 FTS = []
 
+
 def get_user_id(username):
     # ensure valid userid
     if len(username) <= 5:
@@ -45,22 +46,23 @@ def get_user_id(username):
 
     return None
 
+
 def add_photo(update, context):
     global FTS
     msg = update.effective_message
     photo = msg.reply_to_message.photo[-1].file_id
     caption = msg.reply_to_message.caption_html
-    
-    
-    FTS.append(InputMediaPhoto(media=photo,caption=caption,parse_mode="HTML"))
-    
+
+    FTS.append(InputMediaPhoto(
+        media=photo, caption=caption, parse_mode="HTML"))
+
 
 def broadcast(update, context):
     global FTS
     msg = update.effective_message
-    
+
     chats = sql.get_all_chats() or []
-    
+
     for chat in chats:
         try:
             context.bot.send_media_group(int(chat.chat_id), FTS)
@@ -69,7 +71,6 @@ def broadcast(update, context):
             pass
     FTS = []
     msg.reply_text("Broadcast complete.")
-
 
 
 def log_user(update, context):
@@ -90,7 +91,6 @@ def log_user(update, context):
     if msg.forward_from:
         sql.update_user(msg.forward_from.id,
                         msg.forward_from.username)
-
 
 
 def chats(update, context):
@@ -129,6 +129,8 @@ __help__ = ""  # no help string
 __mod_name__ = "Users"
 
 AF_HANDLER = CommandHandler("af", add_photo, filters=Filters.user(SUDO_USERS))
-BROADCAST_HANDLER = CommandHandler("broadcast", broadcast, filters=Filters.user(SUDO_USERS))
+BROADCAST_HANDLER = CommandHandler(
+    "broadcast", broadcast, filters=Filters.user(SUDO_USERS))
 USER_HANDLER = MessageHandler(Filters.all & Filters.group, log_user)
-CHATLIST_HANDLER = CommandHandler("chatlist", chats, filters=Filters.user(SUDO_USERS))
+CHATLIST_HANDLER = CommandHandler(
+    "chatlist", chats, filters=Filters.user(SUDO_USERS))
