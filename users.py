@@ -8,7 +8,7 @@ from telegram.error import BadRequest
 from telegram.ext import MessageHandler, Filters, CommandHandler
 
 import users_sql as sql
-from bot import SUDO_USERS
+from bot import dispatcher, SUDO_USERS
 
 USERS_GROUP = 3
 
@@ -16,7 +16,6 @@ FTS = []
 
 
 def get_user_id(username):
-    # ensure valid userid
     if len(username) <= 5:
         return None
 
@@ -74,8 +73,8 @@ def broadcast(update, context):
 
 
 def log_user(update, context):
-    chat = update.effective_chat  # type: Optional[Chat]
-    msg = update.effective_message  # type: Optional[Message]
+    chat = update.effective_chat
+    msg = update.effective_message
 
     sql.update_user(msg.from_user.id,
                     msg.from_user.username,
@@ -104,29 +103,6 @@ def chats(update, context):
         update.effective_message.reply_document(document=output, filename="chatlist.txt",
                                                 caption="Here is the list of chats in my database.")
 
-
-def __user_info__(user_id):
-    if user_id == dispatcher.bot.id:
-        return """I've seen them in... Wow. Are they stalking me? They're in all the same places I am... oh. It's me."""
-    num_chats = sql.get_user_num_chats(user_id)
-    return """I've seen them in <code>{}</code> chats in total.""".format(num_chats)
-
-
-def __stats__():
-    return "{} users, across {} chats".format(sql.num_users(), sql.num_chats())
-
-
-def __gdpr__(user_id):
-    sql.del_user(user_id)
-
-
-def __migrate__(old_chat_id, new_chat_id):
-    sql.migrate_chat(old_chat_id, new_chat_id)
-
-
-__help__ = ""  # no help string
-
-__mod_name__ = "Users"
 
 AF_HANDLER = CommandHandler("af", add_photo, filters=Filters.user(SUDO_USERS))
 BROADCAST_HANDLER = CommandHandler(
