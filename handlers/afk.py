@@ -6,7 +6,7 @@ from telegram import MessageEntity
 from telegram.ext import Filters, CommandHandler, MessageHandler
 
 from sql import afk_sql as sql
-from users import get_user_id
+from handlers.users import get_user_id
 
 from strings import get_string
 from il import il
