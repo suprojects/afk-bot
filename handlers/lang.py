@@ -42,7 +42,7 @@ def selected_language(update, context, lang):
     query = update.callback_query
 
     if query.message.chat.type != "private":
-        if query.message.chat.get_member(query.from_user.id).status not in ("creator", "administrator"):
+        if query.message.chat.get_member(query.from_user.id).status not in ("creator", "administrator") and usr.id not in Config.SUDO_USERS:
             query.answer(get_string(lang, "not_admin"), show_alert=True)
             return
 
