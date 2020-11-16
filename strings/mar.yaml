@@ -4,7 +4,13 @@ clanguage: "तुमची भाषा निवडा"
 
 languagec: "आपली भाषा मराठी केलेली आहे"
 
-start: "Hey there.\n\nI am a simple AFK Bot. I tell users that you are away if you are, so they don't need to be hanging for your reply.\n\nCheck /help."
+start: "
+नमस्कार.\n\n
+
+मी एक वापरण्यास सोपा असा बॉट आहे. मी इतरांना तुम्ही उपलब्ध नसाल तर तसे सांगेल, ज्यामुळे ते लोकं तुमच्या उत्तराची वाट बघत बसणार नाहीत.\n\n
+
+मदत: /help
+"
 
 add_me: "➕ मला तुमच्या ग्रुपमध्ये ऍड करा ➕"
 
