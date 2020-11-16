@@ -9,8 +9,7 @@ start: "Hey there.\n\nI am a simple AFK Bot. I tell users that you are away if y
 add_me: "➕ Add Me To Your Group ➕"
 
 help: "I tell people in your group that you are currently (A)way (F)rom (K)eyboard if they tag/reply to you. You can include a customizable reasone for your AFK Reply.
-\n\n<b>❓ How to mark yourself as AFK ❓</b>\nSend <code>/afk [reason]</code> to any group in which I am a member. If you do not want to disturb others in the group, you can also PM me.\n\n
-
+\n\n<b>❓ How to mark yourself as AFK ❓</b>\nSend <code>/afk [reason]</code> to any group in which I am a member. If you do not want to disturb others in the group, you can also PM me.\n
 
 <b>Additional Features 🌟</b>\n
 1. You can include a media (photo/video/gif) to your AFK reply message. Just reply to a media with the AFK command. You can also send a media with <code>/afk [reason]</code> in its caption.\n
