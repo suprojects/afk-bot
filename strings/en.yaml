@@ -8,12 +8,14 @@ start: "Hey there.\n\nI am a simple AFK Bot. I tell users that you are away if y
 
 add_me: "➕ Add Me To Your Group ➕"
 
-help: "I tell people in your group that you are currently (A)way (F)rom (K)eyboard if they tag/reply to you. You can include a customizable reasone for your AFK Reply.
-\n\n<b>❓ How to mark yourself as AFK ❓</b>\nSend <code>/afk [reason]</code> to any group in which I am a member. If you do not want to disturb others in the group, you can also PM me.\n
+help: "I tell people in your group that you are currently (A)way (F)rom (K)eyboard if they tag/reply to you. You can include a customizable reasone for your AFK Reply.\n\n
 
-<b>Additional Features 🌟</b>\n
-1. You can include a media (photo/video/gif) to your AFK reply message. Just reply to a media with the AFK command. You can also send a media with <code>/afk [reason]</code> in its caption.\n
-2. Every message from the bot will be automatically deleted in 300 seconds (5 minutes) to keep your group spam-free."
+<b>❓ How to mark yourself as AFK ❓</b>\n
+Send <code>/afk [reason]</code> to any group in which I am a member in. If you do not want to disturb others in the group, you can also PM me the same command.\n
+
+<b>🌟 Additional Features 🌟</b>\n
+- 🌁 You can include a media (photo/video/gif) to your AFK reply message. Just reply to a media with the AFK command. You can also send a media with <code>/afk [reason]</code> in its caption.\n
+- 🗑 Every message from the bot will be automatically deleted in 300 seconds (5 minutes) to keep your group spam-free."
 
 help_pm: "Click the button to get help in PM!"
 
