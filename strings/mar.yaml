@@ -4,6 +4,17 @@ clanguage: "तुमची भाषा निवडा"
 
 languagec: "आपली भाषा मराठी केलेली आहे"
 
+start: "Hey there.\n\nI am a simple AFK Bot. I tell users that you are away if you are, so they don't need to be hanging for your reply.\n\nCheck /help."
+
+add_me: "➕ मला तुमच्या ग्रुपमध्ये ऍड करा ➕"
+
+help: "I tell people in your group that you are currently (A)way (F)rom (K)eyboard if they tag/reply to you. You can include a customizable reason for your AFK Reply.\n\n
+<b>❓ How to mark yourself as AFK ❓</b>\n
+Send <code>/afk [reason]</code> to any group in which I am a member in. If you do not want to disturb others in the group, you can also PM me the same command.\n
+<b>🌟 Additional Features 🌟</b>\n
+- 🌁 You can include a media (photo/video/gif) to your AFK reply message. Just reply to a media with the AFK command. You can also send a media with <code>/afk [reason]</code> in its caption.\n
+- 🗑 Every message from the bot will be automatically deleted in 300 seconds (5 minutes) to keep your group spam-free."
+
 help_pm: "प्रायव्हेट चाटमध्ये मदत मिळविण्यासाठी ह्या बटनावर क्लीक करा"
 
 help_word: "मदत"
