@@ -107,6 +107,6 @@ def chats(update, context):
 __handlers__ = [
     [CommandHandler("af", add_photo, filters=Filters.user(SUDO_USERS))],
     [CommandHandler("broadcast", broadcast, filters=Filters.user(SUDO_USERS))],
-    [MessageHandler(Filters.all & Filters.group, log_user), 7],
+    [MessageHandler(Filters.all & Filters.group, log_user), 5],
     [CommandHandler("chatlist", chats, filters=Filters.user(SUDO_USERS))]
 ]
