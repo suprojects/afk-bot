@@ -98,14 +98,6 @@ def no_longer_afk(update, context, lang):
 
 @il
 def reply_afk(update, context, lang):
-    print("yo")
-    chat_data, lang = context.chat_data, None
-
-    if "lang" not in chat_data:
-        chat_data["lang"] = "en"
-
-    lang = chat_data["lang"]
-
     usr, msg = update.effective_user, update.effective_message
 
     entities = msg.parse_entities(
