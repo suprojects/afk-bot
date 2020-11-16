@@ -178,8 +178,8 @@ def reply_afk(update, context, lang):
 
 
 __handlers__ = [
-    [CommandHandler("afk", afk), AFK_GROUP],
-    [MessageHandler(Filters.photo | Filters.video, afk2), AFK_GROUP],
-    [MessageHandler(Filters.all & Filters.group, no_longer_afk), NO_AFK_GROUP],
-    [MessageHandler(Filters.all, reply_afk), AFK_REPLY_GROUP]
+    [CommandHandler("afk", afk)],
+    [MessageHandler(Filters.photo | Filters.video, afk2), 4],
+    [MessageHandler(Filters.all & Filters.group, no_longer_afk), 5],
+    [MessageHandler(Filters.all, reply_afk), 6]
 ]
