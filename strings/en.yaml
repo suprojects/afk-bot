@@ -12,10 +12,10 @@ help: "I tell people in your group that you are currently <b>A</b>way <b>F</b>ro
 \n\n
 <b>How to mark yourself as AFK?</b> - Send <code>/afk [reason]</code> to any group in which I am a member. If you do not want to disturb others in the group, you can also PM me <code>/afk [reason]</code>.
 \n\n
-<b>Additional Features</b> -
+<b>Additional Features</b>
 \n
 1. You can include a media (photo/video/gif) to your AFK reply message. Reply to a media with <code>/afk [reason]</code> and it will be replied to the reply message. You can also send a media with <code>/afk [reason]</code> in its caption. 
-2. Every message from the bot will be automatically deleted in 300 seconds (5 minutes) to keep your group spam-free 🗑.
+2. Every message from the bot will be automatically deleted in 300 seconds (5 minutes) to keep your group spam-free 🗑."
 
 help_pm: "Click the button to get help in PM!"
 
