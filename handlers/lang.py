@@ -8,6 +8,8 @@ from strings import get_languages, get_string
 
 from il import il
 
+from config import Config
+
 
 def language_buttons(languages):
     buttons = []
@@ -26,7 +28,7 @@ def change_language(update, context, lang):
     cht, usr, msg = update.effective_chat, update.effective_user, update.effective_message
 
     if cht.type != "private":
-        if cht.get_member(usr.id).status not in ("creator", "administrator"):
+        if cht.get_member(usr.id).status not in ("creator", "administrator") or usr.id bot in Config.SUDO_USERS:
             return
 
     languages = get_languages()
