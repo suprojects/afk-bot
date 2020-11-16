@@ -5,16 +5,11 @@ from telegram import Message, Update, User
 from telegram import MessageEntity
 from telegram.ext import Filters, CommandHandler, MessageHandler
 
-import afk_sql as sql
+from sql import afk_sql as sql
 from users import get_user_id
 
 from strings import get_string
-
 from il import il
-
-AFK_GROUP = 1
-AFK_REPLY_GROUP = 2
-NO_AFK_GROUP = 1
 
 
 def delm(m, r=False):
@@ -110,7 +105,7 @@ def reply_afk(update, context, lang):
 
     lang = chat_data["lang"]
 
-    cht, usr, msg = update.effective_chat, update.effective_user, update.effective_message
+    usr, msg = update.effective_user, update.effective_message
 
     entities = msg.parse_entities(
         [MessageEntity.TEXT_MENTION, MessageEntity.MENTION])

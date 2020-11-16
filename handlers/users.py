@@ -7,7 +7,7 @@ from telegram import Update, Bot
 from telegram.error import BadRequest
 from telegram.ext import MessageHandler, Filters, CommandHandler
 
-import users_sql as sql
+from sql import users_sql as sql
 from bot import dp, SUDO_USERS
 
 USERS_GROUP = 3
@@ -41,7 +41,7 @@ def get_user_id(username):
                 if excp.message == 'Chat not found':
                     pass
                 else:
-                    LOGGER.exception("Error extracting user ID")
+                    print("Error extracting user ID")
 
     return None
 

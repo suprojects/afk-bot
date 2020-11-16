@@ -13,33 +13,11 @@ dp = updater.dispatcher
 
 
 def main():
-    # if invention isn't this, what invention has to be XD
-    # ;P
     import sys
     import os
-    import importlib
     from threading import Thread
     from telegram.ext import CommandHandler, Filters
-
-    handlers = ('start', 'users', 'afk', 'lang')
-
-    loaded = []
-
-    for handler in handlers:
-        loaded = loaded + importlib.import_module(handler).__handlers__
-
-    handlers = loaded
-
-    for handler in handlers:
-        if len(handler) == 2:
-            dp.add_handler(
-                handler[0],
-                handler[1]
-            )
-        else:
-            dp.add_handler(
-                handler[0]
-            )
+    from handlers import all_handlers
 
     if "-r" in sys.argv:
         for SUDO_USER in SUDO_USERS:
@@ -53,6 +31,17 @@ def main():
     def restart(update, context):
         update.message.reply_text("Bot is restarting...")
         Thread(target=stop_and_restart).start()
+
+    for handler in all_handlers:
+        if len(handler) == 2:
+            dp.add_handler(
+                handler[0],
+                handler[1]
+            )
+        else:
+            dp.add_handler(
+                handler[0]
+            )
 
     dp.add_handler(
         CommandHandler(

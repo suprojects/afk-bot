@@ -2,9 +2,19 @@ language: "فارسی"
 
 clanguage: "زبانی رو انتخاب كن."
 
-languagec: "خوبه، اينجا فارسی صحبت ميكنم."
+languagec: "باشە، اينجا فارسی صحبت ميكنم."
 
-start: "Hello! I'm a simple AFK bot to tell others in a group that you're (A)way (F)rom (K)eyboard, since when and the reason with some customization if you have specified one whenever they mention or reply you. Send /help to know how to use me.\n\nYou can add me to your group as a normal member to start using me."
+start: "Hello! 
+<b>I'm a simple AFK bot 
+to tell others in a group 
+that you're (A)way (F)rom (K)eyboard, 
+since when and the reason</b> 
+with some customization 
+if you specify one 
+whenever they mention or reply you. 
+Send /help to know how to use me.\n\n
+You can add me to your group 
+as a normal member to start using me."
 
 add_me: "➕ به گروهت اضافم كن ➕"
 
@@ -14,7 +24,7 @@ help_pm: "Click the button to get help in PM!"
 
 help_word: "کمک"
 
-alive: "سلام. من زنده هستم."
+alive: "سلام! من زنده هستم."
 
 now_afk: "کاربر {} حالا آفلاین است."
 

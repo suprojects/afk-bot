@@ -5,12 +5,12 @@ clanguage: "Choose a language."
 languagec: "OK. I'll speak English here."
 
 start: "Hello! 
-I'm a simple AFK bot 
+<b>I'm a simple AFK bot 
 to tell others in a group 
 that you're (A)way (F)rom (K)eyboard, 
-since when and the reason 
+since when and the reason</b> 
 with some customization 
-if you have specified one 
+if you specify one 
 whenever they mention or reply you. 
 Send /help to know how to use me.\n\n
 You can add me to your group 
@@ -18,9 +18,9 @@ as a normal member to start using me."
 
 add_me: "➕ Add Me To Your Group ➕"
 
-help: "I am a simple bot 
+help: "<b>I am a simple bot 
 to help people know 
-that you are Away From Keyboard 
+that you are Away From Keyboard</b> 
 so that they don't need to be 
 hanging for your reply.\n\n
 If anyone replies/mentions you 

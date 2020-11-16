@@ -4,7 +4,17 @@ clanguage: "भाषा चुनें।"
 
 languagec: "ठीक है। मैं यहां हिंदी में बात करूंगा।"
 
-start: "."
+start: "Hello! 
+<b>I'm a simple AFK bot 
+to tell others in a group 
+that you're (A)way (F)rom (K)eyboard, 
+since when and the reason</b> 
+with some customization 
+if you specify one 
+whenever they mention or reply you. 
+Send /help to know how to use me.\n\n
+You can add me to your group 
+as a normal member to start using me."
 
 add_me: "➕ मुझे अपने समूह में जोड़ें ➕"
 
@@ -26,4 +36,4 @@ since: "{} घंटे, {} मिनट और {} सेकंड के बा
 
 reason: "कारण:\n{}"
 
-not_admin: "आप एडमिन नहीं हैं."
+not_admin: "आप एडमिन नहीं हैं।"
