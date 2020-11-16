@@ -11,11 +11,16 @@ add_me: "➕ Add Me To Your Group ➕"
 help: "I tell people in your group that you are currently (A)way (F)rom (K)eyboard if they tag/reply to you. You can include a customizable reason for your AFK Reply.\n\n
 
 <b>❓ How to mark yourself as AFK ❓</b>\n
-Send <code>/afk [reason]</code> to any group in which I am a member in. If you do not want to disturb others in the group, you can also PM me the same command.\n
+Send <code>/afk [reason]</code> to any group in which I am a member in. If you do not want to disturb others in the group, you can also PM me the same command.\n\n
+
+<b>Commands</b> \n
+1️⃣ /afk - Use <code>/afk [reason]</code> to mark yourself as AFK.
+2️⃣ Send any message in any group to mark are yourself as back online.
+3️⃣ /lang - Send <code>/lang</code> in your group to change the language of the bot in your group.\n\n
 
 <b>🌟 Additional Features 🌟</b>\n
-- 🌁 You can include a media (photo/video/gif) to your AFK reply message. Just reply to a media with the AFK command. You can also send a media with <code>/afk [reason]</code> in its caption.\n
-- 🗑 Every message from the bot will be automatically deleted in 300 seconds (5 minutes) to keep your group spam-free."
+➖ 🌁 You can include a media (photo/video/gif) to your AFK reply message. Just reply to a media with the AFK command. You can also send a media with <code>/afk [reason]</code> in its caption.\n
+➖ 🗑 Every message from the bot will be automatically deleted in 300 seconds (5 minutes) to keep your group spam-free."
 
 help_pm: "Click the button to get help in PM!"
 
