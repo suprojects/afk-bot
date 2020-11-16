@@ -4,42 +4,18 @@ clanguage: "Choose a language."
 
 languagec: "OK. I'll speak English here."
 
-start: "Hello! 
-<b>I'm a simple AFK bot 
-to tell others in a group 
-that you're (A)way (F)rom (K)eyboard, 
-since when and the reason</b> 
-with some customization 
-if you specify one 
-whenever they mention or reply you. 
-Send /help to know how to use me.\n\n
-You can add me to your group 
-as a normal member to start using me."
+start: "Hey there 👋. I am a simple AFK Bot. I tell users that you are away if you are, so they don't need to be hanging for your reply. Check on /help to learn about my features.
 
 add_me: "➕ Add Me To Your Group ➕"
 
-help: "<b>I am a simple bot 
-to help people know 
-that you are Away From Keyboard</b> 
-so that they don't need to be 
-hanging for your reply.\n\n
-If anyone replies/mentions you 
-while you are away, 
-I will reply them like this:\n\n
-    {} is AFK.\n
-    Since <pre>[time]</pre>.\n\n
-    Reason: <pre>[reason]</pre>.\n\n
-
-<b>Syntax</b>: <pre>/afk [reason]</pre>\n\n
-
-You can also include a media (photo/video/gif) 
-to your AFK replies. 
-Just reply <code>/afk [reason]</code> 
-to any media to include it 
-in your AFK reply messages. 
-You can also send a media 
-with <code>/afk [reason]</code> as its caption. 
-How cooler can it get? 😎"
+help: "I tell people in your group that you are currently <b>A</b>way <b>F</b>rom <b>K</b>eyboard if they tag/reply to you. You can include a customizable reasone for your AFK Reply.
+\n\n
+<b>How to mark yourself as AFK?</b> - Send <code>/afk [reason]</code> to any group in which I am a member. If you do not want to disturb others in the group, you can also PM me <code>/afk [reason]</code>.
+\n\n
+<b>Additional Features</b> -
+\n
+1. You can include a media (photo/video/gif) to your AFK reply message. Reply to a media with <code>/afk [reason]</code> and it will be replied to the reply message. You can also send a media with <code>/afk [reason]</code> in its caption. 
+2. Every message from the bot will be automatically deleted in 300 seconds (5 minutes) to keep your group spam-free 🗑.
 
 help_pm: "Click the button to get help in PM!"
 
@@ -55,6 +31,6 @@ afk: "{} is AFK."
 
 since: "Since {} hour(s), {} minute(s) and {} second(s)."
 
-reason: "Reason:\n{}"
+reason: "Reason: {}"
 
-not_admin: "You're not an admin."
+not_admin: "You're not an admin 🤦‍♂️"
