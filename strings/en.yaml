@@ -8,7 +8,7 @@ start: "Hey there.\n\nI am a simple AFK Bot. I tell users that you are away if y
 
 add_me: "➕ Add Me To Your Group ➕"
 
-help: "I tell people in your group that you are currently (A)way (F)rom (K)eyboard if they tag/reply to you. You can include a customizable reasone for your AFK Reply.\n\n
+help: "I tell people in your group that you are currently (A)way (F)rom (K)eyboard if they tag/reply to you. You can include a customizable reason for your AFK Reply.\n\n
 
 <b>❓ How to mark yourself as AFK ❓</b>\n
 Send <code>/afk [reason]</code> to any group in which I am a member in. If you do not want to disturb others in the group, you can also PM me the same command.\n
