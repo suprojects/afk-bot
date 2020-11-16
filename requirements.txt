@@ -1,7 +1,3 @@
-future
-emoji
-requests
-sqlalchemy
 python-telegram-bot
+sqlalchemy
 psycopg2-binary
-feedparser
