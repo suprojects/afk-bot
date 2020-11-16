@@ -14,8 +14,8 @@ help: "I tell people in your group that you are currently (A)way (F)rom (K)eyboa
 Send <code>/afk [reason]</code> to any group in which I am a member in. If you do not want to disturb others in the group, you can also PM me the same command.\n\n
 
 <b>Commands</b> \n
-1️⃣ /afk - Use <code>/afk [reason]</code> to mark yourself as AFK.
-2️⃣ Send any message in any group to mark are yourself as back online.
+1️⃣ /afk - Use <code>/afk [reason]</code> to mark yourself as AFK.\n
+2️⃣ Send any message in any group to mark are yourself as back online.\n
 3️⃣ /lang - Send <code>/lang</code> in your group to change the language of the bot in your group.\n\n
 
 <b>🌟 Additional Features 🌟</b>\n
