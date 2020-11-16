@@ -1,4 +1,4 @@
-language: "English 🇬🇧"
+language: "🇺🇸 English 🇬🇧"
 
 clanguage: "Choose a language below."
 
@@ -31,6 +31,6 @@ afk: "{} is AFK."
 
 since: "Since {} hour(s), {} minute(s) and {} second(s)."
 
-reason: "Reason: {}"
+reason: "Reason:\n{}"
 
 not_admin: "You're not an admin 😐"
