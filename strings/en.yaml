@@ -4,8 +4,7 @@ clanguage: "Choose a language below."
 
 languagec: "Sure, I'll speak English here."
 
-start: "Hey there. 👋\n
-I am a simple AFK Bot. I tell users that you are away if you are, so they don't need to be hanging for your reply. Check /help.."
+start: "Hey there.\nI am a simple AFK Bot. I tell users that you are away if you are, so they don't need to be hanging for your reply. Check /help.."
 
 add_me: "➕ Add Me To Your Group ➕"
 
