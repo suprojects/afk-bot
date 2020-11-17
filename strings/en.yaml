@@ -34,8 +34,8 @@ nol_afk: "{} is no longer AFK."
 
 afk: "{} is AFK."
 
-since: "Since {} hour(s), {} minute(s) and {} second(s)."
+since: "Since {} hour(s), {} minute(s) and {} second(s) ⌛️."
 
 reason: "Reason:\n{}"
 
-not_admin: "You're not an admin 😐"
+not_admin: "You're not an admin 🤷‍♂️"
