@@ -1,4 +1,6 @@
+import os
+
 class Config():
     SUDO_USERS = [951435494, 1178472788]
     API_KEY = "1453748650:AAHkjH_5E_NF8QmmlseKxjB-DXLALQz5-EE"
-    SQLALCHEMY_DATABASE_URI = "sqlite:///main.db" 
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
