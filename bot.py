@@ -49,7 +49,7 @@ def main():
         )
     )
 
-    updater.start_polling()
+    updater.start_polling(clean=True)
     updater.idle()
 
 
