@@ -13,8 +13,28 @@ def start(update, context, lang):
             msg.reply_text(get_string(lang, "help").format(
                 usr.first_name), parse_mode="HTML")
         else:
-            msg.reply_text(get_string(lang, "start"), reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(get_string(
-                lang, "add_me"), url="http://t.me/{}?startgroup=botstart".format(context.bot.username))]]), parse_mode="HTML")
+            msg.reply_text(get_string(lang, "start"),
+                           reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(
+                            get_string(
+                                lang,
+                                "add_me"
+                            ),
+                            url="http://t.me/{}?startgroup=botstart".format(
+                                context.bot.username)
+                        )
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="Join our Channel 🔈", url="http://t.me/su_Bots"),
+                        InlineKeyboardButton(
+                            text="Discussion Group 💬", url="https://t.me/su_BotsChat"),
+                    ]
+                ]
+            ),
+                parse_mode="HTML")
     else:
         msg.reply_text(get_string(lang, "alive"))
 
