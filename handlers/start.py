@@ -13,7 +13,7 @@ def start(update, context, lang):
             msg.reply_text(get_string(lang, "help").format(
                 usr.first_name), parse_mode="HTML")
         else:
-            msg.reply_text(get_string(lang, "start"),
+            msg.reply_text(get_string(lang, "start") + "\nA 語言 أ Ñ Ê Ó ێ ツ » /lang",
                            reply_markup=InlineKeyboardMarkup(
                 [
                     [
