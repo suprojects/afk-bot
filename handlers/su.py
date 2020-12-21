@@ -63,8 +63,8 @@ def broadcast(update, context):
     )
 
 
-def chats(update, context):
-    all_chats = cs()
+def chatlist(update, context):
+    all_chats = cs(True)
     chatfile = "List of chats.\n"
 
     for chat in all_chats:
@@ -125,7 +125,7 @@ __handlers__ = [
     [
         CommandHandler(
             "chatlist",
-            chats,
+            chatlist,
             filters=SUDO
         )
     ],

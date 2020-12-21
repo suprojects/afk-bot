@@ -4,10 +4,15 @@ from bot import dp
 import sql.users_sql as sql
 
 
-def chats():
-    return [
-        chat.chat_id for chat in sql.get_all_chats()
-    ]
+def chats(wname=False):
+    if not wname:
+        return [
+            chat.chat_id for chat in sql.get_all_chats()
+        ]
+    else:
+        return [
+            chat for chat in sql.get_all_chats()
+        ]
 
 
 def get_user_id(username):
