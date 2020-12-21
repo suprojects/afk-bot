@@ -4,7 +4,7 @@ import config
 
 
 def clean(update, context):
-    chats = [chat.id for chat in get_all_chats()]
+    chats = [chat.chat_id for chat in get_all_chats()]
     
     for chat in chats:
         try:
