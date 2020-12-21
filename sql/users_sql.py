@@ -1,6 +1,6 @@
 import threading
 
-from sqlalchemy import Column, Integer, UnicodeText, String, ForeignKey, UniqueConstraint, func
+from sqlalchemy import Column, Integer, UnicodeText, String
 
 from bot import dp
 from sql import BASE, SESSION
@@ -114,6 +114,7 @@ def del_user(user_id):
         SESSION.commit()
         SESSION.close()
     return False
+
 
 def del_chat(chat_id):
     with INSERTION_LOCK:
