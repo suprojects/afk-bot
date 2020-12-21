@@ -1,6 +1,7 @@
 from io import BytesIO
 from time import sleep
 from telegram.ext import CommandHandler, MessageHandler, Filters
+from telergam.error import BadRequest
 
 from secrets import SUDO
 import sql.users_sql as sql
@@ -14,12 +15,13 @@ def cleandb(update, context):
     for chat in chats:
         try:
             context.bot.get_chat(chat)
-        except:
-            try:
-                sql.del_chat(chat)
-                count += 1
-            except:
-                pass
+        except BadRequest as excp:
+            if excp.message == "Chat not found":
+                try:
+                    sql.del_chat(chat)
+                    count += 1
+                except:
+                    pass
 
     update.message.reply_text(
         "Database cleaning finished.\n"
