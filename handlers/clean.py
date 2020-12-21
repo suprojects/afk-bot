@@ -3,7 +3,7 @@ from sql.users_sql import get_all_chats, del_chat
 import config
 
 
-def clean(update, context, lang):
+def clean(update, context):
     chats = [chat.id for chat in get_all_chats()]
     
     for chat in chats:
