@@ -8,7 +8,7 @@ from strings import get_languages, get_string
 
 from il import il
 
-from config import Config
+from secrets import SUDO_USERS
 
 
 def language_buttons(languages):
@@ -29,7 +29,7 @@ def change_language(update, context, lang):
 
     if cht.type != "private":
         if cht.get_member(usr.id).status not in ("creator", "administrator"):
-            if usr.id not in Config.SUDO_USERS:
+            if usr.id not in SUDO_USERS:
                 return
 
     languages = get_languages()
@@ -44,7 +44,7 @@ def selected_language(update, context, lang):
 
     if query.message.chat.type != "private":
         if query.message.chat.get_member(query.from_user.id).status not in ("creator", "administrator"):
-            if query.from_user.id not in Config.SUDO_USERS:
+            if query.from_user.id not in SUDO_USERS:
                 query.answer(get_string(lang, "not_admin"), show_alert=True)
                 return
 

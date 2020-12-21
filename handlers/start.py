@@ -10,55 +10,99 @@ def start(update, context, lang):
 
     if cht.type == "private":
         if "help" in msg.text:
-            msg.reply_text(get_string(lang, "help").format(
-                usr.first_name), parse_mode="HTML")
+            msg.reply_text(
+                get_string(
+                    lang,
+                    "help"
+                ).format(
+                    usr.first_name
+                ),
+                parse_mode="HTML"
+            )
         else:
-            msg.reply_text(get_string(lang, "start") + "\nA 語言 أ Ñ Ê Ó ێ ツ » /lang",
-                           reply_markup=InlineKeyboardMarkup(
+            msg.reply_text(
+                get_string(
+                    lang,
+                    "start"
+                ) + "\n語 أ Ñ Ê ێ ツ » /lang",
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(
+                                get_string(
+                                    lang,
+                                    "add_me"
+                                ),
+                                url="http://t.me/{}?startgroup=lang_{}".format(
+                                    context.bot.username, lang)
+                            )
+                        ]
+                    ]
+                ),
+                parse_mode="HTML"
+            )
+    else:
+        if "lang" in msg.text:
+            lang = msg.text.split("_")[-1]
+            context.bot_data["lang"] = lang
+
+        msg.reply_text(
+            get_string(
+                lang,
+                "alive"
+            )
+        )
+
+
+@il
+def help(update, context, lang):
+    cht, usr, msg = update.effective_message.chat, update.effective_user, update.effective_message
+
+    if cht.type == "private":
+        msg.reply_text(
+            get_string(
+                lang,
+                "help"
+            ).format(
+                usr.first_name
+            ),
+            parse_mode="HTML"
+        )
+    else:
+        msg.reply_text(
+            get_string(
+                lang,
+                "help_pm"
+            ),
+            reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(
                             get_string(
                                 lang,
-                                "add_me"
+                                "help_word"
                             ),
-                            url="http://t.me/{}?startgroup=lang_{}".format(
-                                context.bot.username, lang)
+                            url="http://t.me/{}?start=help".format(
+                                context.bot.username
+                            )
                         )
                     ]
                 ]
-            ),
-                parse_mode="HTML")
-    else:
-        if "lang" in msg.text:
-            lang = msg.text.split("_")[-1]
-            context.bot_data["lang"] = lang
-            
-        msg.reply_text(get_string(lang, "alive"))
-
-
-@il
-def help(update, context, lang):
-    chat_data, lang = context.chat_data, None
-
-    if "lang" not in chat_data:
-        chat_data["lang"] = "en"
-
-    lang = chat_data["lang"]
-
-    cht, usr, msg = update.effective_message.chat, update.effective_user, update.effective_message
-
-    if cht.type == "private":
-        msg.reply_text(get_string(lang, "help").format(
-            usr.first_name), parse_mode="HTML")
-    else:
-        HELP_REPLY_MARKUP = InlineKeyboardMarkup([[InlineKeyboardButton(get_string(
-            lang, "help_word"), url="http://t.me/{}?start=help".format(context.bot.username))]])
-        msg.reply_text(get_string(lang, "help_pm"),
-                       reply_markup=HELP_REPLY_MARKUP)
+            )
+        )
 
 
 __handlers__ = [
-    [CommandHandler("start", start)],
-    [CommandHandler("help", help)]
+    [
+        CommandHandler(
+            "start",
+            start
+        )
+    ],
+    [
+        CommandHandler(
+            "help",
+            help
+        )
+    ]
 ]

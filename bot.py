@@ -1,14 +1,15 @@
 from telegram.ext import PicklePersistence, Updater
-from config import Config
+from secrets import BOT_TOKEN
 
 
-TOKEN = Config.API_KEY
-SUDO_USERS = Config.SUDO_USERS
-
-DB_URI = Config.SQLALCHEMY_DATABASE_URI
-
-p = PicklePersistence(filename="data")
-updater = Updater(TOKEN, persistence=p, use_context=True)
+p = PicklePersistence(
+    filename="data"
+)
+updater = Updater(
+    BOT_TOKEN,
+    persistence=p,
+    use_context=True
+)
 dp = updater.dispatcher
 
 
@@ -18,6 +19,7 @@ def main():
     from threading import Thread
     from telegram.ext import CommandHandler, Filters
     from handlers import all_handlers
+    from secrets import SUDO_USERS, SUDO
 
     if "-r" in sys.argv:
         for SUDO_USER in SUDO_USERS:
@@ -45,7 +47,7 @@ def main():
 
     dp.add_handler(
         CommandHandler(
-            "r", restart, filters=Filters.user(SUDO_USERS)
+            "r", restart, filters=SUDO
         )
     )
 

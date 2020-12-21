@@ -1,13 +1,10 @@
 from threading import Timer
 from datetime import datetime
-
-from telegram import Message, Update, User
 from telegram import MessageEntity
 from telegram.ext import Filters, CommandHandler, MessageHandler
 
-from sql import afk_sql as sql
-from handlers.users import get_user_id
-
+import sql.afk_sql as sql
+from sql.users_helper import get_user_id
 from strings import get_string
 from il import il
 
@@ -111,7 +108,10 @@ def reply_afk(update, context, lang):
                 fst_name = ent.user.first_name
             elif ent.type == MessageEntity.MENTION:
                 user_id = get_user_id(
-                    msg.text[ent.offset:ent.offset + ent.length])
+                    msg.text[
+                        ent.offset:ent.offset + ent.length
+                    ]
+                )
                 if not user_id:
                     return
                 fst_name = context.bot.get_chat(user_id).first_name
@@ -137,11 +137,26 @@ def reply_afk(update, context, lang):
                 since = get_string(lang, "since").format(h, m, since)
 
                 if not reason:
-                    res = "{}\n{}".format(get_string(
-                        lang, "afk").format(fst_name), since)
+                    res = "{}\n{}".format(
+                        get_string(
+                            lang,
+                            "afk"
+                        ).format(
+                            fst_name
+                        ),
+                        since
+                    )
                 else:
-                    res = "{}\n{}\n\n{}".format(get_string(lang, "afk").format(
-                        fst_name), since, get_string(lang, "reason").format(reason))
+                    res = "{}\n{}\n\n{}".format(
+                        get_string(
+                            lang,
+                            "afk"
+                        ).format(
+                            fst_name
+                        ), since, get_string(lang, "reason").format(
+                            reason
+                        )
+                    )
 
                 m = False
 
@@ -173,6 +188,7 @@ def reply_afk(update, context, lang):
 __handlers__ = [
     [CommandHandler("afk", afk), 7],
     [MessageHandler(Filters.photo | Filters.video, afk2), 7],
-    [MessageHandler(Filters.all & ~Filters.status_update & Filters.group, no_longer_afk), 7],
+    [MessageHandler(Filters.all & ~Filters.status_update &
+                    Filters.group, no_longer_afk), 7],
     [MessageHandler(Filters.all, reply_afk), 8]
 ]
