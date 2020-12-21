@@ -1,16 +1,21 @@
 from io import BytesIO
 from time import sleep
 from telegram.ext import CommandHandler, MessageHandler, Filters
-from telegram.error import BadRequest
+from telegram.error import BadRequest, RetryAfter
 
 from secrets import SUDO
 import sql.users_sql as sql
+from sql.afk_sql import num_afk
 from sql.users_helper import chats as cs
 
 
 def cleandb(update, context):
     chats = cs()
     count = 0
+
+    msg = update.message.reply_text(
+        "Cleaning..."
+    )
 
     for chat in chats:
         try:
@@ -22,10 +27,17 @@ def cleandb(update, context):
                     count += 1
                 except:
                     pass
+        except RetryAfter as excp:
+            msg.edit_text(
+                "Stopped. RetryAfter: {}".format(
+                    excp.message
+                )
+            )
+            break
 
     update.message.reply_text(
         "Database cleaning finished.\n"
-        f"Removed {count} chats from database."
+        f"Removed {count} chat(s) from database."
     )
 
 
@@ -60,14 +72,14 @@ def broadcast(update, context):
 
     msg.reply_text(
         "Broadcast complete.\n"
-        f"Sent the message to {sent} chats.\n"
-        f"Failed to send the message to {failed} chats."
+        f"Sent the message to {sent} chat(s).\n"
+        f"Failed to send the message to {failed} chat(s)."
     )
 
 
 def chatlist(update, context):
     all_chats = cs(True)
-    chatfile = "List of chats.\n"
+    chatfile = "List of chat(s).\n"
 
     for chat in all_chats:
         chatfile += "{} - ({})\n".format(
@@ -84,15 +96,16 @@ def chatlist(update, context):
         update.effective_message.reply_document(
             document=output,
             filename="chatlist.txt",
-            caption="Here is the list of chats in my database."
+            caption="Here is the list of chat(s) in my database."
         )
 
 
 def stats(update, context):
     update.effective_message.reply_text(
-        "I have {} users across {} chats.".format(
+        "I have {} user(s) across {} chat(s).\n{} user(s) are currently AFK.".format(
             sql.num_users(),
-            sql.num_chats()
+            sql.num_chats(),
+            num_afk()
         )
     )
 

@@ -64,6 +64,10 @@ def rm_afk(user_id):
     return False
 
 
+def num_afk():
+    return len(AFK_USERS)
+
+
 def __load_afk_users():
     global AFK_USERS
     try:
