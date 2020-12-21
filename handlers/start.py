@@ -22,8 +22,8 @@ def start(update, context, lang):
                                 lang,
                                 "add_me"
                             ),
-                            url=f"http://t.me/{}?startgroup=lang_{lang}".format(
-                                context.bot.username)
+                            url="http://t.me/{}?startgroup=lang_{}".format(
+                                context.bot.username, lang)
                         )
                     ]
                 ]
