@@ -32,7 +32,7 @@ def start(update, context, lang):
     else:
         if "lang" in msg.text:
             lang = msg.text.split("_")[-1]
-            context.bot_dat["lang"] = lang
+            context.bot_data["lang"] = lang
             
         msg.reply_text(get_string(lang, "alive"))
 
