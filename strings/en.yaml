@@ -15,7 +15,7 @@ Send <code>/afk [reason]</code> to any group in which I am a member in. If you d
 
 <b>Commands</b> \n
 1️⃣ /afk - Use <code>/afk [reason]</code> to mark yourself as AFK.\n
-2️⃣ Send any message in any group to mark are yourself as back online.\n
+2️⃣ Send any message in any group after the AFK command to mark yourself as online again.\n
 3️⃣ /lang - Send <code>/lang</code> in your group to change the language of the bot in your group.\n\n
 
 <b>🌟 Additional Features 🌟</b>\n
