@@ -19,9 +19,6 @@ class AFK(BASE):
         self.is_afk = is_afk
         self.since = since
 
-    def __repr__(self):
-        return "afk_status for {}".format(self.user_id)
-
 
 AFK.__table__.create(checkfirst=True)
 
