@@ -22,7 +22,7 @@ def start(update, context, lang):
                                 lang,
                                 "add_me"
                             ),
-                            url="http://t.me/{}?startgroup=botstart".format(
+                            url=f"http://t.me/{}?startgroup=lang_{lang}".format(
                                 context.bot.username)
                         )
                     ]
@@ -30,6 +30,10 @@ def start(update, context, lang):
             ),
                 parse_mode="HTML")
     else:
+        if "lang" in msg.text:
+            lang = msg.text.split("_")[-1]
+            context.bot_dat["lang"] = lang
+            
         msg.reply_text(get_string(lang, "alive"))
 
 
