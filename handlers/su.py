@@ -1,7 +1,7 @@
 from io import BytesIO
 from time import sleep
 from telegram.ext import CommandHandler, MessageHandler, Filters
-from telergam.error import BadRequest
+from telegram.error import BadRequest
 
 from secrets import SUDO
 import sql.users_sql as sql
