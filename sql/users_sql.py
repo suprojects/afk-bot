@@ -115,7 +115,7 @@ def del_user(user_id):
         SESSION.close()
     return False
 
-def del_chat(user_id):
+def del_chat(chat_id):
     with INSERTION_LOCK:
         curr = SESSION.query(Chats).get(chat_id)
         if curr:
