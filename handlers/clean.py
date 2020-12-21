@@ -1,4 +1,4 @@
-from telegram.ext import CommandHandler
+from telegram.ext import CommandHandler, Filters
 from sql.users_sql import get_all_chats, del_chat
 import config
 
