@@ -25,12 +25,6 @@ def start(update, context, lang):
                             url="http://t.me/{}?startgroup=botstart".format(
                                 context.bot.username)
                         )
-                    ],
-                    [
-                        InlineKeyboardButton(
-                            text="Join our Channel 🔈", url="http://t.me/su_Bots"),
-                        InlineKeyboardButton(
-                            text="Discussion Group 💬", url="https://t.me/su_BotsChat"),
                     ]
                 ]
             ),
