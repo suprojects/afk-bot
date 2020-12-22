@@ -30,7 +30,6 @@ def cleandb(update, context):
                 )
             )
             context.bot.get_chat(chat)
-            sleep(5)
         except BadRequest as excp:
             if excp.message == "Chat not found":
                 try:
@@ -40,11 +39,11 @@ def cleandb(update, context):
                     pass
         except RetryAfter as excp:
             msg.edit_text(
-                "Stopped. RetryAfter: {}".format(
-                    excp.message
+                "Flood error, sleeping for {}.".format(
+                    excp.retry_after
                 )
             )
-            break
+            sleep(excp.retry_after)
 
     update.message.reply_text(
         "Database cleaning finished.\n"
