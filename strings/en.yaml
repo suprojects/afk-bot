@@ -40,7 +40,7 @@ reason: "Reason:\n{0}"
 
 not_admin: "You are not an admin 👮🏻‍♀️"
 
-status_afk: "You are AFK {0} hour(s), {1} minute(s) and {2} second(s).\n\nYou didn't provide any reasons."
+status_afk: "You are AFK since {0} hour(s), {1} minute(s) and {2} second(s).\n\nYou didn't provide any reasons."
 
 status_afk_reason: "You are AFK since {0} hour(s), {1} minute(s) and {2} second(s).\n\nReason:\n{3}"
 
