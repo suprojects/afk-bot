@@ -1,7 +1,7 @@
 from io import BytesIO
 from time import sleep
 from telegram.ext import CommandHandler, MessageHandler, Filters
-from telegram.error import BadRequest, RetryAfter
+from telegram.error import Unauthorized, RetryAfter
 
 from secrets import SUDO
 import sql.users_sql as sql
@@ -30,8 +30,8 @@ def cleandb(update, context):
                 )
             )
             context.bot.get_chat(chat)
-        except BadRequest as excp:
-            if excp.message == "Chat not found":
+        except Unauthorized as excp:
+            if "kicked" in excp.message:
                 try:
                     sql.del_chat(chat)
                     count += 1
@@ -39,7 +39,7 @@ def cleandb(update, context):
                     pass
         except RetryAfter as excp:
             msg.edit_text(
-                "Flood error, sleeping for {}.".format(
+                "Flood error, sleeping for {} seconds.".format(
                     excp.retry_after
                 )
             )
