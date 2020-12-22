@@ -140,16 +140,12 @@ def afk2(update, context, lang):
 
 @il
 def no_longer_afk(update, context, lang):
-    chat_data, lang = context.chat_data, None
-
-    if "lang" not in chat_data:
-        chat_data["lang"] = "en"
-
-    lang = chat_data["lang"]
-
     usr, msg = update.effective_user, update.effective_message
 
     if not usr:
+        return
+
+    if "#afk" in msg.text:
         return
 
     valid, reason, since = sql.check_afk_status(usr.id)
