@@ -29,27 +29,22 @@ def status(update, context, lang):
         m = since // 60
         since %= 60
         media = context.bot_data.get(usr.id, False)
-        text = None
-
-        if reason:
-            text = get_string(
-                lang,
-                "status_afk_reason"
-            ).format(
-                h,
-                m,
-                since,
-                reason
-            )
-        else:
-            text = get_string(
-                lang,
-                "status_afk"
-            ).format(
-                h,
-                m,
-                since
-            )
+        text = get_string(
+            lang,
+            "status_afk_reason"
+        ).format(
+            h,
+            m,
+            since,
+            reason
+        ) if reason else get_string(
+            lang,
+            "status_afk"
+        ).format(
+            h,
+            m,
+            since
+        )
 
         if text:
             if media:
