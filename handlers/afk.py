@@ -37,7 +37,7 @@ def status(update, context, lang):
             m,
             since,
             reason
-        ) if reason else get_string(
+        ) if reason.strip().rstrip() != "" else get_string(
             lang,
             "status_afk"
         ).format(
