@@ -43,7 +43,8 @@ def set_afk(user_id, reason=""):
         else:
             curr.is_afk = True
             curr.reason = reason
-            curr.since = datetime.utcnow()
+            if not curr.since:
+                curr.since = datetime.utcnow()
         AFK_USERS[user_id] = [reason, curr.since]
         SESSION.add(curr)
         SESSION.commit()

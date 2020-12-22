@@ -28,14 +28,20 @@ help_word: "Help"
 
 alive: "Hey there! I'm alive!"
 
-now_afk: "{} is now AFK."
+now_afk: "{0} is now AFK."
 
-nol_afk: "{} is no longer AFK."
+back_online: "{0} is no longer AFK, was AFK for {1} hour(s), {2} minute(s) and {3} second(s)."
 
-afk: "{} is AFK."
+afk: "{0} is AFK."
 
-since: "⏳ Since {} hour(s), {} minute(s) and {} second(s)."
+since: "⏳ Since {0} hour(s), {1} minute(s) and {2} second(s)."
 
-reason: "Reason:\n{}"
+reason: "Reason:\n{0}"
 
-not_admin: "You're not an admin 👮🏻‍♀️"
+not_admin: "You are not an admin 👮🏻‍♀️"
+
+status_afk: "You are AFK."
+
+status_afk_reason: "You are AFK, reason:\n{0}"
+
+status_not_afk: "You are not AFK."

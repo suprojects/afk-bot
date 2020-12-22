@@ -17,6 +17,35 @@ def delm(m, r=False):
 
 
 @il
+def status(update, context, lang):
+    usr, msg = update.effective_user, update.effective_message
+    valid, reason, since = sql.check_afk_status(usr.id)
+
+    if valid:
+        if reason:
+            msg.reply_text(
+                get_string(
+                    lang,
+                    "status_afk_reason"
+                )
+            )
+        else:
+            msg.reply_text(
+                get_string(
+                    lang,
+                    "status_afk"
+                )
+            )
+    else:
+        msg.reply_text(
+            get_string(
+                lang,
+                "status_not_afk"
+            )
+        )
+
+
+@il
 def afk(update, context, lang):
     usr, msg = update.effective_user, update.effective_message
     rep = msg.reply_to_message
@@ -86,11 +115,34 @@ def no_longer_afk(update, context, lang):
     if not usr:
         return
 
-    res = sql.rm_afk(usr.id)
+    valid, reason, since = sql.check_afk_status(usr.id)
 
-    if res:
-        m = msg.reply_text(get_string(lang, "nol_afk").format(usr.first_name))
-        delm(m)
+    if valid:
+        res = sql.rm_afk(usr.id)
+        since = datetime.utcnow() - since
+        since = int(since.total_seconds())
+        h = since // 3600
+        since %= 3600
+        m = since // 60
+        since %= 60
+
+        if res:
+            m = msg.reply_text(
+                get_string(
+                    lang, "back_online"
+                ).format(
+                    usr.first_name,
+                    h,
+                    m,
+                    since
+                ) + "\n\n" + get_string(
+                    lang,
+                    "reason"
+                ).format(
+                    reason
+                )
+            )
+            delm(m)
 
 
 @il
@@ -98,7 +150,8 @@ def reply_afk(update, context, lang):
     usr, msg = update.effective_user, update.effective_message
 
     entities = msg.parse_entities(
-        [MessageEntity.TEXT_MENTION, MessageEntity.MENTION])
+        [MessageEntity.TEXT_MENTION, MessageEntity.MENTION]
+    )
     user_id = None
 
     if msg.entities and entities:
@@ -186,9 +239,45 @@ def reply_afk(update, context, lang):
 
 
 __handlers__ = [
-    [CommandHandler("afk", afk), 7],
-    [MessageHandler(Filters.photo | Filters.video, afk2), 7],
-    [MessageHandler(Filters.all & ~Filters.status_update &
-                    Filters.group, no_longer_afk), 7],
-    [MessageHandler(Filters.all, reply_afk), 8]
+    [
+        CommandHandler(
+            "afk",
+            afk
+        ),
+        7
+    ],
+    [
+        MessageHandler(
+            Filters.photo |
+            Filters.video,
+            afk2
+        ),
+        7
+    ],
+    [
+        CommandHandler(
+            "status",
+            status
+        ),
+        7
+    ],
+    [
+        MessageHandler(
+            (
+                Filters.all & ~
+                Filters.status_update & ~
+                Filters.command
+            ) &
+            Filters.chat_type.groups,
+            no_longer_afk
+        ),
+        7
+    ],
+    [
+        MessageHandler(
+            Filters.all,
+            reply_afk
+        ),
+        8
+    ]
 ]
