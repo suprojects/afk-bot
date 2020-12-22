@@ -37,7 +37,7 @@ def main():
     for handler in all_handlers:
         if len(handler) == 2:
             if handler[0] == "error":
-                dp.add_handler(
+                dp.add_error_handler(
                     handler[1]
                 )
             else:
