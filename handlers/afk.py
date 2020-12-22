@@ -53,7 +53,6 @@ def status(update, context, lang):
                         media,
                         caption=text
                     )
-                    return
                 except:
                     try:
                         msg.reply_photo(
@@ -70,6 +69,10 @@ def status(update, context, lang):
                             return
                         except:
                             return
+            else:
+                msg.reply_text(
+                    text
+                )
     else:
         msg.reply_text(
             get_string(
