@@ -145,8 +145,12 @@ def no_longer_afk(update, context, lang):
     if not usr:
         return
 
-    if "#afk" in msg.text:
-        return
+    if msg.text:
+        if "#afk" in msg.text:
+            return
+    elif msg.caption:
+        if "#afk" in msg.caption:
+            return
 
     valid, reason, since = sql.check_afk_status(usr.id)
 
