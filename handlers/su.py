@@ -44,10 +44,10 @@ def cleandb(update, context):
 def broadcast(update, context):
     msg = update.effective_message
 
-    to_broadcast = msg.text.replace(
-        "/broadcast ",
-        ""
-    )
+    to_broadcast = msg.text.split(" ")
+    del to_broadcast[0]
+    to_broadcast = " ".join(to_broadcast)
+    to_broadcast = to_broadcast.strip().rstrip()
 
     if len(to_broadcast) == 0:
         msg.reply_text(
@@ -62,7 +62,7 @@ def broadcast(update, context):
     for chat in chats:
         try:
             context.bot.send_message(
-                int(chat.chat_id),
+                int(chat),
                 to_broadcast
             )
             sleep(0.5)
