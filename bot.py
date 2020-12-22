@@ -36,10 +36,15 @@ def main():
 
     for handler in all_handlers:
         if len(handler) == 2:
-            dp.add_handler(
-                handler[0],
-                handler[1]
-            )
+            if handler[0] == "error":
+                dp.add_handler(
+                    handler[1]
+                )
+            else:
+                dp.add_handler(
+                    handler[0],
+                    handler[1]
+                )
         else:
             dp.add_handler(
                 handler[0]
