@@ -300,11 +300,10 @@ __handlers__ = [
     ],
     [
         MessageHandler(
-            (
-                Filters.all & ~
-                Filters.status_update & ~
-                Filters.command
-            ) &
+            Filters.all &
+            (~ Filters.status_update) &
+            (~ Filters.command)
+            &
             Filters.chat_type.groups,
             no_longer_afk
         ),
