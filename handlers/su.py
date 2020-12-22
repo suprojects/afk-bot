@@ -177,7 +177,7 @@ __handlers__ = [
     ],
     [
         MessageHandler(
-            Filters.all & Filters.group,
+            Filters.all & Filters.chat_type.groups,
             log_user
         ),
         5
