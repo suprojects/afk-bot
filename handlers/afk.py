@@ -18,7 +18,8 @@ def delm(m, r=False):
 
 @il
 def status(update, context, lang):
-    usr, msg = update.effective_user, update.effective_message
+    msg = update.effective_message
+    usr = update.effective_user if not msg.reply_to_message else msg.reply_to_message.from_user
     valid, reason, since = sql.check_afk_status(usr.id)
 
     if valid:
