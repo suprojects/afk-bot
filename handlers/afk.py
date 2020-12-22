@@ -22,20 +22,59 @@ def status(update, context, lang):
     valid, reason, since = sql.check_afk_status(usr.id)
 
     if valid:
+        since = datetime.utcnow() - since
+        since = int(since.total_seconds())
+        h = since // 3600
+        since %= 3600
+        m = since // 60
+        since %= 60
+        media = context.bot_data.get(usr.id, False)
+        text = None
+
         if reason:
-            msg.reply_text(
-                get_string(
-                    lang,
-                    "status_afk_reason"
-                )
+            text = get_string(
+                lang,
+                "status_afk_reason"
+            ).format(
+                h,
+                m,
+                since,
+                reason
             )
         else:
-            msg.reply_text(
-                get_string(
-                    lang,
-                    "status_afk"
-                )
+            text = get_string(
+                lang,
+                "status_afk"
+            ).format(
+                h,
+                m,
+                since
             )
+
+        if text:
+            if media:
+                try:
+                    msg.reply_video(
+                        media,
+                        caption=text
+                    )
+                    return
+                except:
+                    try:
+                        msg.reply_photo(
+                            media,
+                            caption=text
+                        )
+                        return
+                    except:
+                        try:
+                            msg.reply_document(
+                                media,
+                                caption=text
+                            )
+                            return
+                        except:
+                            return
     else:
         msg.reply_text(
             get_string(
