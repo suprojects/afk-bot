@@ -11,6 +11,7 @@ from sql.users_helper import chats as cs
 
 def cleandb(update, context):
     chats = cs()
+    f = 0
     count = 0
 
     msg = update.message.reply_text(
@@ -19,7 +20,17 @@ def cleandb(update, context):
 
     for chat in chats:
         try:
+            f += 1
+            msg.edit_text(
+                "Cleaning... {}/{}".format(
+                    f,
+                    len(
+                        chats
+                    )
+                )
+            )
             context.bot.get_chat(chat)
+            sleep(5)
         except BadRequest as excp:
             if excp.message == "Chat not found":
                 try:
