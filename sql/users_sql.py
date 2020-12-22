@@ -1,6 +1,6 @@
 import threading
 
-from sqlalchemy import Column, Integer, UnicodeText, String
+from sqlalchemy import Column, Integer, UnicodeText, String, func
 
 from bot import dp
 from sql import BASE, SESSION
