@@ -35,7 +35,7 @@ Error:
         pass
 
 
-handlers = [
+__handlers__ = [
     [
         "error",
         error
