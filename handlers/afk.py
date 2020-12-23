@@ -10,6 +10,8 @@ from il import il
 
 
 def delm(m, r=False):
+    if m.chat.type == "private":
+        return
     if r:
         return m.delete()
     else:
@@ -49,29 +51,37 @@ def status(update, context, lang):
         if text:
             if media:
                 try:
-                    msg.reply_video(
-                        media,
-                        caption=text
+                    delm(
+                        msg.reply_video(
+                            media,
+                            caption=text
+                        )
                     )
                 except:
                     try:
-                        msg.reply_photo(
-                            media,
-                            caption=text
+                        delm(
+                            msg.reply_photo(
+                                media,
+                                caption=text
+                            )
                         )
                         return
                     except:
                         try:
-                            msg.reply_document(
-                                media,
-                                caption=text
+                            delm(
+                                msg.reply_document(
+                                    media,
+                                    caption=text
+                                )
                             )
                             return
                         except:
                             return
             else:
-                msg.reply_text(
-                    text
+                delm(
+                    msg.reply_text(
+                        text
+                    )
                 )
     else:
         msg.reply_text(

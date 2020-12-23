@@ -22,18 +22,6 @@ Error:
         )
     )
 
-    try:
-        if context.error.message == "Have no rights to send a message":
-            chat.leave()
-            del_chat(chat.id)
-        else:
-            update.message.reply_text(
-                "An unexpected error occured.\n"
-                "Logs were sent to developers."
-            )
-    except:
-        pass
-
 
 __handlers__ = [
     [
