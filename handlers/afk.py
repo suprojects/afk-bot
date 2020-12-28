@@ -236,7 +236,7 @@ def reply_afk(update, context, lang):
                 since %= 60
                 since = get_string(lang, "since").format(h, m, since)
 
-                if not reason:
+                if not reason or len(reason.rstrip().strip()) == 0:
                     res = "{}\n{}".format(
                         get_string(
                             lang,
