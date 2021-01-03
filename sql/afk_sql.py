@@ -10,12 +10,12 @@ class AFK(BASE):
 
     user_id = Column(Integer, primary_key=True)
     is_afk = Column(Boolean)
-    reason = Column(UnicodeText)
+    reason = Column(UnicodeText, nullable=True)
     since = Column(DateTime)
 
-    def __init__(self, user_id, since, reason="", is_afk=True):
+    def __init__(self, user_id, since, reason=None, is_afk=True):
         self.user_id = user_id
-        self.reason = reason
+        self.reason = reason if len(reason) != 0 else None
         self.is_afk = is_afk
         self.since = since
 
@@ -32,10 +32,10 @@ def is_afk(user_id):
 def check_afk_status(user_id):
     if user_id in AFK_USERS:
         return True, AFK_USERS[user_id][0], AFK_USERS[user_id][1]
-    return False, "", None
+    return False, None, None
 
 
-def set_afk(user_id, reason=""):
+def set_afk(user_id, reason=None):
     try:
         curr = SESSION.query(AFK).get(user_id)
         if not curr:
@@ -56,7 +56,7 @@ def set_afk(user_id, reason=""):
 def rm_afk(user_id):
     curr = SESSION.query(AFK).get(user_id)
     if curr:
-        if user_id in AFK_USERS:  # sanity check
+        if user_id in AFK_USERS:
             del AFK_USERS[user_id]
             SESSION.delete(curr)
             SESSION.commit()
