@@ -182,12 +182,12 @@ def no_longer_afk(update, context, lang):
                     h,
                     m,
                     since
-                ) + "\n\n" + get_string(
+                ) + ("\n\n" + get_string(
                     lang,
                     "reason"
                 ).format(
                     reason
-                )
+                ) if reason else "")
             )
             delm(m)
 

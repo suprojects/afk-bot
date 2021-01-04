@@ -30,18 +30,18 @@ alive: "Hey there! I'm alive!"
 
 now_afk: "{0} is now AFK."
 
-back_online: "{0} is no longer AFK, was AFK for {1} hour(s), {2} minute(s) and {3} second(s)."
+back_online: "{0} is no longer AFK, was AFK for {1}h {2}m {3}s."
 
 afk: "{0} is AFK."
 
-since: "⏳ Since {0} hour(s), {1} minute(s) and {2} second(s)."
+since: "⏱ Since {0}h {1}s {2}s."
 
-reason: "Reason:\n{0}"
+reason: "Reason:\n<code>{0}</code>"
 
 not_admin: "You are not an admin 👮🏻‍♀️"
 
-status_afk: "You are AFK since {0} hour(s), {1} minute(s) and {2} second(s).\n\nYou didn't provide any reasons."
+status_afk: "You are AFK since {0}h {1}m {2}s.\n\nYou didn't provide any reasons."
 
-status_afk_reason: "You are AFK since {0} hour(s), {1} minute(s) and {2} second(s).\n\nReason:\n{3}"
+status_afk_reason: "You are AFK since {0}h {1}m {2}s.\n\nReason:\n{3}"
 
 status_not_afk: "You are not AFK."

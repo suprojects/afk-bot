@@ -1,14 +1,19 @@
-from telegram.ext import PicklePersistence, Updater
+from telegram.ext import PicklePersistence, Updater, Defaults
 from secrets import BOT_TOKEN
 
 
 p = PicklePersistence(
     filename="data"
 )
+d = Defaults(
+    parse_mode=True,
+    quote=False
+)
 updater = Updater(
     BOT_TOKEN,
     persistence=p,
-    use_context=True
+    use_context=True,
+    defaults=d
 )
 dp = updater.dispatcher
 
