@@ -34,9 +34,9 @@ back_online: "{0} is no longer AFK, was AFK for {1}h {2}m {3}s."
 
 afk: "{0} is AFK."
 
-since: "⏱ Since {0}h {1}s {2}s."
+since: "⏱ Last seen: {0}h {1}s {2}s ago."
 
-reason: "Reason:\n<code>{0}</code>"
+reason: "Reason: <code>{0}</code>"
 
 not_admin: "You are not an admin 👮🏻‍♀️"
 
