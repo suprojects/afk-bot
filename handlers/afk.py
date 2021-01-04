@@ -23,7 +23,7 @@ def delm(m, u=None, r=False):
             MESSAGES_FOR_DELETION[m.chat.id] = {}
         if u in MESSAGES_FOR_DELETION[m.chat.id]:
             r = MESSAGES_FOR_DELETION[m.chat.id][u].delete()
-            del MESSAGES_FOR_DELETION[m.chat.id][u]
+            MESSAGES_FOR_DELETION[m.chat.id][u] = m
             return r
         MESSAGES_FOR_DELETION[m.chat.id][u] = m
         return Timer(300, delm, [m, True]).start()
