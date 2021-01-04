@@ -26,23 +26,51 @@ help_pm: "Click the button to get help in PM!"
 
 help_word: "Help"
 
-alive: "Hey there! I'm alive!"
+alive:
+  - "Hey there! I'm alive!"
+  - "Hi there! I'm alive!"
+  - "Hey! I'm alive!"
+  - "Hello! I'm alive!"
+  - "Hello there! I'm alive!"
+  - "I'm alive, thank my God (server)."
 
-now_afk: "{0} is now AFK."
+now_afk:
+  - "{0} is now AFK."
+  - "{0} just went AFK."
+  - "{0} is offline now."
+  - "{0} is not online now."
+  - "{0} is not reachable at the current moment."
+  - "{0} is no longer online."
 
-back_online: "{0} is no longer AFK, was AFK for {1}h {2}m {3}s."
+back_online:
+  - "{0} is no longer AFK, was AFK for {1}h {2}m {3}s."
+  - "{0} is no longer offline, was AFK for {1}h {2}m {3}s."
+  - "{0} is no longer offline, was offline for {1}h {2}m {3}s."
+  - "{0} is online now, was offline for {1}h {2}m {3}s."
+  - "{0} is online now, was AFK for {1}h {2}m {3}s."
 
-afk: "{0} is AFK."
+afk:
+  - "{0} is AFK."
+  - "{0} is away."
+  - "{0} is away from keyboard."
+  - "{0} is offline."
+  - "{0} is not online."
 
 since: 
   - "⏱ Last seen: {0}h {1}s {2}s ago"
-  - "⏱ Since: {0}h {1}s {2}s ago"
+  - "⏱ Since: {0}h {1}s {2}s"
+  - "⏱ Was online {0}h {1}s {2}s ago"
 
-reason: "Reason: <code>{0}</code>"
+reason:
+  - "Reason: <code>{0}</code>"
+  - "Because of: <code>{0}</code>"
 
-not_admin: "You are not an admin 👮🏻‍♀️"
+not_admin:
+  - "You are not an admin 👮🏻‍♀️"
+  - "Sit down dear member."
+  - "Ask someone to promote you first."
 
-status_afk: "You are AFK since {0}h {1}m {2}s.\n\nYou didn't provide any reasons."
+status_afk: "You are AFK since {0}h {1}m {2}s.\n\nYou didn't provide any reason."
 
 status_afk_reason: "You are AFK since {0}h {1}m {2}s.\n\nReason:\n{3}"
 
