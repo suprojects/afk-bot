@@ -8,13 +8,20 @@ from sql.users_helper import get_user_id
 from strings import get_string
 from il import il
 
+MESSAGES_FOR_DELETION = {}
 
-def delm(m, r=False):
+
+def delm(m, u=None, r=False):
     if m.chat.type == "private":
         return
-    if r:
+    elif r:
         return m.delete()
     else:
+        if m.chat.id not in MESSAGES_FOR_DELETION:
+            MESSAGES_FOR_DELETION[m.chat.id] = {}
+        if u in MESSAGES_FOR_DELETION[m.chat.id]:
+            return MESSAGES_FOR_DELETION[m.chat.id][u].delete()
+        MESSAGES_FOR_DELETION[m.chat.id][u] = m
         return Timer(300, delm, [m, True]).start()
 
 
@@ -282,7 +289,7 @@ def reply_afk(update, context, lang):
                 if not m:
                     m = msg.reply_text(res)
 
-                delm(m)
+                delm(m, user_id)
 
 
 __handlers__ = [
