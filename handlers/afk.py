@@ -13,6 +13,7 @@ MESSAGES_FOR_DELETION = {}
 
 def delm(m, u=None, r=False):
     global MESSAGES_FOR_DELETION
+
     if m.chat.type == "private":
         return
     elif r:
@@ -21,7 +22,9 @@ def delm(m, u=None, r=False):
         if m.chat.id not in MESSAGES_FOR_DELETION:
             MESSAGES_FOR_DELETION[m.chat.id] = {}
         if u in MESSAGES_FOR_DELETION[m.chat.id]:
-            return MESSAGES_FOR_DELETION[m.chat.id][u].delete()
+            r = MESSAGES_FOR_DELETION[m.chat.id][u].delete()
+            del MESSAGES_FOR_DELETION[m.chat.id][u]
+            return r
         MESSAGES_FOR_DELETION[m.chat.id][u] = m
         return Timer(300, delm, [m, True]).start()
 
