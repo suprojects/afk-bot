@@ -48,6 +48,7 @@ back_online:
   - "{0} is no longer offline, was offline for {1}h {2}m {3}s."
   - "{0} is online now, was offline for {1}h {2}m {3}s."
   - "{0} is online now, was AFK for {1}h {2}m {3}s."
+  - "{0} is back after {1}h {2}m {3}s."
 
 afk:
   - "{0} is AFK."

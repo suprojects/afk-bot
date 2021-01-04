@@ -62,7 +62,8 @@ def status(update, context, lang):
                         msg.reply_video(
                             media,
                             caption=text
-                        )
+                        ),
+                        usr.id
                     )
                 except:
                     try:
@@ -70,7 +71,8 @@ def status(update, context, lang):
                             msg.reply_photo(
                                 media,
                                 caption=text
-                            )
+                            ),
+                            usr.id
                         )
                         return
                     except:
@@ -79,7 +81,8 @@ def status(update, context, lang):
                                 msg.reply_document(
                                     media,
                                     caption=text
-                                )
+                                ),
+                                usr.id
                             )
                             return
                         except:
@@ -88,7 +91,8 @@ def status(update, context, lang):
                 delm(
                     msg.reply_text(
                         text
-                    )
+                    ),
+                    usr.id
                 )
     else:
         msg.reply_text(
@@ -127,7 +131,7 @@ def afk(update, context, lang):
 
     sql.set_afk(usr.id, reason)
     m = msg.reply_text(get_string(lang, "now_afk").format(usr.first_name))
-    delm(m)
+    delm(m, usr.id)
 
 
 @il
@@ -152,7 +156,7 @@ def afk2(update, context, lang):
 
     sql.set_afk(usr.id, reason)
     m = msg.reply_text(get_string(lang, "now_afk").format(usr.first_name))
-    delm(m)
+    delm(m, usr.id)
 
 
 @il
@@ -196,7 +200,7 @@ def no_longer_afk(update, context, lang):
                     reason
                 ) if reason else "")
             )
-            delm(m)
+            delm(m, usr.id)
 
 
 @il
