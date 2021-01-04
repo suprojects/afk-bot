@@ -194,7 +194,7 @@ def no_longer_afk(update, context, lang):
 
 @il
 def reply_afk(update, context, lang):
-    usr, msg = update.effective_user, update.effective_message
+    cht, usr, msg = update.effective_chat, update.effective_user, update.effective_message
 
     entities = msg.parse_entities(
         [MessageEntity.TEXT_MENTION, MessageEntity.MENTION]
@@ -284,7 +284,8 @@ def reply_afk(update, context, lang):
 
                 if user_id in context.chat_data["previous_afk_replies"]:
                     context.bot.delete_message(
-                        m.chat.id, context.chat_data["previous_afk_replies"][user_id])
+                        m.chat.id, context.chat_data["previous_afk_replies"][user_id]
+                    )
                 else:
                     delm(m)
                 n = context.chat_data.get("previous_afk_replies", {})
