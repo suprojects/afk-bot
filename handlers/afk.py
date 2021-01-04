@@ -282,13 +282,15 @@ def reply_afk(update, context, lang):
                 if not m:
                     m = msg.reply_text(res)
 
-                if user_id in context.chat_data["previous_afk_replies"]:
+                n = context.chat_data.get("previous_afk_replies", {})
+
+                if user_id in n:
                     context.bot.delete_message(
                         m.chat.id, context.chat_data["previous_afk_replies"][user_id]
                     )
                 else:
                     delm(m)
-                n = context.chat_data.get("previous_afk_replies", {})
+
                 n[user_id] = m.message_id
                 context.chat_data["previous_afk_replies"] = n
 
