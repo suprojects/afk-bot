@@ -6,7 +6,7 @@ p = PicklePersistence(
     filename="data"
 )
 d = Defaults(
-    parse_mode=True,
+    parse_mode="HTML",
     quote=False
 )
 updater = Updater(
