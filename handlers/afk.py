@@ -237,7 +237,7 @@ def reply_afk(update, context, lang):
                 since = get_string(lang, "since").format(h, m, since)
 
                 if not reason:
-                    res = "{}\n{}".format(
+                    res = "{}\n\n{}".format(
                         get_string(
                             lang,
                             "afk"
