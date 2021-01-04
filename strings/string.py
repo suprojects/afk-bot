@@ -1,6 +1,7 @@
 import yaml
 import os
 from string import Formatter
+from random import choice
 
 
 class String:
@@ -10,16 +11,19 @@ class String:
 
     def get_string(self, lang, string):
         try:
-            return self.languages[lang][string]
+            res = self.languages[lang][string]
         except KeyError:
             # a keyerror happened, the english file must have it
-            return self.languages["en"][string]
+            res = self.languages["en"][string]
+        if type(res) == list:
+            return choice(res)
 
     def reload_strings(self):
         for filename in os.listdir(r"./strings"):
             if filename.endswith(".yaml"):
                 language_name = filename[:-5]
-                self.languages[language_name] = yaml.safe_load(open(r"./strings/" + filename, encoding="utf8"))
+                self.languages[language_name] = yaml.safe_load(
+                    open(r"./strings/" + filename, encoding="utf8"))
 
     def new_strings(self, filename):
         try:
@@ -36,8 +40,10 @@ class String:
                     new_string = new_language[string]
                     pop_string = False
                     if isinstance(new_string, str):
-                        old_argument = [tup[1] for tup in Formatter().parse(old_string) if tup[1] is not None]
-                        new_argument = [tup[1] for tup in Formatter().parse(new_string) if tup[1] is not None]
+                        old_argument = [tup[1] for tup in Formatter().parse(
+                            old_string) if tup[1] is not None]
+                        new_argument = [tup[1] for tup in Formatter().parse(
+                            new_string) if tup[1] is not None]
                         if new_argument != old_argument:
                             new_arguments.append(string)
                             pop_string = True
@@ -69,14 +75,17 @@ class String:
                     missing_strings.append(string)
                     new_language.pop(string, None)
             elif isinstance(original_string, str):
-                translated_argument = [tup[1] for tup in Formatter().parse(translated_string) if tup[1] is not None]
-                original_argument = [tup[1] for tup in Formatter().parse(original_string) if tup[1] is not None]
+                translated_argument = [tup[1] for tup in Formatter().parse(
+                    translated_string) if tup[1] is not None]
+                original_argument = [tup[1] for tup in Formatter().parse(
+                    original_string) if tup[1] is not None]
                 if translated_argument != original_argument:
                     missing_arguments.append(string)
                     new_language.pop(string, None)
         if missing_arguments:
             with open(r"./strings/" + filename, 'w') as outfile:
-                yaml.dump(new_language, outfile, default_flow_style=False, sort_keys=False)
+                yaml.dump(new_language, outfile,
+                          default_flow_style=False, sort_keys=False)
         self.reload_strings()
         return {"missing_arguments": missing_arguments, "missing_strings": missing_strings}
 
