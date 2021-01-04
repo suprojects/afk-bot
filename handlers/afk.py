@@ -12,6 +12,7 @@ MESSAGES_FOR_DELETION = {}
 
 
 def delm(m, u=None, r=False):
+    global MESSAGES_FOR_DELETION
     if m.chat.type == "private":
         return
     elif r:
