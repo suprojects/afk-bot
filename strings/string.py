@@ -17,6 +17,7 @@ class String:
             res = self.languages["en"][string]
         if type(res) == list:
             return choice(res)
+        return res
 
     def reload_strings(self):
         for filename in os.listdir(r"./strings"):
