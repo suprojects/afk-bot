@@ -8,24 +8,13 @@ from sql.users_helper import get_user_id
 from strings import get_string
 from il import il
 
-MESSAGES_FOR_DELETION = {}
 
-
-def delm(m, u=None, r=False):
-    global MESSAGES_FOR_DELETION
-
+def delm(m, r=False):
     if m.chat.type == "private":
         return
-    elif r:
+    if r:
         return m.delete()
     else:
-        if m.chat.id not in MESSAGES_FOR_DELETION:
-            MESSAGES_FOR_DELETION[m.chat.id] = {}
-        if u in MESSAGES_FOR_DELETION[m.chat.id]:
-            r = MESSAGES_FOR_DELETION[m.chat.id][u].delete()
-            MESSAGES_FOR_DELETION[m.chat.id][u] = m
-            return r
-        MESSAGES_FOR_DELETION[m.chat.id][u] = m
         return Timer(300, delm, [m, True]).start()
 
 
@@ -66,8 +55,7 @@ def status(update, context, lang):
                         msg.reply_video(
                             media,
                             caption=text
-                        ),
-                        usr.id
+                        )
                     )
                 except:
                     try:
@@ -75,8 +63,7 @@ def status(update, context, lang):
                             msg.reply_photo(
                                 media,
                                 caption=text
-                            ),
-                            usr.id
+                            )
                         )
                         return
                     except:
@@ -85,8 +72,7 @@ def status(update, context, lang):
                                 msg.reply_document(
                                     media,
                                     caption=text
-                                ),
-                                usr.id
+                                )
                             )
                             return
                         except:
@@ -95,8 +81,7 @@ def status(update, context, lang):
                 delm(
                     msg.reply_text(
                         text
-                    ),
-                    usr.id
+                    )
                 )
     else:
         msg.reply_text(
@@ -135,7 +120,7 @@ def afk(update, context, lang):
 
     sql.set_afk(usr.id, reason)
     m = msg.reply_text(get_string(lang, "now_afk").format(usr.first_name))
-    delm(m, usr.id)
+    delm(m)
 
 
 @il
@@ -160,7 +145,7 @@ def afk2(update, context, lang):
 
     sql.set_afk(usr.id, reason)
     m = msg.reply_text(get_string(lang, "now_afk").format(usr.first_name))
-    delm(m, usr.id)
+    delm(m)
 
 
 @il
@@ -197,14 +182,14 @@ def no_longer_afk(update, context, lang):
                     h,
                     m,
                     since
-                ) + ("\n\n" + get_string(
+                ) + "\n\n" + get_string(
                     lang,
                     "reason"
                 ).format(
                     reason
-                ) if reason else "")
+                )
             )
-            delm(m, usr.id)
+            delm(m)
 
 
 @il
@@ -252,7 +237,7 @@ def reply_afk(update, context, lang):
                 since = get_string(lang, "since").format(h, m, since)
 
                 if not reason:
-                    res = "{}\n\n{}".format(
+                    res = "{}\n{}".format(
                         get_string(
                             lang,
                             "afk"
@@ -262,7 +247,7 @@ def reply_afk(update, context, lang):
                         since
                     )
                 else:
-                    res = "{}\n\n{}\n{}".format(
+                    res = "{}\n{}\n\n{}".format(
                         get_string(
                             lang,
                             "afk"
@@ -297,7 +282,7 @@ def reply_afk(update, context, lang):
                 if not m:
                     m = msg.reply_text(res)
 
-                delm(m, user_id)
+                delm(m)
 
 
 __handlers__ = [
