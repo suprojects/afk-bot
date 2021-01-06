@@ -11,7 +11,6 @@ from sql.users_helper import chats as cs
 
 def cleandb(update, context):
     chats = cs()
-    f = 0
     count = 0
 
     msg = update.message.reply_text(
@@ -20,23 +19,20 @@ def cleandb(update, context):
 
     for chat in chats:
         try:
-            f += 1
-            msg.edit_text(
-                "Cleaning... {}/{}".format(
-                    f,
-                    len(
-                        chats
-                    )
-                )
-            )
+            
             context.bot.get_chat(chat)
+            
         except Unauthorized as excp:
+            
             if "kicked" in excp.message:
+                
                 try:
                     sql.del_chat(chat)
                     count += 1
+                    
                 except:
                     pass
+                
         except RetryAfter as excp:
             msg.edit_text(
                 "Flood error, sleeping for {} seconds.".format(
