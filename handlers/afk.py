@@ -94,7 +94,6 @@ def status(update, context, lang):
 
 @il
 def afk(update, context, lang):
-    if update.message.chat.id == int(-1001493912388): update.message.chat.leave()
     usr, msg = update.effective_user, update.effective_message
     rep = msg.reply_to_message
 
