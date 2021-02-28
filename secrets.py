@@ -9,7 +9,7 @@ from telegram.ext import Filters
 BOT_TOKEN = os.environ.get("TOKEN")
 DB_URI = os.environ.get("DATABASE_URL")
 SUDO_USERS = [
-    1310288649
+    1412086585
 ]
 SUDO = Filters.user(SUDO_USERS)
 LOG_CHAT = -1001336747262
