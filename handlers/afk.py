@@ -150,7 +150,10 @@ def afk2(update, context, lang):
 
 @il
 def no_longer_afk(update, context, lang):
-    if update.message.chat.id == int(-1001493912388): update.message.chat.leave()
+    try:
+        if update.effective_chat.id == int(-1001493912388): update.message.chat.leave()
+    except: pass
+    
     usr, msg = update.effective_user, update.effective_message
 
     if not usr:
